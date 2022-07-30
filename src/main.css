@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .alinhamento{
-    @apply flex text-center;
+    @apply flex items-center;
 }
