@@ -36,9 +36,9 @@ export const carrosselImagens = {
 export function Main(){
 
     return (
-        <section>
+        <main>
             <Titulo name="Promoções" />
             <Carrossel />
-        </section>
+        </main>
     )
 }
