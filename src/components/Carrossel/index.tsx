@@ -15,7 +15,7 @@ export function Carrossel(){
                         />
                     </div>
 
-                    <div className="z-10 absolute bottom-0 top-[15%] pl-16 invisible transition duration-300 animação card-info">
+                    <div className="z-10 absolute bottom-0 top-[15%] pl-16 invisible transition-all duration-300 animação card-info">
                         <h3 className="text-red-600 text-3xl font-medium">
                             {carrosselImagens.imagem1.title}
                         </h3>
@@ -37,7 +37,7 @@ export function Carrossel(){
                         />
                     </div>
 
-                    <div className="z-10 absolute bottom-0 top-[15%] left-[100%] pl-16 invisible transition duration-300 animação card-info">
+                    <div className="z-10 absolute bottom-0 top-[15%] left-[100%] pl-16 invisible transition-all duration-300 animação card-info">
                         <h3 className="text-red-600 text-3xl font-medium">
                             {carrosselImagens.imagem2.title}
                         </h3>
@@ -59,7 +59,7 @@ export function Carrossel(){
                         />
                     </div>
 
-                    <div className="z-10 absolute bottom-0 top-[15%] left-[200%] pl-16 invisible transition duration-300 animação card-info">
+                    <div className="z-10 absolute bottom-0 top-[15%] left-[200%] pl-16 invisible transition-all duration-300 animação card-info">
                         <h3 className="text-red-600 text-3xl font-medium">
                             {carrosselImagens.imagem3.title}
                         </h3>
