@@ -5,9 +5,9 @@ export function Carrossel(){
     console.log(carrosselImagens.imagem1);
     return (
         <section>
-            <div className="w-full h-[30rem] flex relative overflow-x-hidden">
+            <div className="w-full h-[39rem] flex relative overflow-x-hidden">
                 <div className="w-full promoção">
-                    <div className="w-[1200px] flex h-full animação">
+                    <div className="w-[1000px] flex h-full animação">
                         <img
                             src={carrosselImagens.imagem1.url}
                             alt={carrosselImagens.imagem1.subTitulo}
@@ -29,7 +29,7 @@ export function Carrossel(){
                 </div>
 
                 <div className="w-full promoção">
-                    <div className="w-[1200px] flex h-full animação">
+                    <div className="w-[1000px] flex h-full animação">
                         <img
                             src={carrosselImagens.imagem2.url}
                             alt={carrosselImagens.imagem2.subTitulo}
@@ -51,7 +51,7 @@ export function Carrossel(){
                 </div>
 
                 <div className="w-full promoção">
-                    <div className="w-[1200px] flex h-full animação">
+                    <div className="w-[1000px] flex h-full animação">
                         <img
                             src={carrosselImagens.imagem3.url}
                             alt={carrosselImagens.imagem3.subTitulo}
@@ -73,7 +73,7 @@ export function Carrossel(){
                 </div>
 
                 <div className="w-full promoção">
-                    <div className="w-[1200px] flex h-full animação">
+                    <div className="w-[1000px] flex h-full animação">
                         <img
                             src={carrosselImagens.imagem4.url}
                             alt={carrosselImagens.imagem4.subTitulo}
