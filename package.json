@@ -1,5 +1,5 @@
 {
-  "homepage": "https://alerrando.github.io/Loja-ReactJs/",
+  "homepage": "https://github.com/Alerrando/Loja-ReactJs",
   "name": "loja-ap2",
   "private": true,
   "version": "0.0.0",
@@ -8,7 +8,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
