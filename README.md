@@ -30,7 +30,8 @@ npx tailwindcss init -p
 </br>
 
 <div align="center">
-    <h2>🚧 Em Construção<h2>
+    <h2>🚧 Em Construção</h2>
+    <img src="./github/LojaPrincipal.gif" alt="Demo do site">
 </div>
 
 <hr />
