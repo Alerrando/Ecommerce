@@ -1,3 +1,4 @@
+import React from "react";
 import { Cards } from "../Cards";
 import { Titulo } from "../Titulo";
 
@@ -63,11 +64,11 @@ export const cardsInfo = {
 
 export function Produtos(){
     return (
-        <div>
-            <Titulo name="Promoção" />
+        <section className="overflow-hidden">
+            <Titulo name="Produtos em Destaque" />
             <section>
                 <Cards />
             </section>
-        </div>
+        </section>
     )
 }

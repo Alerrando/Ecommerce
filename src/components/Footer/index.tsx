@@ -1,6 +1,8 @@
+import React from "react";
+
 export function Footer() {
     return (
-      <footer className="mt-32">
+      <footer className="mt-32 overflow-hidden">
         <div className="footer-grid">
           <div className="footer-info">
             <div>
