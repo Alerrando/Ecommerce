@@ -8,7 +8,7 @@ export function Carrossel() {
         {carrosselImagens.map((imagem, index) => (
           <>
             <div className="w-full promoção">
-              <div className="w-96 md:w-[1500px] flex h-full animação">
+              <div className="w-[27rem] md:w-[1500px] flex h-full animação">
                 <img
                   src={carrosselImagens[index].url}
                   alt={carrosselImagens[index].subTitulo}
