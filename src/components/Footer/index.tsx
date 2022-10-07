@@ -2,7 +2,7 @@ import React from "react";
 
 export function Footer() {
     return (
-      <footer className="mt-24 md:mt-32">
+      <footer className="mt-24 ml-2 md:ml-0 md:mt-32">
         <div className="footer-grid md:grid block">
           <div className="footer-info mb-4 md:mb-0">
             <div>

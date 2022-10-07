@@ -1,5 +1,6 @@
 import {
   EnvelopeSimple,
+  GithubLogo,
   LinkedinLogo,
   List,
   ShoppingCart,
@@ -35,7 +36,7 @@ export function Header() {
       </div>
 
       <nav
-        className={`md:block fixed h-screen md:h-20 right-0 z-10 top-0 w-36 md:w-full bg-[#337ab7] md:bg-transparent md:relative ${menu}`}
+        className={`md:block fixed h-screen md:h-20 right-0 z-20 top-0 w-36 md:w-full bg-[#337ab7] md:bg-transparent md:relative ${menu}`}
       >
         <div className="grid grid-rows-sidebar h-full md:flex md:items-center md:justify-between text-white md:text-black md:mx-20">
           <X
@@ -87,25 +88,27 @@ export function Header() {
           <footer className="w-full md:hidden">
             <div className="alinhamento justify-around">
               <div className="w-10 h-10 rounded-full">
-                <LinkedinLogo
-                  className="h-[80%] w-[80%] cursor-pointer transition-colors text-black"
-                  weight="bold"
-                />
+                <a href="https://www.linkedin.com/in/alerrando-breno-656aa8188/" target="_blank" title="Linkedin">
+                  <LinkedinLogo
+                    className="h-[80%] w-[80%] cursor-pointer transition-colors text-white"
+                    weight="bold"
+                  />
+                </a>
               </div>
 
               <div className="w-10 h-10 rounded-full">
-                <img
-                  src="github-svgrepo-com.svg"
-                  alt=""
-                  className="cursor-pointer h-[70%] w-[70%]"
-                />
+                <a href="https://github.com/Alerrando" target="_blank" title="Github">
+                  <GithubLogo size={32} weight="bold" className="h-[80%] w-[80%] cursor-pointer transition-colors text-white" />
+                </a>
               </div>
 
               <div className="w-10 h-10 rounded-full">
-                <EnvelopeSimple
-                  className="h-[80%] w-[80%] cursor-pointer transition-colors text-black"
-                  weight="bold"
-                />
+                <a href="mailto:alerrando2@gmail.com" target="_blank" title="Email">
+                  <EnvelopeSimple
+                    className="h-[80%] w-[80%] cursor-pointer transition-colors text-white"
+                    weight="bold"
+                  />
+                </a>
               </div>
             </div>
           </footer>

@@ -25,7 +25,7 @@ export const cardsInfo = {
         card3: {
             url: "https://images.unsplash.com/photo-1543854651-42d750ab10b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=399&q=80",
             titulo: "Camera",
-            subTitulo: "Clicking Camera",
+            subTitulo: "Clicking",
             descrição : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod qui delectus repudiandae eum? \
             Tempora rem aliquam, quo aut repellat omnis laboriosam molestiae error qui magnam quae suscipit sint esse. \
             Commodi?",
