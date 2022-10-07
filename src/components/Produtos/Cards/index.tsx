@@ -9,7 +9,7 @@ export function Cards() {
   return (
     <>
       <div className="grid md:block mt-4 mb-16 md:my-0">
-        <div className="grid gap-16 md:flex items-center justify-evenly md:pt-6 md:pb-[4.5rem]">
+        <div className="grid gap-16 pb-16 md:flex items-center justify-evenly md:pt-6 md:pb-[4.5rem]">
           <div className="h-[20rem] md:w-80 md:h-[36rem] relative text-center group">
             <CardsImgsInfo
               url={Fileira1.card1.url}
