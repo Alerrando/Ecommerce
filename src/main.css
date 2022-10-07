@@ -50,6 +50,12 @@
   animation-iteration-count: infinite;
 }
 
+@media screen and (max-width: 767px) {
+  .promoção .card-info {
+    visibility: visible;
+  }
+}
+
 .promoção:hover .card-info {
   visibility: visible;
 }
