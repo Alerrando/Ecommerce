@@ -66,7 +66,6 @@ h4 {
 }
 
 .footer-grid {
-  display: grid;
   grid-template-columns: repeat(17, 1fr);
   grid-template-rows: repeat(4, 1fr);
 }
