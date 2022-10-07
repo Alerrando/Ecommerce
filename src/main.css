@@ -40,6 +40,10 @@
   @apply flex items-center;
 }
 
+.menu-open{
+  left: 0;
+}
+
 .animação {
   animation-name: carrossel;
   animation-duration: 20s;

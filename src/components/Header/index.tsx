@@ -5,9 +5,15 @@ import {
   ShoppingCart,
   X,
 } from "phosphor-react";
-import React from "react";
+import React, { useState } from "react";
 
 export function Header() {
+  const [menu, setMenu] = useState("hidden");
+
+  function handleMenu() {
+    menu == "block" ? setMenu("hidden") : setMenu("block");
+  }
+
   return (
     <header className="h-20 md:h-44 w-full bg-white">
       <div className="alinhamento justify-between py-8 mx-4 md:mx-20">
@@ -20,15 +26,23 @@ export function Header() {
           <a href="">Login</a>
         </div>
 
-        <List size={32} weight="bold" className="block md:hidden" />
+        <List
+          size={32}
+          weight="bold"
+          className="block md:hidden cursor-pointer"
+          onClick={() => handleMenu()}
+        />
       </div>
 
-      <nav className="md:block fixed h-screen md:h-20 right-0 z-10 top-0 w-36 md:w-full bg-[#337ab7] md:bg-transparent md:relative">
-        <div className="grid grid-rows-sidebar h-full md:flex md:items-center md:justify-between text-white md:mx-20">
+      <nav
+        className={`md:block fixed h-screen md:h-20 right-0 z-10 top-0 w-36 md:w-full bg-[#337ab7] md:bg-transparent md:relative ${menu}`}
+      >
+        <div className="grid grid-rows-sidebar h-full md:flex md:items-center md:justify-between text-white md:text-black md:mx-20">
           <X
             size={30}
             weight="bold"
             className="block my-2 ml-2 cursor-pointer md:hidden"
+            onClick={() => handleMenu()}
           />
 
           <ul className="grid justify-center h-20 md:flex items-center gap-4 md:gap-6 font-Rokkitt text-xl md:text-lg">
