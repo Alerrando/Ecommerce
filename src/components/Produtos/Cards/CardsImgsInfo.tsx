@@ -19,13 +19,13 @@ export function CardsImgsInfo(props: CardsImgsInfo){
             </div>
 
             <div className="absolute md:invisible bottom-0 p-8 text-start md:group-hover:visible md:group-hover:pb-12 transition-all">
-              <h3 className="text-red-500 font-Rokkitt font-medium text-2xl md:text-3xl">
+              <h3 className="text-red-500 font-Rokkitt font-medium text-2xl md:text-3xl" translate="no">
                 {props.titulo}
               </h3>
-              <h4 className="text-white font-Rokkitt font-medium text-xl md:text-2xl">
+              <h4 className="text-white font-Rokkitt font-medium text-xl md:text-2xl" translate="no">
                 {props.subTitulo}
               </h4>
-              <h5 className="text-white mt-4 md:mt-6 text-xs md:text-sm">
+              <h5 className="text-white mt-4 md:mt-6 text-xs md:text-sm" translate="no">
                 {props.descrição}
               </h5>
             </div>
