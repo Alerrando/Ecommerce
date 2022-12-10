@@ -68,12 +68,18 @@ export function Footer() {
   
           <div className="footer-info mb-4 md:mb-0">
             <div>
-              <h3 className="text-lg md:text-xl font-bold">Criador</h3>
+              <h3 className="text-lg md:text-xl font-bold">Redes Sociais</h3>
             </div>
   
             <ul>
               <p className="text-base md:text-lg font-Rokkitt opacity-70 hover:opacity-100 transition-colors pt-2">
-                <a href="">Alerrando</a>
+                <a href="https://github.com/Alerrando">Github</a>
+              </p>
+              <p className="text-base md:text-lg font-Rokkitt opacity-70 hover:opacity-100 transition-colors pt-2">
+                <a href="https://www.linkedin.com/in/alerrando-breno-656aa8188/">Linkedin</a>
+              </p>
+              <p className="text-base md:text-lg font-Rokkitt opacity-70 hover:opacity-100 transition-colors pt-2">
+                <a href="mailto:alerrando2@gmail.com">Email</a>
               </p>
             </ul>
           </div>

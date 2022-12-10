@@ -1,8 +1,10 @@
 import React from "react";
-import { cardsInfo } from "..";
+import { lojaProdutos } from "../../../database";
 import { CardsImgsInfo } from "./CardsImgsInfo";
 
 export function Cards() {
+  const cardsInfo = lojaProdutos[0]["cardsInfo"]
+
   return (
     <>
       <div className="grid md:block mt-4 mb-16 md:my-0">

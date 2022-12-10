@@ -16,11 +16,23 @@ export function Header() {
   }
 
   return (
-    <header className="h-20 md:h-44 w-full bg-white">
-      <div className="alinhamento justify-between py-8 mx-4 md:mx-20">
+    <header className="h-20 md:h-auto w-full pt-4 md:fixed bg-white z-50">
+      <div className="alinhamento justify-between pt-4 mx-4 md:mx-20">
         <h1 className="text-4xl font-Playfair-Display text-[#595959] font-semibold">
           TechSoft
         </h1>
+
+        <div className="md:flex md:items-center gap-4 hidden">
+            <input
+              type="text"
+              name="busca"
+              placeholder="Digite o que buscar..."
+              className="border-2 border-black rounded-xl p-2"
+            />
+            <button className="text-white bg-[#337ab7] cursor-pointer py-2.5 px-5 rounded-[10px]">
+              Search
+            </button>
+          </div>
 
         <div className="text-center gap-8 hidden md:flex">
           <ShoppingCart size={24} weight="bold" />
@@ -72,18 +84,6 @@ export function Header() {
               Sobre
             </a>
           </ul>
-
-          <div className="md:flex md:items-center gap-4 hidden">
-            <input
-              type="text"
-              name="busca"
-              placeholder="Digite o que buscar..."
-              className="border-2 border-black rounded-xl p-2"
-            />
-            <button className="text-white bg-[#337ab7] cursor-pointer py-2.5 px-5 rounded-[10px]">
-              Search
-            </button>
-          </div>
 
           <footer className="w-full md:hidden">
             <div className="alinhamento justify-around">
