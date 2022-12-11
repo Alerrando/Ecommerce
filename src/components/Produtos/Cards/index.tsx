@@ -10,7 +10,7 @@ export function Cards() {
       <div className="grid grid-cols-projetos gap-14">
         {cardsInfo.map((card) => (
             <>
-              <div className="max-h-[35rem] max-w-[300px] relative text-center group border border-zinc-400 rounded-xl">
+              <div className="max-h-[30rem] max-w-[300px] relative text-center group border border-zinc-400 rounded-xl cursor-pointer">
                 <CardsImgsInfo
                   url={card.url}
                   titulo={card.titulo}

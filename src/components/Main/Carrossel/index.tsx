@@ -6,7 +6,7 @@ export function Carrossel() {
 
   return (
     <section>
-      <div className="w-full h-[22rem] md:h-[39rem] flex relative overflow-x-hidden">
+      <div className="w-full h-[22rem] md:h-[30rem] flex relative overflow-x-hidden">
         {carrosselImagens.map((imagem, index) => (
           <>
             <div className="w-full relative promoção">
