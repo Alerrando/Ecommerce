@@ -10,6 +10,10 @@ module.exports = {
       gridTemplateRows: {
         sidebar: "15% 65% 15%",
       },
+
+      gridTemplateColumns: {
+        "projetos": "repeat(auto-fit, minmax(290px, 1fr));",
+      },
     },
   },
   plugins: [],
