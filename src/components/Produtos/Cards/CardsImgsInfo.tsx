@@ -1,32 +1,32 @@
 import React from "react";
+import { CardKeys } from ".";
 
 type CardsImgsInfo = {
-    url: string;
-    titulo: string;
-    subTitulo: string;
-    descrição: string;
+    card: CardKeys;
 }
 
 export function CardsImgsInfo(props: CardsImgsInfo){
+  const { card } = props;
+
     return(
         <>
             <div className="w-full h-full">
               <img
-                src={props.url}
-                alt={props.subTitulo}
+                src={card.url}
+                alt={card.subTitulo}
                 className="w-full h-full rounded-xl"
               />
             </div>
 
             <div className="absolute md:invisible bottom-0 p-8 text-start md:group-hover:visible md:group-hover:pb-12 transition-all">
               <h3 className="text-red-500 font-Rokkitt font-medium text-2xl md:text-3xl" translate="no">
-                {props.titulo}
+                {card.titulo}
               </h3>
               <h4 className="text-white font-Rokkitt font-medium text-xl md:text-2xl" translate="no">
-                {props.subTitulo}
+                {card.subTitulo}
               </h4>
               <h5 className="text-white mt-4 md:mt-6 text-xs md:text-sm" translate="no">
-                {props.descrição}
+                {card.descrição}
               </h5>
             </div>
 
