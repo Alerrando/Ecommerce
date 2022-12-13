@@ -6,7 +6,7 @@ export function App() {
     <>
       <Header />
       <Main />
-      <Produtos /> 
+      <Produtos />
       <Parcerias />
       <Footer />
     </>

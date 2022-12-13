@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
+      colors: {
+        "sombreamento": "rgba(0, 0, 0, 0.3)"
+      },
       fontFamily: {
         "Playfair-Display": ["Playfair Display", "sans-serif"],
         "Rokkitt": ["Rokkitt", "serif"],
