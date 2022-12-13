@@ -1,5 +1,5 @@
 import React from "react";
-import { lojaProdutos } from "../../../database";
+import { lojaProdutos } from "../../../../database";
 import { CardsImgsInfo } from "./CardsImgsInfo";
 
 export type CardKeys = {

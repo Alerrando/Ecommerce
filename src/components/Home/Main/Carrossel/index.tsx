@@ -1,5 +1,5 @@
 import React from "react";
-import { lojaProdutos } from '../../../database'
+import { lojaProdutos } from '../../../../database'
 
 export function Carrossel() {
   const carrosselImagens = lojaProdutos[0]["carrosselImagens"];

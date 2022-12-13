@@ -1,5 +1,5 @@
 import React from "react";
-import { Titulo } from "../Titulo";
+import { Titulo } from "../../Titulo";
 
 export function Parcerias() {
   return (

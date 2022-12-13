@@ -1,8 +1,4 @@
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
-import { Main } from "./components/Main";
-import { Parcerias } from "./components/Parcerias";
-import { Produtos } from "./components/Produtos";
+import { Footer, Header, Main, Parcerias, Produtos } from './components'
 import React from "react";
 
 export function App() {

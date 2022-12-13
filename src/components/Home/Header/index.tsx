@@ -7,6 +7,7 @@ import {
   X,
 } from "phosphor-react";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const [menu, setMenu] = useState("hidden");
@@ -36,7 +37,7 @@ export function Header() {
 
         <div className="text-center gap-8 hidden md:flex">
           <ShoppingCart size={24} weight="bold" />
-          <a href="">Login</a>
+          <Link to="/login">Login</Link>
         </div>
 
         <List

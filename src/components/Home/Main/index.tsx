@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Carrossel } from "./Carrossel";
-import { Titulo } from '../Titulo';
+import { Titulo } from '../../Titulo';
 
 
 export function Main(){
