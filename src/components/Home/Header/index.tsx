@@ -39,7 +39,7 @@ export function Header() {
           </button>
         </div>
 
-        <div className="text-center gap-8 hidden md:flex">
+        <div className="text-center gap-8 flex absolute top-[13%] md:relative">
           <ShoppingCart size={24} weight="bold" />
           <Link to="/login">Login</Link>
         </div>
