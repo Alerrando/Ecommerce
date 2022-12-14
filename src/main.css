@@ -94,8 +94,3 @@ h4 {
   grid-column: 15/17;
   grid-row: 1/6;
 }
-
-.bg-login{
-  background: url('Login/background.webp') no-repeat;
-  background-size: cover;
-}
