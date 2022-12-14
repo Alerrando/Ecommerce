@@ -6,11 +6,15 @@ import {
   ShoppingCart,
   X,
 } from "phosphor-react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { ShopContext } from '../../../context/shopContext';
 
 export function Header() {
   const [menu, setMenu] = useState("hidden");
+  const { user } = useContext(ShopContext);
+
+  console.log(user)
 
   function handleMenu() {
     menu == "block" ? setMenu("hidden") : setMenu("block");
@@ -24,16 +28,16 @@ export function Header() {
         </h1>
 
         <div className="md:flex md:items-center gap-4 hidden">
-            <input
-              type="text"
-              name="busca"
-              placeholder="Digite o que buscar..."
-              className="border-2 border-black rounded-xl p-2"
-            />
-            <button className="text-white bg-[#337ab7] cursor-pointer py-2.5 px-5 rounded-[10px]">
-              Search
-            </button>
-          </div>
+          <input
+            type="text"
+            name="busca"
+            placeholder="Digite o que buscar..."
+            className="border-2 border-black rounded-xl p-2"
+          />
+          <button className="text-white bg-[#337ab7] cursor-pointer py-2.5 px-5 rounded-[10px]">
+            Search
+          </button>
+        </div>
 
         <div className="text-center gap-8 hidden md:flex">
           <ShoppingCart size={24} weight="bold" />
@@ -89,7 +93,11 @@ export function Header() {
           <footer className="w-full md:hidden">
             <div className="alinhamento justify-around">
               <div className="w-10 h-10 rounded-full">
-                <a href="https://www.linkedin.com/in/alerrando-breno-656aa8188/" target="_blank" title="Linkedin">
+                <a
+                  href="https://www.linkedin.com/in/alerrando-breno-656aa8188/"
+                  target="_blank"
+                  title="Linkedin"
+                >
                   <LinkedinLogo
                     className="h-[80%] w-[80%] cursor-pointer transition-colors text-white"
                     weight="bold"
@@ -98,13 +106,25 @@ export function Header() {
               </div>
 
               <div className="w-10 h-10 rounded-full">
-                <a href="https://github.com/Alerrando" target="_blank" title="Github">
-                  <GithubLogo size={32} weight="bold" className="h-[80%] w-[80%] cursor-pointer transition-colors text-white" />
+                <a
+                  href="https://github.com/Alerrando"
+                  target="_blank"
+                  title="Github"
+                >
+                  <GithubLogo
+                    size={32}
+                    weight="bold"
+                    className="h-[80%] w-[80%] cursor-pointer transition-colors text-white"
+                  />
                 </a>
               </div>
 
               <div className="w-10 h-10 rounded-full">
-                <a href="mailto:alerrando2@gmail.com" target="_blank" title="Email">
+                <a
+                  href="mailto:alerrando2@gmail.com"
+                  target="_blank"
+                  title="Email"
+                >
                   <EnvelopeSimple
                     className="h-[80%] w-[80%] cursor-pointer transition-colors text-white"
                     weight="bold"
