@@ -1,7 +1,6 @@
 import { Footer, Header, Main, Parcerias, Produtos } from './components'
 import React from "react";
 
-
 export function App() {
   return (
     <>
