@@ -3,7 +3,8 @@ import React from "react";
 export function Main() {
   
   return (
-    <main className="w-full h-[90vh] flex items-center justify-center text-white">
+    <main className="w-full h-[91.4vh] md:h-[90.5vh] flex items-center justify-center text-white">
+      <img src="Login/background.webp" alt="" className="h-[91%] w-full bg-cover absolute -z-10" />
       <div className="w-[380px] md:w-[46%] h-[500px] md:h-auto bg-white overflow-auto rounded-2xl border border-zinc-600 shadow-lg">
         <div className="grid gap-4 px-6 py-6">
           <header className="w-full h-auto text-black" translate="no">
@@ -52,7 +53,7 @@ export function Main() {
               <div className="grid gap-2">
                 <div className="w-full h-10 border border-zinc-400 cursor-pointer hover:bg-sombreamento">
                   <div className="w-full h-full flex items-center gap-6 ml-2">
-                    <img src="google-svgrepo-com.svg" alt="" className="h-6 w-6 flex items-center justify-center"></img>
+                    <img src="Login/google-svgrepo-com.svg" alt="" className="h-6 w-6 flex items-center justify-center"></img>
                     <p className="text-sm md:text-[15px]">
                       Continue com o Google
                     </p>
@@ -61,7 +62,7 @@ export function Main() {
 
                 <div className="w-full h-10 border border-zinc-400 cursor-pointer hover:bg-sombreamento">
                   <div className="w-full h-full flex items-center gap-6 ml-2">
-                    <img src="facebook-svgrepo-com.svg" className="h-6 w-6 flex items-center justify-center"></img>
+                    <img src="Login/facebook-svgrepo-com.svg" className="h-6 w-6 flex items-center justify-center"></img>
                     <p className="text-sm md:text-[15px]">
                       Continue com o Facebook
                     </p>
@@ -70,7 +71,7 @@ export function Main() {
 
                 <div className="w-full h-10 border border-zinc-400 cursor-pointer hover:bg-sombreamento">
                   <div className="w-full h-full flex items-center gap-6 ml-2">
-                    <img src="apple-svgrepo-com.svg" className="h-6 w-6 flex items-center justify-center"></img>
+                    <img src="Login/apple-svgrepo-com.svg" className="h-6 w-6 flex items-center justify-center"></img>
                     <p className="text-sm md:text-[15px]">
                       Continue com o Apple
                     </p>
