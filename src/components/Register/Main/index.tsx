@@ -1,6 +1,24 @@
-import React from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
+import { ShopContext } from "../../../context/shopContext";
 
 export function Main() {
+  const { createUser, register } = useContext(ShopContext);
+  const [userAux, setUserAux] = useState({
+    name: "",
+    email: "",
+    password: "",
+    telefone: "",
+  });
+
+  useEffect(() => {
+    setUserAux({
+      name: "",
+      email: "",
+      password: "",
+      telefone: "",
+    });
+  }, [register]);
+
   return (
     <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white">
       <img
@@ -17,7 +35,10 @@ export function Main() {
           </header>
 
           <section className="w-full h-auto grid gap-6 md:gap-0 md:flex items-start">
-            <form className="h-full w-full max-w-[250px] text-black grid gap-3">
+            <form
+              className="h-full w-full max-w-[250px] text-black grid gap-3"
+              onSubmit={(e) => handleSubmit(e)}
+            >
               <div className="grid gap-2 md:gap-[1px]">
                 <label>Digite seu nome completo</label>
                 <input
@@ -25,6 +46,10 @@ export function Main() {
                   type="text"
                   placeholder="Digite seu nome completo"
                   required
+                  value={userAux.name}
+                  onChange={(e) =>
+                    setUserAux({ ...userAux, name: e.target.value })
+                  }
                 />
               </div>
               <div className="grid gap-2 md:gap-[1px]">
@@ -34,6 +59,10 @@ export function Main() {
                   type="email"
                   placeholder="Digite seu email"
                   required
+                  value={userAux.email}
+                  onChange={(e) =>
+                    setUserAux({ ...userAux, email: e.target.value })
+                  }
                 />
               </div>
               <div className="grid gap-2 md:gap-[1px]">
@@ -43,6 +72,10 @@ export function Main() {
                   type="password"
                   placeholder="Digite sua senha"
                   required
+                  value={userAux.password}
+                  onChange={(e) =>
+                    setUserAux({ ...userAux, password: e.target.value })
+                  }
                 />
               </div>
               <div className="grid gap-2 md:gap-[1px]">
@@ -52,6 +85,10 @@ export function Main() {
                   type="tel"
                   placeholder="(##)#####-####"
                   required
+                  value={userAux.telefone}
+                  onChange={(e) =>
+                    setUserAux({ ...userAux, telefone: e.target.value })
+                  }
                 />
               </div>
 
@@ -123,10 +160,22 @@ export function Main() {
           </section>
 
           <h3 className="text-black mt-4">
-            Já tem conta?  <a href="/login" className="text-blue-600 cursor-pointer"> Faça login</a>
+            Já tem conta?{" "}
+            <a href="/login" className="text-blue-600 cursor-pointer">
+              {" "}
+              Faça login
+            </a>
           </h3>
         </div>
       </div>
     </main>
   );
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    if (userAux.email.length > 0 && userAux.password.length > 0) {
+      createUser(userAux);
+    }
+  }
 }

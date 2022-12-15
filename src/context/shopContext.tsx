@@ -9,6 +9,7 @@ export type userProps = {
     name: string;
     email: string;
     password: string;
+    telefone: string;
     carrinho: object;
 }
 
@@ -17,7 +18,6 @@ type ShopContextProps = {
     setUser: (user: []) => void,
     register: userProps[],
     setRegister: (user: []) => void,
-    handleInputChange: (e: any, login: userProps, setInputLogin: Function) => void,
     createUser: (userCreate: object | any) => void,
     checkRegister: (user: object | any) => void,
 }
@@ -27,39 +27,46 @@ export const ShopContext = createContext<ShopContextProps>({} as ShopContextProp
 function CreateContextProvider({children}: IPropsContext){
     const [user, setUser] = useState<userProps[]>([] as userProps[]);
     const [register, setRegister] = useState<userProps[]>([] as userProps[]);
-
-    const handleInputChange = (e: any, login: object, setInputLogin: Function) => {
-        const { name, value } = e.target;
-        setInputLogin({ ...login, [name]: value });
-    };
     
     function createUser(userCreate: object | any){
-        debugger;
-        const aux: userProps | any = {
-            id: user.length,
-            name: userCreate.name,
-            email: userCreate.email,
-            carrinho: [],
-        };
+        if(searchRegistrarion(userCreate) != 0){
+            const aux: userProps | any = {
+                id: user.length,
+                name: userCreate.name,
+                password: userCreate.password,
+                email: userCreate.email,
+                telefone: userCreate.telefone,
+                carrinho: [],
+            };
+    
+            setUser(aux);
+            setRegister([aux, ...register]);
+            userCreate.forEach(user => user.value = "");
+        }else{ alert("Usuário já existe") }
 
-        setUser(aux);
-        setRegister([aux, ...register]);
     }
 
     function checkRegister(login: object | any) {
         debugger;
-        if(register.length > 0){
-            register.forEach(user => {
-                if (user.email === login.email)
-                    createUser(login);
-                else
-                    alert("Login não existe!");
-            })
+        if(searchRegistrarion(login)){
+            createUser(login);
         } else { alert("Login não existe!"); }
+    }
+
+    function searchRegistrarion(login: object | any){
+        let verificar = -1;
+
+        register.forEach(user => {
+            if (user.email === login.email || user.telefone === login.telefone){
+                verificar = 0
+            }
+        })
+
+        return register.length == 0 ? 1 : verificar == -1 ? verificar : 0
     }
     
     return(
-        <ShopContext.Provider value={{user, setUser, register,setRegister,createUser, handleInputChange, checkRegister}}>
+        <ShopContext.Provider value={{user, setUser, register,setRegister,createUser, checkRegister}}>
             {children}
         </ShopContext.Provider>
     )

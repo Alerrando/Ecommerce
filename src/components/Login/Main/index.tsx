@@ -6,7 +6,7 @@ export function Main() {
     email: "",
     password: "",
   });
-  const { handleInputChange, checkRegister } = useContext(ShopContext);
+  const { checkRegister } = useContext(ShopContext);
 
   console.log(userAux);
 
