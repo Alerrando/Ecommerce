@@ -109,7 +109,7 @@ export function Main() {
 
           <h3 className="text-black mt-4">
             Não tem conta ainda?{" "}
-            <a href="/registro" className="text-blue-600 cursor-pointer">
+            <a href="/register" className="text-blue-600 cursor-pointer">
               Inscreva-se gratuitamente
             </a>
           </h3>
