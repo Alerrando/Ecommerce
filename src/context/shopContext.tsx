@@ -19,7 +19,7 @@ type ShopContextProps = {
     register: userProps[],
     setRegister: (user: []) => void,
     createUser: (userCreate: object | any) => void,
-    checkRegister: (user: object | any) => void,
+    checkRegister: (user: object | any) => boolean,
 }
 
 export const ShopContext = createContext<ShopContextProps>({} as ShopContextProps);
@@ -41,16 +41,28 @@ function CreateContextProvider({children}: IPropsContext){
     
             setUser(aux);
             setRegister([aux, ...register]);
-            userCreate.forEach(user => user.value = "");
         }else{ alert("Usuário já existe") }
 
     }
 
     function checkRegister(login: object | any) {
         debugger;
-        if(searchRegistrarion(login)){
-            createUser(login);
-        } else { alert("Login não existe!"); }
+        if(searchRegistrarion(login) == 0){
+            const aux: userProps | any = {
+                id: user.length,
+                name: login.name,
+                password: login.password,
+                email: login.email,
+                telefone: login.telefone,
+                carrinho: [],
+            };
+
+            setUser(aux);
+            return true;
+        } else { 
+            alert("Login não existe!"); 
+            return false;
+        }
     }
 
     function searchRegistrarion(login: object | any){

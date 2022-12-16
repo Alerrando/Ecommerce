@@ -1,5 +1,7 @@
 import React, { FormEvent, useContext, useState } from "react";
-import { ShopContext, userProps } from "../../../context/shopContext";
+import { ShopContext } from "../../../context/shopContext";
+import { useNavigate } from "react-router-dom";
+
 
 export function Main() {
   const [userAux, setUserAux] = useState({
@@ -7,8 +9,7 @@ export function Main() {
     password: "",
   });
   const { checkRegister } = useContext(ShopContext);
-
-  console.log(userAux);
+  const navigate = useNavigate();
 
   return (
     <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white">
@@ -122,7 +123,9 @@ export function Main() {
     event.preventDefault();
 
     if (userAux.email.length > 0 && userAux.password.length > 0) {
-      checkRegister(userAux);
+      if(checkRegister(userAux))
+          navigate("/");
+
     }
   }
 }

@@ -1,8 +1,10 @@
 import React, { FormEvent, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ShopContext } from "../../../context/shopContext";
 
 export function Main() {
-  const { createUser, register } = useContext(ShopContext);
+  const { createUser, register, user } = useContext(ShopContext);
+  const navigate = useNavigate();
   const [userAux, setUserAux] = useState({
     name: "",
     email: "",
@@ -17,6 +19,7 @@ export function Main() {
       password: "",
       telefone: "",
     });
+
   }, [register]);
 
   return (
@@ -176,6 +179,7 @@ export function Main() {
 
     if (userAux.email.length > 0 && userAux.password.length > 0) {
       createUser(userAux);
+      navigate("/");
     }
   }
 }
