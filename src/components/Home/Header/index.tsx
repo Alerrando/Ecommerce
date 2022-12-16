@@ -14,8 +14,6 @@ export function Header() {
   const [menu, setMenu] = useState("hidden");
   const { user } = useContext(ShopContext);
 
-  console.log(user)
-
   function handleMenu() {
     menu == "block" ? setMenu("hidden") : setMenu("block");
   }
@@ -39,9 +37,14 @@ export function Header() {
           </button>
         </div>
 
-        <div className="text-center gap-8 flex absolute top-[11%] md:relative">
-          <ShoppingCart size={24} weight="bold" />
-          <Link to="/login">Login</Link>
+        <div className="text-center gap-16 flex absolute top-[11%] md:relative">
+          <div className="flex items-center justify-between gap-2">
+            <ShoppingCart size={24} weight="bold" />
+            <span>R$ 0,0</span>
+          </div>
+          { user.length == 0 ? (
+            <Link to="/login" className="">Login</Link>
+          ) : null }
         </div>
 
         <List

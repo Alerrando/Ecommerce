@@ -97,7 +97,7 @@ export function Main() {
 
               <button
                 type="submit"
-                className="px-4 py-1 bg-blue-700 text-white"
+                className="px-4 py-1 bg-blue-700 text-white cursor-pointer"
               >
                 Registrar
               </button>
