@@ -1,5 +1,5 @@
 import React, { FormEvent, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ShopContext } from "../../../context/shopContext";
 
 export function Main() {
@@ -164,10 +164,10 @@ export function Main() {
 
           <h3 className="text-black mt-4">
             Já tem conta?{" "}
-            <a href="/login" className="text-blue-600 cursor-pointer">
+            <Link to="/login" className="text-blue-600 cursor-pointer">
               {" "}
               Faça login
-            </a>
+            </Link>
           </h3>
         </div>
       </div>

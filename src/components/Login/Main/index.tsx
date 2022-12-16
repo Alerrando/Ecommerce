@@ -1,6 +1,6 @@
 import React, { FormEvent, useContext, useState } from "react";
 import { ShopContext } from "../../../context/shopContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export function Main() {
@@ -110,9 +110,9 @@ export function Main() {
 
           <h3 className="text-black mt-4">
             Não tem conta ainda?{" "}
-            <a href="/register" className="text-blue-600 cursor-pointer">
+            <Link to="/register" className="text-blue-600 cursor-pointer">
               Inscreva-se gratuitamente
-            </a>
+            </Link>
           </h3>
         </div>
       </div>
