@@ -7,6 +7,7 @@ import {
   X,
 } from "phosphor-react";
 import React, { useContext, useState } from "react";
+import { User, SignIn } from 'phosphor-react'
 import { Link } from "react-router-dom";
 import { ShopContext } from '../../../context/shopContext';
 
@@ -43,8 +44,13 @@ export function Header() {
             <span>R$ 0,0</span>
           </div>
           { user.length == 0 ? (
-            <Link to="/login" className="">Login</Link>
-          ) : null }
+            <Link to="/login" className="">
+              <SignIn size={32} />
+            </Link>
+          ) : (
+            <User size={32} />
+            
+          ) }
         </div>
 
         <List

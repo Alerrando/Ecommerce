@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { CardKeys } from ".";
 
 type CardsImgsInfo = {
@@ -30,9 +31,9 @@ export function CardsImgsInfo(props: CardsImgsInfo){
               </h5>
             </div>
 
-            <button className="text-white bg-zinc-600 px-4 py-1 mt-4 hover:bg-blue-900 transition-colors rounded-md">
-                Adicionar ao carrinho
-            </button>
+            <Link to={`produto/${card.id}`} className="text-white bg-zinc-600 px-4 py-1 mt-4 hover:bg-blue-900 transition-colors rounded-md">
+                Mais Informações
+            </Link>
         </>
     )
 }

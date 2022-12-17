@@ -3,6 +3,7 @@ import { lojaProdutos } from "../../../../database";
 import { CardsImgsInfo } from "./CardsImgsInfo";
 
 export type CardKeys = {
+  id: number;
   url: string;
   titulo: string;
   subTitulo: string;

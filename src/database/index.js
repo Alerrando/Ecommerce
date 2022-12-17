@@ -2,6 +2,7 @@ export const lojaProdutos = [
   {
     carrosselImagens: [
       {
+        id:1 ,
         url: "Carrossel/produto1.webp",
         title: "Console",
         subTitulo: "Nintendo Switch",
@@ -9,6 +10,7 @@ export const lojaProdutos = [
       },
 
       {
+        id: 2,
         url: "Carrossel/produto2.webp",
         title: "Apple",
         subTitulo: "Ipad pro",
@@ -16,6 +18,7 @@ export const lojaProdutos = [
       },
 
       {
+        id: 3,
         url: "Carrossel/produto3.webp",
         title: "Smart TV",
         subTitulo: '70"',
@@ -23,6 +26,7 @@ export const lojaProdutos = [
       },
 
       {
+        id: 4,
         url: "Carrossel/produto4.webp",
         title: "Console",
         subTitulo: "Playstation 5",
@@ -32,6 +36,7 @@ export const lojaProdutos = [
 
     cardsInfo: [
       {
+        id: 5,
         url: "Produtos/produto1.webp",
         titulo: "Iphone",
         subTitulo: "Pro Max",
@@ -41,6 +46,7 @@ export const lojaProdutos = [
                 Commodi?",
       },
       {
+        id: 6,
         url: "Produtos/produto2.webp",
         titulo: "Apple",
         subTitulo: "Watch",
@@ -50,6 +56,7 @@ export const lojaProdutos = [
                 Commodi?",
       },
       {
+        id: 7,
         url: "Produtos/produto3.webp",
         titulo: "Camera",
         subTitulo: "Clicking",
@@ -60,6 +67,7 @@ export const lojaProdutos = [
       },
 
       {
+        id: 8,
         url: "Produtos/produto4.webp",
         titulo: "Notebook",
         subTitulo: "Dell Inspiron 3000",
@@ -69,6 +77,7 @@ export const lojaProdutos = [
                 Commodi?",
       },
       {
+        id: 9,
         url: "Produtos/produto5.webp",
         titulo: "iPad",
         subTitulo: "Pro 2018",
@@ -78,6 +87,7 @@ export const lojaProdutos = [
                 Commodi?",
       },
       {
+        id: 10,
         url: "Produtos/produto6.webp",
         titulo: "Hardware",
         subTitulo: "Core i9",
