@@ -38,7 +38,7 @@ export function Header() {
           </button>
         </div>
 
-        <div className="text-center gap-16 flex absolute top-[11%] md:relative">
+        <div className="w-[90%] md:w-auto flex text-center justify-between md:justify-center gap-16 absolute top-[11%] md:relative">
           <div className="flex items-center justify-between gap-2">
             <ShoppingCart size={24} weight="bold" />
             <span>R$ 0,0</span>

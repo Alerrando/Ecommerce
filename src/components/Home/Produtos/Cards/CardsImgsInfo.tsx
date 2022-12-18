@@ -31,7 +31,7 @@ export function CardsImgsInfo(props: CardsImgsInfo){
               </h5>
             </div>
 
-            <Link to={`produto/${card.id}`} className="text-white bg-zinc-600 px-4 py-1 mt-4 hover:bg-blue-900 transition-colors rounded-md">
+            <Link to={`produto/${card.id}`} className="text-white bg-zinc-600 px-4 py-1 top-[3%] hover:bg-blue-900 transition-colors rounded-md relative">
                 Mais Informações
             </Link>
         </>

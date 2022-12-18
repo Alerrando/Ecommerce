@@ -1,4 +1,4 @@
-import { lojaProdutos } from '../../database';
+import { lojaProdutos } from '../database';
 
 
 export function getProduto(id: string){
