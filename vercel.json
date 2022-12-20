@@ -1,9 +1,0 @@
-{
-    "version": 2,
-    "routes": [
-        {
-            "src": "/produto/(.*)",
-            "dest": "/src/components/ProdutoInfo/index.tsx"
-        }
-    ]
-}
