@@ -13,7 +13,7 @@ export function CardsImgsInfo(props: CardsImgsInfo){
         <>
             <div className="w-full h-full">
               <img
-                src={card.url}
+                src={card.img}
                 alt={card.subTitulo}
                 className="w-full h-full rounded-xl"
               />
@@ -31,7 +31,7 @@ export function CardsImgsInfo(props: CardsImgsInfo){
               </h5>
             </div>
 
-            <Link to={`produtos/${card.id}`} target="_blank" className="text-white bg-zinc-600 px-4 py-1 top-[3%] hover:bg-blue-900 transition-colors rounded-md relative">
+            <Link to={`produtos/${card.url}`} target="_blank" className="text-white bg-zinc-600 px-4 py-1 top-[3%] hover:bg-blue-900 transition-colors rounded-md relative">
                 Mais Informações
             </Link>
         </>

@@ -2,8 +2,9 @@ export const lojaProdutos = [
   {
     carrosselImagens: [
       {
-        id:1 ,
-        url: "Carrossel/produto1.webp",
+        id: 1,
+        url: "console-nintendo-switch",
+        img: "Carrossel/produto1.webp",
         title: "Console",
         subTitulo: "Nintendo Switch",
         desconto: "20% de Desconto",
@@ -11,7 +12,8 @@ export const lojaProdutos = [
 
       {
         id: 2,
-        url: "Carrossel/produto2.webp",
+        url: "apple-ipad-pro",
+        img: "Carrossel/produto2.webp",
         title: "Apple",
         subTitulo: "Ipad pro",
         desconto: "30% de Desconto",
@@ -19,7 +21,8 @@ export const lojaProdutos = [
 
       {
         id: 3,
-        url: "Carrossel/produto3.webp",
+        url: "smart-tv",
+        img: "Carrossel/produto3.webp",
         title: "Smart TV",
         subTitulo: '70"',
         desconto: "10% de Desconto",
@@ -27,7 +30,8 @@ export const lojaProdutos = [
 
       {
         id: 4,
-        url: "Carrossel/produto4.webp",
+        url: "console-playstation-5",
+        img: "Carrossel/produto4.webp",
         title: "Console",
         subTitulo: "Playstation 5",
         desconto: "15% de Desconto",
@@ -37,7 +41,8 @@ export const lojaProdutos = [
     cardsInfo: [
       {
         id: 5,
-        url: "Produtos/produto1.webp",
+        url: "iphone-pro-max",
+        img: "Produtos/produto1.webp",
         titulo: "Iphone",
         subTitulo: "Pro Max",
         descrição:
@@ -47,7 +52,8 @@ export const lojaProdutos = [
       },
       {
         id: 6,
-        url: "Produtos/produto2.webp",
+        url: "apple-watch",
+        img: "Produtos/produto2.webp",
         titulo: "Apple",
         subTitulo: "Watch",
         descrição:
@@ -57,7 +63,8 @@ export const lojaProdutos = [
       },
       {
         id: 7,
-        url: "Produtos/produto3.webp",
+        url: "camera-clicking",
+        img: "Produtos/produto3.webp",
         titulo: "Camera",
         subTitulo: "Clicking",
         descrição:
@@ -68,7 +75,8 @@ export const lojaProdutos = [
 
       {
         id: 8,
-        url: "Produtos/produto4.webp",
+        url: "notebook-dell-inspiron-3000",
+        img: "Produtos/produto4.webp",
         titulo: "Notebook",
         subTitulo: "Dell Inspiron 3000",
         descrição:
@@ -78,7 +86,8 @@ export const lojaProdutos = [
       },
       {
         id: 9,
-        url: "Produtos/produto5.webp",
+        url: "apple-ipad-pro-2018",
+        img: "Produtos/produto5.webp",
         titulo: "iPad",
         subTitulo: "Pro 2018",
         descrição:
@@ -88,7 +97,8 @@ export const lojaProdutos = [
       },
       {
         id: 10,
-        url: "Produtos/produto6.webp",
+        url: "hardware-core-i9",
+        img: "Produtos/produto6.webp",
         titulo: "Hardware",
         subTitulo: "Core i9",
         descrição:

@@ -12,7 +12,7 @@ export function Carrossel() {
             <div className="w-full relative promoção" key={index}>
               <div className="w-[27rem] md:w-[79rem] xl:w-[92rem] flex h-full animação">
                 <img
-                  src={imagem.url}
+                  src={imagem.img}
                   alt={imagem.subTitulo}
                   className="w-full h-full bg-cover"
                 />

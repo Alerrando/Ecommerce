@@ -1,12 +1,12 @@
 import { lojaProdutos } from '../database';
 
 
-export function getProduto(id: string){
+export function getProduto(url: string | undefined){
     let produto = {}
     const { cardsInfo } = lojaProdutos[0];
 
     cardsInfo.forEach(card => {
-        if(card.id === parseInt(id))
+        if(card.url === url)
             produto = card;
     })
 

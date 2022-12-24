@@ -15,7 +15,7 @@ export function Router(){
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register /> } />
                     <Route path="/produtos" element={<Produtos />} />
-                    <Route path="/produtos/:id" element={<ProdutoInfo />} />
+                    <Route path="/produtos/:nome" element={<ProdutoInfo />} />
             </Routes>
         </BrowserRouter>
     )

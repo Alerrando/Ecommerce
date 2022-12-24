@@ -5,6 +5,7 @@ import { CardsImgsInfo } from "./CardsImgsInfo";
 export type CardKeys = {
   id: number;
   url: string;
+  img: string;
   titulo: string;
   subTitulo: string;
   descrição: string;
