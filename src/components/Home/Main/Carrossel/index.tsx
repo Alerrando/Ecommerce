@@ -10,7 +10,7 @@ export function Carrossel() {
         {carrosselImagens.map((imagem, index) => {
           return (
             <div className="w-full relative promoção" key={index}>
-              <div className="w-[27rem] md:w-[79rem] xl:w-[92rem] flex h-full animação">
+              <div className="w-[27rem] md:w-[77rem] xl:w-[85rem] flex h-full animação">
                 <img
                   src={imagem.img}
                   alt={imagem.subTitulo}

@@ -9,12 +9,10 @@ export function ProdutoInfo() {
   const { nome } = useParams();
   const produto = getProduto(nome);
 
-  console.log(produto);
-
   return (
     <>
       <Header />
-      <Main />
+      <Main produto={produto} />
     </>
   );
 }
