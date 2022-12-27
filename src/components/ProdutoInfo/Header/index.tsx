@@ -1,4 +1,3 @@
-// @flow
 import { ShoppingCart, SignIn, User } from "phosphor-react";
 import * as React from "react";
 import { Link } from "react-router-dom";

@@ -1,29 +1,22 @@
 import React, { FormEvent, useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import { ShopContext } from "../../../context/shopContext";
+import { FormLoginInputs } from "../../Login/Main";
+
+type FormRegisterInputs = {
+  name: string;
+  tel: string;
+  termos: string;
+} & FormLoginInputs 
 
 export function Main() {
-  const { createUser, register, user } = useContext(ShopContext);
+  const { createUser, registers } = useContext(ShopContext);
+  const { register, handleSubmit, formState: { isValid }} = useForm<FormRegisterInputs>();
   const navigate = useNavigate();
-  const [userAux, setUserAux] = useState({
-    name: "",
-    email: "",
-    password: "",
-    telefone: "",
-  });
-
-  useEffect(() => {
-    setUserAux({
-      name: "",
-      email: "",
-      password: "",
-      telefone: "",
-    });
-
-  }, [register]);
 
   return (
-    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white">
+    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white mt-[63px] md:mt-[69px]">
       <img
         src="Login/background.jpg"
         alt=""
@@ -40,7 +33,7 @@ export function Main() {
           <section className="w-full h-auto grid gap-6 md:gap-0 md:flex items-start">
             <form
               className="h-full w-full max-w-[250px] text-black grid gap-3"
-              onSubmit={(e) => handleSubmit(e)}
+              onSubmit={handleSubmit(submit)}
             >
               <div className="grid gap-2 md:gap-[1px]">
                 <label>Digite seu nome completo</label>
@@ -48,11 +41,8 @@ export function Main() {
                   className="outline-none h-8 md:h-10 px-2 border border-zinc-400"
                   type="text"
                   placeholder="Digite seu nome completo"
-                  required
-                  value={userAux.name}
-                  onChange={(e) =>
-                    setUserAux({ ...userAux, name: e.target.value })
-                  }
+                  id="name"
+                  {...register("name", {required: true})}
                 />
               </div>
               <div className="grid gap-2 md:gap-[1px]">
@@ -61,11 +51,8 @@ export function Main() {
                   className="outline-none h-8 md:h-10 px-2 border border-zinc-400"
                   type="email"
                   placeholder="Digite seu email"
-                  required
-                  value={userAux.email}
-                  onChange={(e) =>
-                    setUserAux({ ...userAux, email: e.target.value })
-                  }
+                  id="email"
+                  {...register("email", {required: true, pattern: /^\S+@\S+$/i})}
                 />
               </div>
               <div className="grid gap-2 md:gap-[1px]">
@@ -75,10 +62,8 @@ export function Main() {
                   type="password"
                   placeholder="Digite sua senha"
                   required
-                  value={userAux.password}
-                  onChange={(e) =>
-                    setUserAux({ ...userAux, password: e.target.value })
-                  }
+                  id="password"
+                  {...register("password", {required: true, minLength: 6})}
                 />
               </div>
               <div className="grid gap-2 md:gap-[1px]">
@@ -88,16 +73,15 @@ export function Main() {
                   type="tel"
                   placeholder="(##)#####-####"
                   required
-                  value={userAux.telefone}
-                  onChange={(e) =>
-                    setUserAux({ ...userAux, telefone: e.target.value })
-                  }
+                  id="tel"
+                  {...register("tel", {required: true, minLength: 14})}
                 />
               </div>
 
               <button
                 type="submit"
-                className="px-4 py-1 bg-blue-700 text-white cursor-pointer"
+                className={`px-4 py-1 bg-blue-700 text-white ${!isValid ? "opacity-20" : "opacity-100 cursor-pointer"}`}
+                disabled={!isValid}
               >
                 Registrar
               </button>
@@ -149,7 +133,7 @@ export function Main() {
 
               <div className="w-full h-full md:pt-[35%]">
                 <form className="flex gap-2 text-black">
-                  <input type="checkbox" name="termos" className="w-[25px]" />
+                  <input type="checkbox" id="termos" className="w-[25px]" {...register("termos", {required: true})} />
                   <label className="text-sm" htmlFor="termos">
                     Aceito os{" "}
                     <a href="#" className="text-blue-600">
@@ -174,12 +158,9 @@ export function Main() {
     </main>
   );
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
+  function submit(event) {
 
-    if (userAux.email.length > 0 && userAux.password.length > 0) {
-      createUser(userAux);
-      navigate("/");
-    }
+    createUser(event);
+    navigate("/");
   }
 }

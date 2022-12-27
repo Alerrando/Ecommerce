@@ -1,18 +1,22 @@
-import React, { FormEvent, useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ShopContext } from "../../../context/shopContext";
 import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
+export type FormLoginInputs = {
+  email: string;
+  password: string;
+}
 
 export function Main() {
-  const [userAux, setUserAux] = useState({
-    email: "",
-    password: "",
-  });
-  const { checkRegister } = useContext(ShopContext);
+  const { register, handleSubmit, formState: { isValid }} = useForm<FormLoginInputs>();
+  const { checkRegisters } = useContext(ShopContext);
   const navigate = useNavigate();
 
+  console.log(!isValid)
+
   return (
-    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white">
+    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white mt-[63px] md:mt-[69px]">
       <img
         src="Login/background.jpg"
         alt=""
@@ -27,16 +31,16 @@ export function Main() {
           </header>
 
           <section className="w-full h-auto grid gap-6 md:gap-0 md:flex items-start">
-            <form onSubmit={e => handleSubmit(e)} className="h-full w-full max-w-[250px] text-black grid gap-3">
+            <form onSubmit={handleSubmit(submit)} className="h-full w-full max-w-[250px] text-black grid gap-3">
               <div className="grid gap-2 md:gap-[1px]">
                 <label>Digite seu email</label>
                 <input
                   className="outline-none h-8 md:h-10 px-2 border border-zinc-400"
                   type="email"
                   placeholder="Digite seu email"
-                  name="email"
+                  id="email"
                   required
-                  onChange={(e) => setUserAux({ ...userAux, email: e.target.value})}
+                  {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
                 />
               </div>
               <div className="grid gap-2 md:gap-[1px]">
@@ -45,15 +49,15 @@ export function Main() {
                   className="outline-none h-8 md:h-10 px-2 border border-zinc-400"
                   type="password"
                   placeholder="Digite sua senha"
-                  name="password"
-                  onChange={(e) => setUserAux({ ...userAux, password: e.target.value })}
+                  id="password"
+                  {...register("password", { required: true, minLength: 6 })}
                   required
                 />
               </div>
 
               <button
-                type="submit"
-                className="px-4 py-1 bg-blue-700 text-white cursor-pointer"
+                className={`px-4 py-1 bg-blue-700 text-white ${!isValid ? "opacity-20" : "opacity-100 cursor-pointer"}`}
+                disabled={!isValid}
               >
                 Login
               </button>
@@ -119,13 +123,9 @@ export function Main() {
     </main>
   );
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
+  function submit(event) {
+    if (checkRegisters(event))
+      navigate("/");
 
-    if (userAux.email.length > 0 && userAux.password.length > 0) {
-      if(checkRegister(userAux))
-          navigate("/");
-
-    }
   }
 }

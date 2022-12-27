@@ -16,17 +16,17 @@ export type userProps = {
 type ShopContextProps = {
     user: userProps[],
     setUser: (user: []) => void,
-    register: userProps[],
-    setRegister: (user: []) => void,
+    registers: userProps[],
+    setRegisters: (user: []) => void,
     createUser: (userCreate: object | any) => void,
-    checkRegister: (user: object | any) => boolean,
+    checkRegisters: (user: object | any) => boolean,
 }
 
 export const ShopContext = createContext<ShopContextProps>({} as ShopContextProps);
 
 function CreateContextProvider({children}: IPropsContext){
     const [user, setUser] = useState<userProps[]>([] as userProps[]);
-    const [register, setRegister] = useState<userProps[]>([] as userProps[]);
+    const [registers, setRegisters] = useState<userProps[]>([] as userProps[]);
     
     function createUser(userCreate: object | any){
         if(searchRegistrarion(userCreate) != 0){
@@ -40,12 +40,12 @@ function CreateContextProvider({children}: IPropsContext){
             };
     
             setUser(aux);
-            setRegister([aux, ...register]);
+            setRegisters([aux, ...registers]);
         }else{ alert("Usuário já existe") }
 
     }
 
-    function checkRegister(login: object | any) {
+    function checkRegisters(login: object | any) {
         debugger;
         if(searchRegistrarion(login) == 0){
             const aux: userProps | any = {
@@ -68,17 +68,17 @@ function CreateContextProvider({children}: IPropsContext){
     function searchRegistrarion(login: object | any){
         let verificar = -1;
 
-        register.forEach(user => {
+        registers.forEach(user => {
             if (user.email === login.email || user.telefone === login.telefone){
                 verificar = 0
             }
         })
 
-        return register.length == 0 ? 1 : verificar == -1 ? verificar : 0
+        return registers.length == 0 ? 1 : verificar == -1 ? verificar : 0
     }
     
     return(
-        <ShopContext.Provider value={{user, setUser, register,setRegister,createUser, checkRegister}}>
+        <ShopContext.Provider value={{user, setUser, registers,setRegisters,createUser, checkRegisters}}>
             {children}
         </ShopContext.Provider>
     )

@@ -1,4 +1,3 @@
-// @flow
 import * as React from "react";
 import { useParams } from "react-router-dom";
 import { getProduto } from "../../utils/getProduto";
