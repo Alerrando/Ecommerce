@@ -12,11 +12,13 @@ type FormRegisterInputs = {
 
 export function Main() {
   const { createUser, registers } = useContext(ShopContext);
-  const { register, handleSubmit, formState: { isValid }} = useForm<FormRegisterInputs>();
+  const { register, handleSubmit,formState: { isValid }} = useForm<FormRegisterInputs>();
   const navigate = useNavigate();
 
+  console.log()
+  
   return (
-    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white mt-[63px] md:mt-[69px]">
+    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white mt-[16%] md:mt-[4.5%]">
       <img
         src="Login/background.jpg"
         alt=""

@@ -13,10 +13,8 @@ export function Main() {
   const { checkRegisters } = useContext(ShopContext);
   const navigate = useNavigate();
 
-  console.log(!isValid)
-
   return (
-    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white mt-[63px] md:mt-[69px]">
+    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white mt-[16%] md:mt-[4.5%]">
       <img
         src="Login/background.jpg"
         alt=""
