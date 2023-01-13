@@ -13,6 +13,14 @@ export type userProps = {
     carrinho: object;
 }
 
+type ModalInfoProps = {
+    url: string,
+    img: string,
+    titulo: string,
+    subTitulo: string,
+    descrição: string
+}
+
 type ShopContextProps = {
     user: userProps[],
     setUser: (user: []) => void,
@@ -20,6 +28,9 @@ type ShopContextProps = {
     setRegisters: (user: []) => void,
     createUser: (userCreate: object | any) => void,
     checkRegisters: (user: object | any) => boolean,
+    modalInfo: ModalInfoProps,
+    setModalInfo: (modalInfo: ModalInfoProps) => void,
+
 }
 
 export const ShopContext = createContext<ShopContextProps>({} as ShopContextProps);
@@ -27,6 +38,8 @@ export const ShopContext = createContext<ShopContextProps>({} as ShopContextProp
 function CreateContextProvider({children}: IPropsContext){
     const [user, setUser] = useState<userProps[]>([] as userProps[]);
     const [registers, setRegisters] = useState<userProps[]>([] as userProps[]);
+    const [modalInfo, setModalInfo] = useState<ModalInfoProps>({} as ModalInfoProps);
+
     
     function createUser(userCreate: object | any){
         if(searchRegistrarion(userCreate) != 0){
@@ -78,7 +91,7 @@ function CreateContextProvider({children}: IPropsContext){
     }
     
     return(
-        <ShopContext.Provider value={{user, setUser, registers,setRegisters,createUser, checkRegisters}}>
+        <ShopContext.Provider value={{user, setUser, registers,setRegisters,createUser, checkRegisters, modalInfo, setModalInfo}}>
             {children}
         </ShopContext.Provider>
     )
