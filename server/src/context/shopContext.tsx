@@ -13,13 +13,14 @@ export type userProps = {
     carrinho: object;
 }
 
-type ModalInfoProps = {
-    url: string,
-    img: string,
-    titulo: string,
-    subTitulo: string,
-    descrição: string
-}
+export type CardKeys = {
+    id: number;
+    url: string;
+    img: string;
+    titulo: string;
+    subTitulo: string;
+    descrição: string;
+};
 
 type ShopContextProps = {
     user: userProps[],
@@ -28,8 +29,8 @@ type ShopContextProps = {
     setRegisters: (user: []) => void,
     createUser: (userCreate: object | any) => void,
     checkRegisters: (user: object | any) => boolean,
-    modalInfo: ModalInfoProps,
-    setModalInfo: (modalInfo: ModalInfoProps) => void,
+    modalInfo: CardKeys,
+    setModalInfo: (modalInfo: CardKeys) => void,
 
 }
 
@@ -38,7 +39,7 @@ export const ShopContext = createContext<ShopContextProps>({} as ShopContextProp
 function CreateContextProvider({children}: IPropsContext){
     const [user, setUser] = useState<userProps[]>([] as userProps[]);
     const [registers, setRegisters] = useState<userProps[]>([] as userProps[]);
-    const [modalInfo, setModalInfo] = useState<ModalInfoProps>({} as ModalInfoProps);
+    const [modalInfo, setModalInfo] = useState<CardKeys>({} as CardKeys);
 
     
     function createUser(userCreate: object | any){

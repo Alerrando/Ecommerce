@@ -1,15 +1,8 @@
 import React from "react";
 import { lojaProdutos } from "../../../../database";
 import { CardsImgsInfo } from "./CardsImgsInfo";
+import { CardKeys } from '../../../../context/shopContext'
 
-export type CardKeys = {
-  id: number;
-  url: string;
-  img: string;
-  titulo: string;
-  subTitulo: string;
-  descrição: string;
-};
 
 export function Cards() {
   const cardsInfo = lojaProdutos[0]["cardsInfo"];

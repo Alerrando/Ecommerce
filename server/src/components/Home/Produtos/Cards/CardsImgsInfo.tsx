@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { CardKeys } from ".";
+import { CardKeys, ShopContext } from "../../../../context/shopContext";
 
 type CardsImgsInfo = {
     card: CardKeys;
@@ -8,6 +7,8 @@ type CardsImgsInfo = {
 
 export function CardsImgsInfo(props: CardsImgsInfo){
   const { card } = props;
+  const { setModalInfo } = React.useContext(ShopContext);
+
 
     return(
         <>
@@ -31,9 +32,9 @@ export function CardsImgsInfo(props: CardsImgsInfo){
               </h5>
             </div>
 
-            <Link to={`produtos/${card.url}`} target="_blank" className="text-white bg-zinc-600 px-4 py-1 top-[3%] hover:bg-blue-900 transition-colors rounded-md relative">
+            <button onClick={() => setModalInfo(card)} className="text-white bg-zinc-600 px-4 py-1 top-[3%] hover:bg-blue-900 transition-colors rounded-md relative">
                 Mais Informações
-            </Link>
+            </button>
         </>
     )
 }
