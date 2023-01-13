@@ -20,7 +20,7 @@ export function Header() {
   }
 
   return (
-    <header className="h-20 md:h-auto w-full pt-4 md:fixed bg-white z-50">
+    <header className="h-20 md:h-auto w-full pt-4 lg:pt-0 md:fixed bg-white z-50">
       <div className="alinhamento justify-between pt-4 mx-4 md:mx-20">
         <h1 className="text-4xl font-Playfair-Display text-[#595959] font-semibold">
           TechSoft
@@ -62,7 +62,7 @@ export function Header() {
       </div>
 
       <nav
-        className={`md:block fixed h-screen md:h-20 right-0 z-20 top-0 w-36 md:w-full bg-[#337ab7] md:bg-transparent md:relative ${menu}`}
+        className={`md:block fixed h-screen md:h-20 lg:h-14 right-0 z-20 top-0 w-36 md:w-full bg-[#337ab7] md:bg-transparent md:relative ${menu}`}
       >
         <div className="grid grid-rows-sidebar h-full md:flex md:items-center md:justify-between text-white md:text-black md:mx-20">
           <X

@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "sombreamento": "rgba(0, 0, 0, 0.3)"
+        "sombreamento": "rgba(0, 0, 0, 0.8)"
       },
       fontFamily: {
         "Playfair-Display": ["Playfair Display", "sans-serif"],
