@@ -5,13 +5,15 @@ import { Modal } from './components/Modal';
 import axios from 'axios';
 
 export function App() {
-  const { modalInfo } = useContext(ShopContext);
+  const { modalInfo, setProducts } = useContext(ShopContext);
 
   useEffect(() => {
     axios.get("https://api-loja-production.up.railway.app/")
-    .then((json) => console.log(json.data))
+    .then((json) => setProducts(json.data))
     .catch((error) => console.log(error))
   }, [])
+
+  console.log(setProducts)
 
   return (
     <>

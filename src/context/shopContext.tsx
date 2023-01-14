@@ -19,7 +19,6 @@ export type CardKeys = {
     img: string;
     titulo: string;
     subTitulo: string;
-    descrição: string;
 };
 
 type ShopContextProps = {
@@ -30,6 +29,8 @@ type ShopContextProps = {
     modalInfo: CardKeys,
     setModalInfo: (modalInfo: CardKeys) => void,
     searchRegistrarion: (login: object | any) => number,
+    products: CardKeys[],
+    setProducts: (products: CardKeys[]) => void,
 }
 
 export const ShopContext = createContext<ShopContextProps>({} as ShopContextProps);
@@ -38,6 +39,7 @@ function CreateContextProvider({children}: IPropsContext){
     const [user, setUser] = useState<userProps[]>([] as userProps[]);
     const [registers, setRegisters] = useState<userProps[]>([] as userProps[]);
     const [modalInfo, setModalInfo] = useState<CardKeys>({} as CardKeys);
+    const [products, setProducts] = useState<CardKeys[]>([] as CardKeys[]);
 
     function searchRegistrarion(login: object | any){
         let verificar = -1;
@@ -52,7 +54,7 @@ function CreateContextProvider({children}: IPropsContext){
     }
     
     return(
-        <ShopContext.Provider value={{user, setUser, registers,setRegisters, modalInfo, setModalInfo, searchRegistrarion}}>
+        <ShopContext.Provider value={{user, setUser, registers,setRegisters, modalInfo, setModalInfo, searchRegistrarion, products, setProducts}}>
             {children}
         </ShopContext.Provider>
     )
