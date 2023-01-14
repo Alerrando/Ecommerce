@@ -1,7 +1,7 @@
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
-import { ShopContext } from "../../../context/shopContext";
+import { ShopContext, userProps } from "../../../context/shopContext";
 import { FormLoginInputs } from "../../Login/Main";
 
 type FormRegisterInputs = {
@@ -11,7 +11,7 @@ type FormRegisterInputs = {
 } & FormLoginInputs 
 
 export function Main() {
-  const { createUser, registers } = useContext(ShopContext);
+  const { registers, searchRegistrarion, setUser, setRegisters, user } = useContext(ShopContext);
   const { register, handleSubmit,formState: { isValid }} = useForm<FormRegisterInputs>();
   const navigate = useNavigate();
 
@@ -164,5 +164,22 @@ export function Main() {
 
     createUser(event);
     navigate("/");
+  }
+
+  function createUser(userCreate: object | any){
+    if(searchRegistrarion(userCreate) != 0){
+        const aux: userProps | any = {
+            id: user.length,
+            name: userCreate.name,
+            password: userCreate.password,
+            email: userCreate.email,
+            telefone: userCreate.telefone,
+            carrinho: [],
+        };
+
+        setUser(aux);
+        setRegisters([...registers, aux]);
+    }else{ alert("Usuário já existe") }
+
   }
 }

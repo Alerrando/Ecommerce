@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ShopContext } from "../../../context/shopContext";
+import { ShopContext, userProps } from "../../../context/shopContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -10,7 +10,7 @@ export type FormLoginInputs = {
 
 export function Main() {
   const { register, handleSubmit, formState: { isValid }} = useForm<FormLoginInputs>();
-  const { checkRegisters } = useContext(ShopContext);
+  const { searchRegistrarion, setUser, user } = useContext(ShopContext);
   const navigate = useNavigate();
 
   return (
@@ -126,4 +126,24 @@ export function Main() {
       navigate("/");
 
   }
+
+  function checkRegisters(login: object | any) {
+    debugger;
+    if(searchRegistrarion(login) == 0){
+        const aux: userProps | any = {
+            id: user.length,
+            name: login.name,
+            password: login.password,
+            email: login.email,
+            telefone: login.telefone,
+            carrinho: [],
+        };
+
+        setUser(aux);
+        return true;
+    } else { 
+        alert("Login não existe!"); 
+        return false;
+    }
+''}
 }
