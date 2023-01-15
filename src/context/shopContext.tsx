@@ -16,9 +16,13 @@ export type userProps = {
 export type CardKeys = {
     id: number;
     url: string;
-    img: string;
+    image: string;
     titulo: string;
     subTitulo: string;
+    desconto: number;
+    categoria: string;
+    destaque: number;
+    imageDestaque: string;
 };
 
 type ShopContextProps = {

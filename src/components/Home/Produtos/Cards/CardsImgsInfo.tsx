@@ -14,9 +14,9 @@ export function CardsImgsInfo(props: CardsImgsInfo){
         <>
             <div className="w-full h-full">
               <img
-                src={card.img}
+                src={card.imageDestaque}
                 alt={card.subTitulo}
-                className="w-full h-full rounded-xl"
+                className="w-full h-full rounded-xl object-cover"
               />
             </div>
 
@@ -27,8 +27,8 @@ export function CardsImgsInfo(props: CardsImgsInfo){
               <h4 className="text-white font-Rokkitt font-medium text-xl md:text-2xl" translate="no">
                 {card.subTitulo}
               </h4>
-              <h5 className="text-white mt-4 md:mt-6 text-xs md:text-sm" translate="no">
-                {card.descrição}
+              <h5 className="text-blue-600 font-semibold mt-4 md:mt-6 text-xs md:text-sm" translate="no">
+                Lorem ipsum dolor sit amet consectetur, adipi
               </h5>
             </div>
 

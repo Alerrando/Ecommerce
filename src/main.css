@@ -65,6 +65,15 @@ h4 {
   text-shadow: rgba(0, 0, 0, 0.6) 0.3rem 0.2rem 0.3rem;
 }
 
+.card-product{
+  transform: filter 5s;
+  filter: grayscale(100%);
+}
+
+.card-product:hover{
+  filter: grayscale(0%);
+}
+
 .footer-grid {
   grid-template-columns: repeat(17, 1fr);
   grid-template-rows: repeat(2, 1fr);

@@ -13,8 +13,6 @@ export function App() {
     .catch((error) => console.log(error))
   }, [])
 
-  console.log(setProducts)
-
   return (
     <>
         <Header />
