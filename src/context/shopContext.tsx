@@ -23,6 +23,7 @@ export type CardKeys = {
     categoria: string;
     destaque: number;
     imageDestaque: string;
+    descricao: string;
 };
 
 type ShopContextProps = {
