@@ -103,3 +103,16 @@ h4 {
   grid-column: 15/17;
   grid-row: 1/6;
 }
+
+input{
+  outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
+
+input[type=number]{
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

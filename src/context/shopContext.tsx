@@ -24,6 +24,8 @@ export type CardKeys = {
     destaque: number;
     imageDestaque: string;
     descricao: string;
+    price: number;
+    estoque: number;
 };
 
 type ShopContextProps = {
