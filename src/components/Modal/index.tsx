@@ -15,10 +15,12 @@ export function Modal(){
                     <X size={26} className="cursor-pointer" onClick={() => setModalInfo({} as CardKeys)} />
                 </header>
 
-                <section className='w-full h-[85%] block sm:flex'>
-                    <img src={modalInfo.image} alt={modalInfo.url} className="w-[55%] h-full object-cover" />
+                <section className='w-full h-full block sm:flex'>
+                    <div className='h-full w-full max-h-[86%] min-w-[240px] md:min-w-[60%] py-4'>
+                        <img src={modalInfo.image} alt={modalInfo.url} className="w-full h-full object-cover" />
+                    </div>
 
-                    <div className='flex flex-col gap-6 pl-6 pr-3 overflow-auto'>
+                    <div className='flex flex-col gap-6 px-6 overflow-auto'>
                         <h2 className='text-xl border-b pb-4 border-b-gray-400'>{modalInfo.descricao}</h2>
 
                         <div className='flex items-center justify-start'>
