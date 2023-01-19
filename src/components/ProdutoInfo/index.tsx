@@ -1,12 +1,17 @@
 import * as React from "react";
 import { useParams } from "react-router-dom";
-import { getProduto } from "../../utils/getProduto";
+import { getProdutos } from "../../api";
+import { CardKeys, ShopContext } from "../../context/shopContext";
 import { Header } from "./Header";
 import { Main } from "./Main";
 
 export function ProdutoInfo() {
-  const { nome } = useParams();
-  const produto = getProduto(nome);
+  const { id } = useParams();
+  const [produto, setProduto] = React.useState<CardKeys>({} as CardKeys);
+  
+  React.useEffect(() => {
+    getProduct();
+  }, [])
 
   return (
     <>
@@ -14,4 +19,10 @@ export function ProdutoInfo() {
       <Main produto={produto} />
     </>
   );
+  
+  async function getProduct(){
+    const api = await getProdutos();
+
+    setProduto(api[parseInt(id)-1])
+  }
 }

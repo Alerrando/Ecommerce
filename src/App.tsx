@@ -3,14 +3,14 @@ import React, { useContext, useEffect } from "react";
 import { ShopContext } from './context/shopContext';
 import { Modal } from './components/Modal';
 import axios from 'axios';
+import { getProdutos } from './api';
 
 export function App() {
   const { modalInfo, setProducts } = useContext(ShopContext);
 
   useEffect(() => {
-    axios.get("https://api-loja-production.up.railway.app/")
-    .then((json) => setProducts(json.data))
-    .catch((error) => console.log(error))
+    getProduct();      
+
   }, [])
 
   return (
@@ -25,4 +25,10 @@ export function App() {
         ): null}
     </>
   )
+
+  async function getProduct(){
+    const api = await getProdutos();
+  
+    setProducts(api);
+  }
 }
