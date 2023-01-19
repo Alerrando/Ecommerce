@@ -24,12 +24,8 @@ export function CardsImgsInfo(props: CardsImgsInfo){
             </div>
 
             <div className="w-full absolute md:invisible flex justify-between top-0 p-8 text-start md:group-hover:visible md:group-hover:pb-12 transition-all">
-              {eyes ? (
-                <Eye size={28} className="cursor-pointer" onClick={() => handleEyes()} />
+                <Eye size={28} className="cursor-pointer" onClick={() => setModalInfo(card)} />
 
-              ): (
-                <EyeClosed size={28} className="cursor-pointer" onClick={() => handleEyes()} />
-              )}
               <span className="h-auto w-auto text-xl cursor-pointer" onClick={() => handleFavorites(card.subTitulo)}>
                 {hearth}
               </span>
@@ -48,7 +44,7 @@ export function CardsImgsInfo(props: CardsImgsInfo){
 
             </div>
 
-            <Link to={`produtos/${card.id}`} target="_blank" className="text-white bg-zinc-600 px-4 py-1 mt-3 top-[8%] hover:bg-blue-900 transition-colors rounded-md relative">
+            <Link to={`produtos/${card.id}/${card.url}`} target="_blank" className="text-white bg-zinc-600 px-4 py-1 mt-3 top-[8%] hover:bg-blue-900 transition-colors rounded-md relative">
                 Mais Informações
             </Link>
             
@@ -62,15 +58,5 @@ export function CardsImgsInfo(props: CardsImgsInfo){
       favoritesIndex > -1 ? favoritesAux.splice(favoritesIndex, 1) : favoritesAux.push(subTitulo);
 
       setFavoritos(favoritesAux);
-    }
-
-    function handleEyes(){
-      if(eyes){
-        setEyes(!eyes);
-      }
-      else{
-        setEyes(!eyes);
-        setModalInfo(card);
-      }
     }
 }

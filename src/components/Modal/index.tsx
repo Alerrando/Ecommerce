@@ -15,11 +15,11 @@ export function Modal(){
                     <X size={26} className="cursor-pointer" onClick={() => setModalInfo({} as CardKeys)} />
                 </header>
 
-                <section className='w-full h-[85%] block sm:flex'>
-                    <img src={modalInfo.image} alt={modalInfo.url} className="w-full md:w-[55%] h-[60%] sm:h-[80%] md:h-full object-cover" />
+                <section className='w-full h-full block sm:flex md:h-[92%]'>
+                    <img src={modalInfo.image} alt={modalInfo.url} className="w-full h-2/4 md:4/5 object-cover" />
 
-                    <div className='flex flex-col gap-6 pt-7 sm:pt-0 pl-6 pr-3 overflow-auto'>
-                        <h2 className='text-lg md:text-xl font-semibold border-b pb-4 border-b-gray-400'>{modalInfo.descricao}</h2>
+                    <div className='flex flex-col gap-6 px-6 overflow-auto'>
+                        <h2 className='text-xl border-b pb-4 border-b-gray-400'>{modalInfo.descricao}</h2>
 
                         <div className='flex items-center justify-start'>
                             {modalInfo.desconto == 0 ? (
@@ -47,7 +47,7 @@ export function Modal(){
                             <p className='text-green-600 py-3'>{`${modalInfo.estoque} em estoque`}</p>
                         </div>
 
-                        <div className='flex items-center justify-start gap-2'>
+                        <div className='flex items-center justify-start gap-2 pb-4'>
                             <span>Quant: </span>
                             <input className='border border-zinc-400 focus:border-zinc-400 w-12 text-center py-2 px-2 rounded-md' pattern='[0-9]' type="number" name="quant" defaultValue={1} max={999} />
                             <button className='py-3 px-2 bg-blue-700 text-white text-xs rounded-md'>Adicionar ao carrinho</button>
