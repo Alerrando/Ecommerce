@@ -169,11 +169,11 @@ export function Main() {
   function createUser(userCreate: object | any){
     if(searchRegistrarion(userCreate) != 0){
         const aux: userProps | any = {
-            id: user.length,
+            id: Object.keys(user).length,
             name: userCreate.name,
             password: userCreate.password,
             email: userCreate.email,
-            telefone: userCreate.telefone,
+            telefone: userCreate.tel,
             carrinho: [],
         };
 

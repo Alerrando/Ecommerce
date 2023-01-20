@@ -1,12 +1,12 @@
 import { X } from 'phosphor-react'
-import React from 'react'
+import React, { useState } from 'react'
+import { number } from 'yup/lib/locale';
 import { CardKeys, ShopContext } from '../../context/shopContext'
 
 export function Modal(){
-    const { modalInfo, setModalInfo } = React.useContext(ShopContext);
-
-    console.log(modalInfo)
-
+    const [aux, setAux] = useState<any[]>([])
+    const [quantProduct, setQuantProduct] = useState<string>("1");
+    const { modalInfo, setModalInfo, user , setUser } = React.useContext(ShopContext);
  
     return (
         <div className='w-full h-screen fixed flex items-center justify-center top-0 left-0 bg-sombreamento z-50'>
@@ -49,12 +49,26 @@ export function Modal(){
 
                         <div className='flex items-center justify-start gap-2 pb-4'>
                             <span>Quant: </span>
-                            <input className='border border-zinc-400 focus:border-zinc-400 w-12 text-center py-2 px-2 rounded-md' pattern='[0-9]' type="number" name="quant" defaultValue={1} max={999} />
-                            <button className='py-3 px-2 bg-blue-700 text-white text-xs rounded-md'>Adicionar ao carrinho</button>
+                            <input className='border border-zinc-400 focus:border-zinc-400 w-12 text-center py-2 px-2 rounded-md' pattern='[0-9]' type="number" value={quantProduct} onChange={e => setQuantProduct(e.target.value)} max={999} />
+                            <button className='py-3 px-2 bg-blue-700 text-white text-xs rounded-md' onClick={() => addCart()}>Adicionar ao carrinho</button>
                         </div>
                     </div>
                 </section>
             </div>
         </div>
     )
+
+    function addCart(){
+        let infoProduto = {
+            id: modalInfo.id,
+            quant: quantProduct,
+        }
+        setAux(user.carrinho);
+        setAux([...aux, infoProduto])
+
+        setUser(prevState => {
+            return {...prevState, carrinho: aux}
+        })
+
+    }
 }

@@ -10,7 +10,7 @@ export type userProps = {
     email: string;
     password: string;
     telefone: string;
-    carrinho: object;
+    carrinho: [];
     favoritos: any[];
 }
 

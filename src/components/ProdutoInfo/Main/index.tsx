@@ -25,9 +25,9 @@ export function Main(props: MainProps) {
 
                 </div>
 
-                <div className='block text-start sm:flex flex-row'>
+                <div className='block text-start sm:flex flex-row gap-8'>
                     <div className='flex flex-col gap-6'>
-                        <div className='w-[100%] sm:w-full sm:max-w-[450px] h-full sm:mx-0 border border-[#e5e5e5]'>
+                        <div className='w-[100%] sm:w-[32.1875rem] h-full sm:mx-0 border border-[#e5e5e5]'>
                             <img src={selectImage == 0 ? produto.image : produto.imageDestaque} alt={produto.url} className="w-full sm:w-[70%] h-full bg-cover mx-auto" />
 
                         </div>
@@ -39,9 +39,31 @@ export function Main(props: MainProps) {
                     </div>
 
                     <div className='w-auto h-full'>
-                        <h2>{`${produto.titulo} ${produto.subTitulo}`}</h2>
+                        <h2 className='text-2xl font-bold pb-4'>{produto.descricao}</h2>
+
+                        <div className='flex items-center justify-start border-y border-bg-[#e5e5e5] py-4'>
+                            {produto.desconto == 0 ? (
+                                <h2 className='text-red-600 text-xl font-semibold'>{`R$${produto.price},00`}</h2>
+                            ): (
+                                <>
+                                    <h2 className='text-xl text-gray-600 line-through'>{`R$${produto.price},00`}</h2>
+                                    <h2 className='text-xl text-red-600 font-semibold'>{`R$${produto.price - ((produto.desconto / 100) * produto.price)}`}</h2>
+                                </>
+                            )}
+                        </div>
+
+                        <div className='max-w-full py-4'>
+                            <p className={`text-[15px] font-medium leading-7`}>
+                                {window.innerWidth <= 640  ? (
+                                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui consequatur inventore deserunt"
+
+                                ) : (
+                                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum distinctio fuga molestiae modi dignissimos voluptates perspiciatis cum repudiandae, expedita est, vel illum suscipit maiores quo aperiam sed quibusdam voluptas nulla!"
+                                )}
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </div>[]
             </div>
         </main>
     )

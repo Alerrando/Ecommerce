@@ -43,7 +43,7 @@ export function Header() {
             <ShoppingCart size={24} weight="bold" />
             <span>R$ 0,0</span>
           </div>
-          { user.length == 0 ? (
+          { Object.keys(user).length == 0 ? (
             <Link to="/login" className="">
               <SignIn size={32} />
             </Link>
