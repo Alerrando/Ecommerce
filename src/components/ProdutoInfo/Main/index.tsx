@@ -9,14 +9,14 @@ type MainProps = {
 }
 
 export function Main(props: MainProps) {
-    const { id, url } = useParams();
     const { produto } = props;
+    const [selectImage, setSelectImage] = React.useState<number>(0)
+
 
     return (
         <main className='w-full h-full'>
-            <div className='py-4 px-[6rem] flex flex-col gap-6'>
-                <div className='w-[32.5rem] flex items-center gap-6'>
-                    <h1>{produto.titulo}</h1>
+            <div className='py-4 sm:px-[6rem] mx-6 flex flex-col gap-6 overflow-auto'>
+                <div className='w-full sm:w-[32.5rem] flex items-center gap-6'>
                     <Link to="/">
                         <HouseSimple size={22} />                    
                     </Link>
@@ -24,16 +24,22 @@ export function Main(props: MainProps) {
                     <p className='text-lg font-medium cursor-pointer hover:underline'>{`${produto.titulo} ${produto.subTitulo}`}</p>
 
                 </div>
-                
-                <div className='flex flex-col gap-6'>
-                    <div className='w-full max-w-[515px] h-full max-h-[424px] border border-[#e5e5e5]'>
-                        <img src={produto.image} alt={produto.url} className="w-[70%] h-full bg-cover mx-auto" />
 
+                <div className='block text-start sm:flex flex-row'>
+                    <div className='flex flex-col gap-6'>
+                        <div className='w-[100%] sm:w-full sm:max-w-[450px] h-full sm:mx-0 border border-[#e5e5e5]'>
+                            <img src={selectImage == 0 ? produto.image : produto.imageDestaque} alt={produto.url} className="w-full sm:w-[70%] h-full bg-cover mx-auto" />
+
+                        </div>
+                        
+                        <div className='flex gap-8'>
+                            <img src={produto.image} alt={produto.url} className="w-32 h-32 bg-cover border border-border-[#e5e5e5] cursor-pointer" onClick={() => setSelectImage(0)} />
+                            <img src={produto.imageDestaque} alt={`${produto.url}-destaque`} className="w-32 h-32 bg-cover border border-border-[#e5e5e5] cursor-pointer" onClick={() => setSelectImage(1)}  />
+                        </div>
                     </div>
-                    
-                    <div className='flex gap-8'>
-                        <img src={produto.image} alt={produto.url} className="w-32 h-32 bg-cover border border-border-[#e5e5e5]"  />
-                        <img src={produto.imageDestaque} alt={`${produto.url}-destaque`} className="w-32 h-32 bg-cover border border-border-[#e5e5e5]"  />
+
+                    <div className='w-auto h-full'>
+                        <h2>{`${produto.titulo} ${produto.subTitulo}`}</h2>
                     </div>
                 </div>
             </div>
