@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, X } from 'phosphor-react'
+import { Minus, Plus, X } from 'phosphor-react'
 import React, { useState } from 'react'
 import { number } from 'yup/lib/locale';
 import { CardKeys, ShopContext } from '../../context/shopContext'
@@ -46,14 +46,23 @@ export function Modal(){
                             <p className='text-green-600 py-3'>{`${modalInfo.estoque} em estoque`}</p>
                         </div>
 
-                        <div className='flex items-center justify-start gap-2 pb-4'>
-                            <span>Quant: </span>
-                            <div className='flex items-center flex-row gap-2'>
-                                <ArrowLeft size={28} className="cursor-pointer" onClick={() => quantProduct > 1 ? setQuantProduct(quantProduct - 1 ) : null} />
-                                <input className='border border-zinc-400 focus:border-zinc-400 w-8 text-center py-2 px-2 rounded-md' pattern='[0-9]' type="number" value={quantProduct} onChange={e => setQuantProduct(parseInt(e.target.value))} max={999} />
-                                <ArrowRight size={28} className="cursor-pointer" onClick={() => setQuantProduct(quantProduct + 1)} />
+                        <div className='flex flex-col'>
+                            <div className='flex items-center justify-start gap-3 sm:gap-6 pb-4'>
+                                <span className='text-sm sm:text-base'>Quant: </span>
+
+                                <div className='flex items-center flex-row gap-3 sm:gap-4'>
+                                    <div className='border border-zinc-400 py-1 sm:py-2 w-7 sm:w-9 text-sm sm:text-lg flex items-center justify-center rounded cursor-pointer' onClick={() => quantProduct > 1 ? setQuantProduct(quantProduct - 1 ) : null}>
+                                        <Minus size={18}/>
+                                    </div>
+                                    
+                                    <input className='border border-zinc-400 focus:border-zinc-400 w-10 sm:w-12 text-center py-1 sm:py-2 rounded-md' pattern='[0-9]' type="number" value={quantProduct} onChange={e => setQuantProduct(parseInt(e.target.value))} max={99} />
+                                    
+                                    <div className='border border-zinc-400 py-1 w-7 sm:w-9 text-sm sm:text-lg flex items-center justify-center rounded cursor-pointer' onClick={() => quantProduct < 99 ? setQuantProduct(quantProduct + 1) : null}>
+                                        <Plus size={18}/>
+                                    </div>
+                                </div>
                             </div>
-                            <button className='py-3 px-2 bg-blue-700 text-white text-xs rounded-md' onClick={() => addCart()}>Adicionar ao carrinho</button>
+                            <button className='py-3 px-2 mb-2 bg-blue-700 text-white text-xs rounded-md' onClick={() => addCart()}>Adicionar ao carrinho</button>
                         </div>
                     </div>
                 </section>
@@ -66,6 +75,7 @@ export function Modal(){
         let infoProduto = {
             id: modalInfo.id,
             quant: quantProduct,
+            preço: modalInfo.price,
         }
         aux.push(infoProduto);
 

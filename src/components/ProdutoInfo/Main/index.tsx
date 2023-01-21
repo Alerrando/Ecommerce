@@ -1,7 +1,6 @@
-import { HouseSimple } from 'phosphor-react';
+import { HouseSimple, Minus, Plus } from 'phosphor-react';
 import * as React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getProdutos } from '../../../api';
 import { CardKeys, ShopContext } from '../../../context/shopContext';
 
 type MainProps = {
@@ -10,12 +9,14 @@ type MainProps = {
 
 export function Main(props: MainProps) {
     const { produto } = props;
-    const [selectImage, setSelectImage] = React.useState<number>(0)
+    const [quantProduct, setQuantProduct] = React.useState(0);
+    const [selectImage, setSelectImage] = React.useState<number>(0);
+    const { user, setUser } = React.useContext(ShopContext)
 
 
     return (
-        <main className='w-full h-full'>
-            <div className='py-4 sm:px-[6rem] mx-6 flex flex-col gap-6 overflow-auto'>
+        <main className='w-full h-full pt-[10%]'>
+            <div className='py-4 sm:px-[3.625rem] mx-6 flex flex-col gap-6 overflow-auto'>
                 <div className='w-full sm:w-[32.5rem] flex items-center gap-6'>
                     <Link to="/">
                         <HouseSimple size={22} />                    
@@ -25,10 +26,10 @@ export function Main(props: MainProps) {
 
                 </div>
 
-                <div className='block text-start sm:flex flex-row gap-8'>
+                <div className='flex text-start flex-col md:flex-row gap-8'>
                     <div className='flex flex-col gap-6'>
-                        <div className='w-[100%] sm:w-[32.1875rem] h-full sm:mx-0 border border-[#e5e5e5]'>
-                            <img src={selectImage == 0 ? produto.image : produto.imageDestaque} alt={produto.url} className="w-full sm:w-[70%] h-full bg-cover mx-auto" />
+                        <div className='w-[100%] md:w-[32.1875rem] h-full sm:h-auto sm:max-h-[70%] sm:mx-0 border border-[#e5e5e5]'>
+                            <img src={selectImage == 0 ? produto.image : produto.imageDestaque} alt={produto.url} className="w-full sm:w-[55%] md:w-[70%] h-full bg-cover mx-auto" />
 
                         </div>
                         
@@ -39,7 +40,7 @@ export function Main(props: MainProps) {
                     </div>
 
                     <div className='w-auto h-full'>
-                        <h2 className='text-2xl font-bold pb-4'>{produto.descricao}</h2>
+                        <h2 className='text-lg sm:text-xl md:text-2xl font-bold pb-4'>{produto.descricao}</h2>
 
                         <div className='flex items-center justify-start border-y border-bg-[#e5e5e5] py-4'>
                             {produto.desconto == 0 ? (
@@ -62,9 +63,46 @@ export function Main(props: MainProps) {
                                 )}
                             </p>
                         </div>
+
+                        <div className='border-y-2 border-bg[#e5e5e5]'>
+                            <p className='text-green-600 py-3'>{`${produto.estoque} em estoque`}</p>
+                        </div>
+
+                        <div className='flex items-center justify-start gap-6 py-4'>
+                            <span>Quant: </span>
+                            <div className='flex items-center flex-row gap-4'>
+                                <div className='border border-zinc-400 py-2 w-8 flex items-center justify-center rounded cursor-pointer' onClick={() => quantProduct > 1 ? setQuantProduct(quantProduct - 1 ) : null}>
+                                    <Minus size={18}/>
+                                </div>
+                                
+                                <input className='border border-zinc-400 focus:border-zinc-400 w-12 text-center py-1 rounded-md' pattern='[0-9]' type="number" value={quantProduct} onChange={e => setQuantProduct(parseInt(e.target.value))} min={1} max={99} />
+                                
+                                <div className='border border-zinc-400 py-2 w-8 flex items-center justify-center rounded cursor-pointer' onClick={() => quantProduct < 99 ? setQuantProduct(quantProduct + 1) : null}>
+                                    <Plus size={18}/>
+                                </div>
+                            </div>
+                            <div className='w-full'>
+                                <button className='py-3 px-2 bg-blue-700 text-white text-xs rounded-md float-right' onClick={() => addCart()}>Adicionar ao carrinho</button>
+                            </div>
+                        </div>
                     </div>
-                </div>[]
+                </div>
             </div>
         </main>
     )
+
+    function addCart(){
+        const aux: any[] = user.carrinho;
+        let infoProduto = {
+            id: produto.id,
+            quant: quantProduct,
+            preço: produto.price,
+        }
+        aux.push(infoProduto);
+
+        setUser(prevState => {
+            return {...prevState, carrinho: aux}
+        })
+
+    }
 };

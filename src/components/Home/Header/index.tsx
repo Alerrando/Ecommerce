@@ -1,23 +1,20 @@
-import {
-  EnvelopeSimple,
-  GithubLogo,
-  LinkedinLogo,
-  List,
-  ShoppingCart,
-  X,
-} from "phosphor-react";
-import React, { useContext, useState } from "react";
-import { User, SignIn } from 'phosphor-react'
+import { EnvelopeSimple, GithubLogo, LinkedinLogo, List, ShoppingCart, X, User, SignIn } from "phosphor-react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from '../../../context/shopContext';
 
 export function Header() {
   const [menu, setMenu] = useState("hidden");
-  const { user } = useContext(ShopContext);
+  const { user, preços, setPreços, priceCart } = useContext(ShopContext);
 
   function handleMenu() {
     menu == "block" ? setMenu("hidden") : setMenu("block");
   }
+
+  useEffect(() => { 
+    setPreços(priceCart())
+  }, [user.carrinho])
+
 
   return (
     <header className="h-20 md:h-auto w-full pt-4 lg:pt-0 md:fixed bg-white z-50">
@@ -41,7 +38,7 @@ export function Header() {
         <div className="w-[90%] md:w-auto flex text-center justify-between md:justify-center gap-16 absolute top-[11%] md:relative">
           <div className="flex items-center justify-between gap-2">
             <ShoppingCart size={24} weight="bold" />
-            <span>R$ 0,0</span>
+            <span>R$ {preços}</span>
           </div>
           { Object.keys(user).length == 0 ? (
             <Link to="/login" className="">

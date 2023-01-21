@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useParams } from "react-router-dom";
 import { getProdutos } from "../../api";
-import { CardKeys, ShopContext } from "../../context/shopContext";
-import { Header } from "./Header";
+import { CardKeys } from "../../context/shopContext";
+import { Header } from "../Home/Header";
 import { Main } from "./Main";
 
 export function ProdutoInfo() {
