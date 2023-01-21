@@ -10,7 +10,7 @@ type CardsImgsInfo = {
 export function CardsImgsInfo(props: CardsImgsInfo){
   const { card } = props;
   const [eyes, setEyes] = React.useState<boolean>(false)
-  const { setModalInfo, favoritos, setFavoritos } = React.useContext(ShopContext);
+  const { setModalInfo, favoritos, handleFavorites } = React.useContext(ShopContext);
   const hearth = favoritos.includes(card.subTitulo) ? "❤️" : "🖤";
 
     return(
@@ -50,13 +50,4 @@ export function CardsImgsInfo(props: CardsImgsInfo){
             
         </>
     )
-
-    function handleFavorites(subTitulo: string){
-      const favoritesAux = [...favoritos];
-      const favoritesIndex = favoritos.indexOf(subTitulo)
-
-      favoritesIndex > -1 ? favoritesAux.splice(favoritesIndex, 1) : favoritesAux.push(subTitulo);
-
-      setFavoritos(favoritesAux);
-    }
 }

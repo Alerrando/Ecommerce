@@ -5,13 +5,15 @@ import { CardKeys, ShopContext } from '../../context/shopContext'
 
 export function Modal(){
     const [quantProduct, setQuantProduct] = useState<number>(1);
-    const { modalInfo, setModalInfo, user , setUser } = React.useContext(ShopContext);
+    const { modalInfo, setModalInfo, user , setUser, favoritos, handleFavorites } = React.useContext(ShopContext);
+    const hearth = favoritos.includes(modalInfo.subTitulo) ? "❤️" : "🖤";
  
     return (
         <div className='w-full h-screen fixed flex items-center justify-center top-0 left-0 bg-sombreamento z-50'>
-            <div className='w-2/3 h-3/4 px-0 sm:pl-8 bg-white overflow-auto sm:overflow-hidden'>
-                <header className='py-2 flex items-center justify-end'>
+            <div className='w-2/3 h-3/4 px-0 sm:pl-6 bg-white overflow-auto sm:overflow-hidden'>
+                <header className='w-[97%] py-2 flex items-center justify-between'>
                     <X size={26} className="cursor-pointer" onClick={() => setModalInfo({} as CardKeys)} />
+                    <span className='cursor-pointer' onClick={() => handleFavorites(modalInfo.subTitulo)}>{hearth}</span>
                 </header>
 
                 <section className='w-full h-[85%] block sm:flex'>

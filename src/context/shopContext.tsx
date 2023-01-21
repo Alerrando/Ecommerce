@@ -49,6 +49,7 @@ type ShopContextProps = {
     preços: number,
     setPreços: (preços: number) => void,
     priceCart: () => number,
+    handleFavorites: (subTitulo: string) => void;
 }
 
 export const ShopContext = createContext<ShopContextProps>({} as ShopContextProps);
@@ -82,9 +83,18 @@ function CreateContextProvider({children}: IPropsContext){
     
         return price;
     }
+
+    function handleFavorites(subTitulo: string){
+        const favoritesAux = [...favoritos];
+        const favoritesIndex = favoritos.indexOf(subTitulo)
+  
+        favoritesIndex > -1 ? favoritesAux.splice(favoritesIndex, 1) : favoritesAux.push(subTitulo);
+  
+        setFavoritos(favoritesAux);
+      }
     
     return(
-        <ShopContext.Provider value={{user, setUser, registers,setRegisters, modalInfo, setModalInfo, searchRegistrarion, products, setProducts, favoritos, setFavoritos, preços, setPreços, priceCart}}>
+        <ShopContext.Provider value={{user, setUser, registers,setRegisters, modalInfo, setModalInfo, searchRegistrarion, products, setProducts, favoritos, setFavoritos, preços, setPreços, priceCart, handleFavorites}}>
             {children}
         </ShopContext.Provider>
     )

@@ -11,19 +11,22 @@ export function Main(props: MainProps) {
     const { produto } = props;
     const [quantProduct, setQuantProduct] = React.useState(0);
     const [selectImage, setSelectImage] = React.useState<number>(0);
-    const { user, setUser } = React.useContext(ShopContext)
+    const { user, setUser, favoritos, handleFavorites } = React.useContext(ShopContext)
+    const hearth = favoritos.includes(produto.subTitulo) ? "❤️" : "🖤";
 
 
     return (
         <main className='w-full h-full pt-[10%]'>
             <div className='py-4 sm:px-[3.625rem] mx-6 flex flex-col gap-6 overflow-auto'>
-                <div className='w-full sm:w-[32.5rem] flex items-center gap-6'>
-                    <Link to="/">
-                        <HouseSimple size={22} />                    
-                    </Link>
-                    <span>{">"}</span>
-                    <p className='text-lg font-medium cursor-pointer hover:underline'>{`${produto.titulo} ${produto.subTitulo}`}</p>
-
+                <div className='w-full flex items-center justify-between'>
+                    <div className='w-auto flex items-center gap-6'>
+                        <Link to="/">
+                            <HouseSimple size={22} />                    
+                        </Link>
+                        <span>{">"}</span>
+                        <p className='text-lg font-medium cursor-pointer hover:underline'>{`${produto.titulo} ${produto.subTitulo}`}</p>
+                    </div>
+                    <span className='cursor-pointer' onClick={() => handleFavorites(produto.subTitulo)}>{hearth}</span>
                 </div>
 
                 <div className='flex text-start flex-col md:flex-row gap-8'>
