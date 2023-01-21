@@ -1,11 +1,10 @@
-import { X } from 'phosphor-react'
+import { ArrowLeft, ArrowRight, X } from 'phosphor-react'
 import React, { useState } from 'react'
 import { number } from 'yup/lib/locale';
 import { CardKeys, ShopContext } from '../../context/shopContext'
 
 export function Modal(){
-    const [aux, setAux] = useState<any[]>([])
-    const [quantProduct, setQuantProduct] = useState<string>("1");
+    const [quantProduct, setQuantProduct] = useState<number>(1);
     const { modalInfo, setModalInfo, user , setUser } = React.useContext(ShopContext);
  
     return (
@@ -49,7 +48,11 @@ export function Modal(){
 
                         <div className='flex items-center justify-start gap-2 pb-4'>
                             <span>Quant: </span>
-                            <input className='border border-zinc-400 focus:border-zinc-400 w-12 text-center py-2 px-2 rounded-md' pattern='[0-9]' type="number" value={quantProduct} onChange={e => setQuantProduct(e.target.value)} max={999} />
+                            <div className='flex items-center flex-row gap-2'>
+                                <ArrowLeft size={28} className="cursor-pointer" onClick={() => quantProduct > 1 ? setQuantProduct(quantProduct - 1 ) : null} />
+                                <input className='border border-zinc-400 focus:border-zinc-400 w-8 text-center py-2 px-2 rounded-md' pattern='[0-9]' type="number" value={quantProduct} onChange={e => setQuantProduct(parseInt(e.target.value))} max={999} />
+                                <ArrowRight size={28} className="cursor-pointer" onClick={() => setQuantProduct(quantProduct + 1)} />
+                            </div>
                             <button className='py-3 px-2 bg-blue-700 text-white text-xs rounded-md' onClick={() => addCart()}>Adicionar ao carrinho</button>
                         </div>
                     </div>
@@ -59,12 +62,12 @@ export function Modal(){
     )
 
     function addCart(){
+        const aux: any[] = user.carrinho;
         let infoProduto = {
             id: modalInfo.id,
             quant: quantProduct,
         }
-        setAux(user.carrinho);
-        setAux([...aux, infoProduto])
+        aux.push(infoProduto);
 
         setUser(prevState => {
             return {...prevState, carrinho: aux}
