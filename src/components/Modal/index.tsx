@@ -1,11 +1,11 @@
 import { Minus, Plus, X } from 'phosphor-react'
 import React, { useState } from 'react'
-import { number } from 'yup/lib/locale';
 import { CardKeys, ShopContext } from '../../context/shopContext'
 
 export function Modal(){
     const [quantProduct, setQuantProduct] = useState<number>(1);
-    const { modalInfo, setModalInfo, user , setUser, favoritos, handleFavorites } = React.useContext(ShopContext);
+    const { modalInfo, setModalInfo, favoritos, handleFavorites, addCart } = React.useContext(ShopContext);
+    
     const hearth = favoritos.includes(modalInfo.subTitulo) ? "❤️" : "🖤";
  
     return (
@@ -64,7 +64,7 @@ export function Modal(){
                                     </div>
                                 </div>
                             </div>
-                            <button className='py-3 px-2 mb-2 bg-blue-700 text-white text-xs rounded-md' onClick={() => addCart()}>Adicionar ao carrinho</button>
+                            <button className='py-3 px-2 mb-2 bg-blue-700 text-white text-xs rounded-md' onClick={() => addCart(quantProduct, modalInfo)}>Adicionar ao carrinho</button>
                         </div>
                     </div>
                 </section>
@@ -72,18 +72,4 @@ export function Modal(){
         </div>
     )
 
-    function addCart(){
-        const aux: any[] = user.carrinho;
-        let infoProduto = {
-            id: modalInfo.id,
-            quant: quantProduct,
-            preço: modalInfo.price,
-        }
-        aux.push(infoProduto);
-
-        setUser(prevState => {
-            return {...prevState, carrinho: aux}
-        })
-
-    }
 }

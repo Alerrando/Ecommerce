@@ -1,5 +1,5 @@
 import { HouseSimple, Minus, Plus } from 'phosphor-react';
-import * as React from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { CardKeys, ShopContext } from '../../../context/shopContext';
 
@@ -9,10 +9,29 @@ type MainProps = {
 
 export function Main(props: MainProps) {
     const { produto } = props;
-    const [quantProduct, setQuantProduct] = React.useState(0);
-    const [selectImage, setSelectImage] = React.useState<number>(0);
-    const { user, setUser, favoritos, handleFavorites } = React.useContext(ShopContext)
+    const [quantProduct, setQuantProduct] = useState(0);
+    const [selectImage, setSelectImage] = useState<number>(0);
+    const { favoritos, handleFavorites, addCart, setCarrinho, carrinho } = useContext(ShopContext)
     const hearth = favoritos.includes(produto.subTitulo) ? "❤️" : "🖤";
+
+    useEffect(() => {
+        try {
+          const savedInfos = JSON.parse(localStorage.getItem('react-ecommerce-data') || "");
+    
+          if(savedInfos.length > 0)
+            setCarrinho(savedInfos)
+          
+        } catch (error) {
+          console.log(error);
+        }
+    }, [])
+    
+    useEffect(() => {
+            localStorage.setItem(
+                'react-ecommerce-data',
+                JSON.stringify(carrinho)
+            );
+    }, [carrinho]);
 
 
     return (
@@ -85,7 +104,7 @@ export function Main(props: MainProps) {
                                 </div>
                             </div>
                             <div className='w-full'>
-                                <button className='py-3 px-2 bg-blue-700 text-white text-xs rounded-md float-right' onClick={() => addCart()}>Adicionar ao carrinho</button>
+                                <button className='py-3 px-2 bg-blue-700 text-white text-xs rounded-md float-right' onClick={() => addCart(quantProduct, produto)}>Adicionar ao carrinho</button>
                             </div>
                         </div>
                     </div>
@@ -93,19 +112,4 @@ export function Main(props: MainProps) {
             </div>
         </main>
     )
-
-    function addCart(){
-        const aux: any[] = user.carrinho;
-        let infoProduto = {
-            id: produto.id,
-            quant: quantProduct,
-            preço: produto.price,
-        }
-        aux.push(infoProduto);
-
-        setUser(prevState => {
-            return {...prevState, carrinho: aux}
-        })
-
-    }
 };

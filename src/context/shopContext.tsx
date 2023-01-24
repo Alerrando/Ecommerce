@@ -35,13 +35,10 @@ type PriceProps = {
 }
 
 type ShopContextProps = {
-    user: userProps,
-    setUser: (user: userProps) => void,
-    registers: userProps[],
-    setRegisters: (user: []) => void,
+    carrinho: any[],
+    setCarrinho: (carrinho: any[]) => void,
     modalInfo: CardKeys,
     setModalInfo: (modalInfo: CardKeys) => void,
-    searchRegistrarion: (login: object | any) => number,
     products: CardKeys[],
     setProducts: (products: CardKeys[]) => void,
     favoritos: string[],
@@ -50,34 +47,22 @@ type ShopContextProps = {
     setPreços: (preços: number) => void,
     priceCart: () => number,
     handleFavorites: (subTitulo: string) => void;
+    addCart: (quantProduct: number, product: CardKeys) => void,
 }
 
 export const ShopContext = createContext<ShopContextProps>({} as ShopContextProps);
 
 function CreateContextProvider({children}: IPropsContext){
-    const [user, setUser] = useState<userProps>({} as userProps);
-    const [registers, setRegisters] = useState<userProps[]>([] as userProps[]);
+    const [carrinho, setCarrinho] = useState<any[]>([])
     const [modalInfo, setModalInfo] = useState<CardKeys>({} as CardKeys);
     const [products, setProducts] = useState<CardKeys[]>([] as CardKeys[]);
     const [favoritos, setFavoritos] = useState<string[]>([])
     const [preços, setPreços] = useState(0);
 
-    function searchRegistrarion(login: object | any){
-        let verificar = -1;
-
-        registers.forEach(user => {
-            if (user.email === login.email || user.telefone === login.telefone){
-                verificar = 0
-            }
-        })
-
-        return registers.length == 0 ? 1 : verificar == -1 ? verificar : 0
-    }
-
     function priceCart(){
-        const carrinho = user.carrinho;
+        const carrinhoAux = [...carrinho];
         let price = 0;
-        carrinho?.forEach((cart: PriceProps) => {
+        carrinhoAux?.forEach((cart: PriceProps) => {
             price += (cart.preço * cart.quant);
         })
     
@@ -91,10 +76,20 @@ function CreateContextProvider({children}: IPropsContext){
         favoritesIndex > -1 ? favoritesAux.splice(favoritesIndex, 1) : favoritesAux.push(subTitulo);
   
         setFavoritos(favoritesAux);
-      }
+    }
+
+    function addCart(quantProduct: number, product: CardKeys){
+        let infoProduto = {
+            id: product.id,
+            quant: quantProduct,
+            preço: product.price,
+        }
+
+        setCarrinho([...carrinho, infoProduto])
+    }
     
     return(
-        <ShopContext.Provider value={{user, setUser, registers,setRegisters, modalInfo, setModalInfo, searchRegistrarion, products, setProducts, favoritos, setFavoritos, preços, setPreços, priceCart, handleFavorites}}>
+        <ShopContext.Provider value={{carrinho, setCarrinho, modalInfo, setModalInfo, products, setProducts, favoritos, setFavoritos, preços, setPreços, priceCart, handleFavorites, addCart}}>
             {children}
         </ShopContext.Provider>
     )

@@ -6,8 +6,8 @@ import "./main.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <CreateContextProvider>
-      <Router />
-    </CreateContextProvider>
+      <CreateContextProvider>
+        <Router />
+      </CreateContextProvider>
   </React.StrictMode>
 );

@@ -5,7 +5,7 @@ import { ShopContext } from '../../../context/shopContext';
 
 export function Header() {
   const [menu, setMenu] = useState("hidden");
-  const { user, preços, setPreços, priceCart } = useContext(ShopContext);
+  const { carrinho, preços, setPreços, priceCart } = useContext(ShopContext);
 
   function handleMenu() {
     menu == "block" ? setMenu("hidden") : setMenu("block");
@@ -13,7 +13,7 @@ export function Header() {
 
   useEffect(() => { 
     setPreços(priceCart())
-  }, [user.carrinho])
+  }, [carrinho])
 
 
   return (
@@ -40,14 +40,6 @@ export function Header() {
             <ShoppingCart size={24} weight="bold" />
             <span>R$ {preços}</span>
           </div>
-          { Object.keys(user).length == 0 ? (
-            <Link to="/login" className="">
-              <SignIn size={32} />
-            </Link>
-          ) : (
-            <User size={32} />
-            
-          ) }
         </div>
 
         <List

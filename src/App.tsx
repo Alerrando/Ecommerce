@@ -2,16 +2,30 @@ import { Footer, Header, Main, Parcerias, Produtos } from './components'
 import React, { useContext, useEffect } from "react";
 import { ShopContext } from './context/shopContext';
 import { Modal } from './components/Modal';
-import axios from 'axios';
 import { getProdutos } from './api';
 
 export function App() {
-  const { modalInfo, setProducts } = useContext(ShopContext);
+  const { modalInfo, setProducts, carrinho ,setCarrinho } = useContext(ShopContext);
 
   useEffect(() => {
-    getProduct();      
+    try {
+      getProduct();
+      const savedInfos = JSON.parse(localStorage.getItem('react-ecommerce-data') || "");
 
+      if(savedInfos.length > 0)
+        setCarrinho(savedInfos)
+      
+    } catch (error) {
+      console.log(error);
+    }
   }, [])
+
+  useEffect(() => {
+		localStorage.setItem(
+			'react-ecommerce-data',
+			JSON.stringify(carrinho)
+		);
+	}, [carrinho]);
 
   return (
     <>
