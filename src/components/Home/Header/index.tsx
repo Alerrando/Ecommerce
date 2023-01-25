@@ -62,30 +62,15 @@ export function Header() {
           />
 
           <ul className="grid justify-center h-20 md:flex items-center gap-4 md:gap-6 font-Rokkitt text-xl md:text-lg">
-            <a
-              href=""
-              className="md:opacity-40 md:hover:opacity-80 transition-all"
-            >
-              Promoções
-            </a>
-            <a
-              href=""
-              className="md:opacity-40 md:hover:opacity-80 transition-all"
-            >
+            <Link to="/" className="md:opacity-40 md:hover:opacity-80 transition-all" >
+              Home
+            </Link>
+            <Link to="/produtos" className="md:opacity-40 md:hover:opacity-80 transition-all" >
               Produtos
-            </a>
-            <a
-              href=""
-              className="md:opacity-40 md:hover:opacity-80 transition-all"
-            >
-              Crie o Seu
-            </a>
-            <a
-              href=""
-              className="md:opacity-40 md:hover:opacity-80 transition-all"
-            >
-              Sobre
-            </a>
+            </Link>
+            <Link to="/contato" className="md:opacity-40 md:hover:opacity-80 transition-all" >
+              Contato
+            </Link>
           </ul>
 
           <footer className="w-full md:hidden">

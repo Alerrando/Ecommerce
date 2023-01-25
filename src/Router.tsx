@@ -9,9 +9,9 @@ export function Router(){
     return(
         <BrowserRouter>
             <Routes>
-                    <Route path="/" element={<App />} />
-                    <Route path="/produtos" element={<Produtos />} />
-                    <Route path="/produtos/:id/:url" element={<ProdutoInfo />} />
+                <Route path="/" element={<App />} />
+                <Route path="/produtos" element={<Produtos />} />
+                <Route path="/produtos/:id/:url" element={<ProdutoInfo />} />
             </Routes>
         </BrowserRouter>
     )
