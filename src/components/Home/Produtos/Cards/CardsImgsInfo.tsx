@@ -9,7 +9,6 @@ type CardsImgsInfo = {
 
 export function CardsImgsInfo(props: CardsImgsInfo){
   const { card } = props;
-  const [eyes, setEyes] = React.useState<boolean>(false)
   const { setModalInfo, favoritos, handleFavorites } = React.useContext(ShopContext);
   const hearth = favoritos.includes(card.subTitulo) ? "❤️" : "🖤";
 
@@ -44,7 +43,7 @@ export function CardsImgsInfo(props: CardsImgsInfo){
 
             </div>
 
-            <Link to={`produtos/${card.id}/${card.url}`} target="_blank" className="text-white bg-zinc-600 px-4 py-1 mt-3 top-[8%] hover:bg-blue-900 transition-colors rounded-md relative">
+            <Link to={`produtos/${card.id}/${card.url}`} className="text-white bg-zinc-600 px-4 py-1 mt-3 top-[8%] hover:bg-blue-900 transition-colors rounded-md relative">
                 Mais Informações
             </Link>
             
