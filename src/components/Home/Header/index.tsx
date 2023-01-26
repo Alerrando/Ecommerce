@@ -5,15 +5,15 @@ import { ShopContext } from '../../../context/shopContext';
 
 export function Header() {
   const [menu, setMenu] = useState("hidden");
-  const { carrinho, preços, setPreços, priceCart } = useContext(ShopContext);
+  const { user, priceCart } = useContext(ShopContext);
 
   function handleMenu() {
     menu == "block" ? setMenu("hidden") : setMenu("block");
   }
 
   useEffect(() => { 
-    setPreços(priceCart())
-  }, [carrinho])
+    priceCart()
+  }, [user.carrinho])
 
 
   return (
@@ -38,8 +38,17 @@ export function Header() {
         <div className="w-[90%] md:w-auto flex text-center justify-between md:justify-center gap-16 absolute top-[11%] md:relative">
           <div className="flex items-center justify-between gap-2">
             <ShoppingCart size={24} weight="bold" />
-            <span>R$ {preços}</span>
+            <span>R$ {priceCart()}</span>
           </div>
+
+          { Object.keys(user).length == 0 ? (
+            <Link to="/login" className="">
+              <SignIn size={32} />
+            </Link>
+          ) : (
+            <User size={32} />
+            
+          ) }
         </div>
 
         <List
@@ -51,71 +60,27 @@ export function Header() {
       </div>
 
       <nav
-        className={`md:block fixed h-screen md:h-20 lg:h-14 right-0 z-20 top-0 w-36 md:w-full bg-[#337ab7] md:bg-transparent md:relative ${menu}`}
+        className={`md:block fixed h-screen md:h-20 lg:h-14 left-0 z-20 top-0 w-[80%] md:w-full bg-sombreamento md:bg-transparent md:relative ${menu}`}
       >
-        <div className="grid grid-rows-sidebar h-full md:flex md:items-center md:justify-between text-white md:text-black md:mx-20">
+        <div className="h-full flex flex-col md:flex-row md:items-center md:justify-between pl-4 md:pl-0 bg-white text-black md:mx-20">
           <X
             size={30}
             weight="bold"
-            className="block my-2 ml-2 cursor-pointer md:hidden"
+            className="block my-2 cursor-pointer md:hidden"
             onClick={() => handleMenu()}
           />
 
-          <ul className="grid justify-center h-20 md:flex items-center gap-4 md:gap-6 font-Rokkitt text-xl md:text-lg">
-            <Link to="/" className="md:opacity-40 md:hover:opacity-80 transition-all" >
+          <ul className="flex flex-col md:flex-row justify-center h-auto items-start md:items-center gap-8 md:gap-6 mt-16 md:mt-0 font-Rokkitt text-base md:text-lg">
+            <Link to="/" className="w-[80%] opacity-40 hover:opacity-80 border-b border-[#e5e5e5] md:border-none font-medium transition-all" >
               Home
             </Link>
-            <Link to="/produtos" className="md:opacity-40 md:hover:opacity-80 transition-all" >
+            <Link to="/produtos" className="w-[80%] opacity-40 hover:opacity-80  border-b border-[#e5e5e5] md:border-none font-medium transition-all" >
               Produtos
             </Link>
-            <Link to="/contato" className="md:opacity-40 md:hover:opacity-80 transition-all" >
+            <Link to="/contato" className="w-[80%] opacity-40 hover:opacity-80  border-b border-[#e5e5e5] md:border-none font-medium transition-all" >
               Contato
             </Link>
           </ul>
-
-          <footer className="w-full md:hidden">
-            <div className="alinhamento justify-around">
-              <div className="w-10 h-10 rounded-full">
-                <a
-                  href="https://www.linkedin.com/in/alerrando-breno-656aa8188/"
-                  target="_blank"
-                  title="Linkedin"
-                >
-                  <LinkedinLogo
-                    className="h-[80%] w-[80%] cursor-pointer transition-colors text-white"
-                    weight="bold"
-                  />
-                </a>
-              </div>
-
-              <div className="w-10 h-10 rounded-full">
-                <a
-                  href="https://github.com/Alerrando"
-                  target="_blank"
-                  title="Github"
-                >
-                  <GithubLogo
-                    size={32}
-                    weight="bold"
-                    className="h-[80%] w-[80%] cursor-pointer transition-colors text-white"
-                  />
-                </a>
-              </div>
-
-              <div className="w-10 h-10 rounded-full">
-                <a
-                  href="mailto:alerrando2@gmail.com"
-                  target="_blank"
-                  title="Email"
-                >
-                  <EnvelopeSimple
-                    className="h-[80%] w-[80%] cursor-pointer transition-colors text-white"
-                    weight="bold"
-                  />
-                </a>
-              </div>
-            </div>
-          </footer>
         </div>
       </nav>
     </header>

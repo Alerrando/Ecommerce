@@ -43,7 +43,7 @@ export function InfoProduto(props: InfoProdutoProps) {
         <p className="text-green-600 py-3">{`${produto.estoque} em estoque`}</p>
       </div>
 
-      <div className="flex items-center justify-start gap-6 py-4">
+      <div className="flex items-center justify-start border-b border-[#e5e5e5] gap-6 py-4">
         <span>Quant: </span>
         <div className="flex items-center flex-row gap-4">
           <div
@@ -90,7 +90,7 @@ export function InfoProduto(props: InfoProdutoProps) {
 
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 py-3">
         <p className="flex flex-row items-center gap-4">
             <span className="font-bold text-sm">Categoria: </span>
             <Link to="/produtos" className="opacity-50 hover:opacity-100">{produto.titulo}</Link>

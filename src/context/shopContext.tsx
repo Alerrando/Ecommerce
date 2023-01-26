@@ -35,16 +35,17 @@ type PriceProps = {
 }
 
 type ShopContextProps = {
-    carrinho: any[],
-    setCarrinho: (carrinho: any[]) => void,
+    user: userProps,
+    setUser: (user: userProps) => void,
+    registers: userProps[],
+    setRegisters: (user: []) => void,
+    searchRegistrarion: (login: object | any) => number,
     modalInfo: CardKeys,
     setModalInfo: (modalInfo: CardKeys) => void,
     products: CardKeys[],
     setProducts: (products: CardKeys[]) => void,
     favoritos: string[],
     setFavoritos: (favoritos: string[]) => void,
-    preços: number,
-    setPreços: (preços: number) => void,
     priceCart: () => number,
     handleFavorites: (subTitulo: string) => void;
     addCart: (quantProduct: number, product: CardKeys) => void,
@@ -53,20 +54,32 @@ type ShopContextProps = {
 export const ShopContext = createContext<ShopContextProps>({} as ShopContextProps);
 
 function CreateContextProvider({children}: IPropsContext){
-    const [carrinho, setCarrinho] = useState<any[]>([])
+    const [user, setUser] = useState<userProps>({} as userProps);
+    const [registers, setRegisters] = useState<userProps[]>([] as userProps[]);
     const [modalInfo, setModalInfo] = useState<CardKeys>({} as CardKeys);
     const [products, setProducts] = useState<CardKeys[]>([] as CardKeys[]);
     const [favoritos, setFavoritos] = useState<string[]>([])
-    const [preços, setPreços] = useState(0);
 
     function priceCart(){
-        const carrinhoAux = [...carrinho];
+        const carrinhoAux = user.carrinho;
         let price = 0;
         carrinhoAux?.forEach((cart: PriceProps) => {
             price += (cart.preço * cart.quant);
         })
     
         return price;
+    }
+
+    function searchRegistrarion(login: object | any){
+        let verificar = -1;
+
+        registers.forEach(user => {
+            if (user.email === login.email || user.telefone === login.telefone){
+                verificar = 0
+            }
+        })
+
+        return registers.length == 0 ? 1 : verificar == -1 ? verificar : 0
     }
 
     function handleFavorites(subTitulo: string){
@@ -79,17 +92,21 @@ function CreateContextProvider({children}: IPropsContext){
     }
 
     function addCart(quantProduct: number, product: CardKeys){
+        const aux: any[] = user.carrinho;
         let infoProduto = {
-            id: product.id,
+            id: modalInfo.id,
             quant: quantProduct,
-            preço: product.price,
+            preço: modalInfo.price,
         }
+        aux.push(infoProduto);
 
-        setCarrinho([...carrinho, infoProduto])
+        setUser(prevState => {
+            return {...prevState, carrinho: aux}
+        })
     }
     
     return(
-        <ShopContext.Provider value={{carrinho, setCarrinho, modalInfo, setModalInfo, products, setProducts, favoritos, setFavoritos, preços, setPreços, priceCart, handleFavorites, addCart}}>
+        <ShopContext.Provider value={{user, setUser, registers, setRegisters, searchRegistrarion, modalInfo, setModalInfo, products, setProducts, favoritos, setFavoritos, priceCart, handleFavorites, addCart}}>
             {children}
         </ShopContext.Provider>
     )

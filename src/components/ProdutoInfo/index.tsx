@@ -35,6 +35,6 @@ export function ProdutoInfo() {
   async function getProduct(){
     const api = await getProdutos();
 
-    setProduto(api[parseInt(id)-1])
+    setProduto(api[parseInt(id as string)-1])
   }
 }

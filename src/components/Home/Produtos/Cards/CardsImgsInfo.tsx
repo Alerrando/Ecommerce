@@ -30,16 +30,19 @@ export function CardsImgsInfo(props: CardsImgsInfo){
               </span>
             </div>
 
-            <div className="absolute md:invisible bottom-0 p-8 text-start md:group-hover:visible md:group-hover:pb-12 transition-all">
+            <div className="absolute md:invisible bottom-0 p-8 text-start md:group-hover:visible md:group-hover:pb-8 transition-all">
               <h3 className="text-red-500 font-Rokkitt font-medium text-2xl md:text-3xl" translate="no">
                 {card.titulo}
               </h3>
               <h4 className="text-white font-Rokkitt font-medium text-xl md:text-2xl" translate="no">
                 {card.subTitulo}
               </h4>
-              <h5 className="text-blue-600 font-semibold mt-4 md:mt-6 text-xs md:text-sm" translate="no">
-                Lorem ipsum dolor sit amet consectetur, adipi
-              </h5>
+              <div className="flex items-center justify-start text-orange-600 gap-4 mt-4 md:mt-6">
+                <h2 className="font-bold text-xs md:text-sm">Preço:</h2>
+                <h2 className="font-semibold text-xs md:text-sm" translate="no">
+                  {`R$${card.price}`}
+                </h2>
+              </div>
 
             </div>
 
