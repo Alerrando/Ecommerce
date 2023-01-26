@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { CardsImgsInfo } from "./CardsImgsInfo";
 import { CardKeys, ShopContext } from '../../../../context/shopContext'
 
+type CardsProps = {
+  cardsInfo: CardKeys[];
+}
 
-export function Cards() {
-  const { products } = useContext(ShopContext)
-  const cardsInfo = products.filter(produto => produto.destaque == 1);
+export function Cards(props: CardsProps) {
+  const { cardsInfo } = props;
 
   return (
     <>

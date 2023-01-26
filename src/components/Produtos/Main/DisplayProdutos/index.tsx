@@ -1,17 +1,20 @@
-import React, { useContext } from "react";
-import { Cards } from "./Cards";
-import { Titulo } from "../../Titulo";
-import { ShopContext } from "../../../context/shopContext";
+import React, { useContext, useEffect } from 'react';
+import { getProdutos } from '../../../../api';
+import { ShopContext } from '../../../../context/shopContext'
+import { Cards } from '../../../Home/Produtos/Cards'
 
-export function Produtos(){
-    const { products } = useContext(ShopContext)
+export function DisplayProdutos(props) {
+    const { products, setProducts } = useContext(ShopContext);
+
+    useEffect(() => {
+        getProduct();
+    }, [])
 
     return (
-        <section className="overflow-hidden">
-            <Titulo name="Produtos em Destaque" />
+        <>
             {Object.keys(products).length > 0 ? (
-                <section className="w-min md:w-auto md:max-w-[1200px] mx-auto mt-8 mb-14">
-                    <Cards cardsInfo={products.filter(produto => produto.destaque == 1)} />
+                <section className="w-min md:w-auto md:max-w-full mx-auto mt-8 mb-14">
+                    <Cards cardsInfo={products} />
                 </section>
             ) : (
                 <div className="w-full h-screnn flex items-center justify-center my-8" role="status">
@@ -22,6 +25,12 @@ export function Produtos(){
                     <span className="sr-only">Loading...</span>
                 </div>
             )}
-        </section>
-    )
+        </>
+    );
+
+    async function getProduct(){
+        const api = await getProdutos();
+      
+        setProducts(api);
+    }
 }

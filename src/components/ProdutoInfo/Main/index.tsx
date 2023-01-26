@@ -11,27 +11,30 @@ type MainProps = {
 
 export function Main(props: MainProps) {
     const { produto } = props;
-    const { favoritos, handleFavorites, addCart, setCarrinho, carrinho } = useContext(ShopContext)
+    const { favoritos, handleFavorites, addCart, user, setUser} = useContext(ShopContext)
     const hearth = favoritos.includes(produto.subTitulo) ? "❤️" : "🖤";
 
     useEffect(() => {
         try {
           const savedInfos = JSON.parse(localStorage.getItem('react-ecommerce-data') || "");
     
-          if(savedInfos.length > 0)
-            setCarrinho(savedInfos)
-          
+          if(savedInfos.length > 0){
+            setUser(prevState => {
+              return {...prevState, carrinho: savedInfos}
+            })
+          }
         } catch (error) {
           console.log(error);
         }
+        
     }, [])
     
     useEffect(() => {
-            localStorage.setItem(
-                'react-ecommerce-data',
-                JSON.stringify(carrinho)
-            );
-    }, [carrinho]);
+        localStorage.setItem(
+            'react-ecommerce-data',
+            JSON.stringify(user.carrinho)
+        );
+    }, [user.carrinho]);
 
 
     return (

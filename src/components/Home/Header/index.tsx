@@ -17,8 +17,8 @@ export function Header() {
 
 
   return (
-    <header className="h-20 md:h-auto w-full pt-4 lg:pt-0 md:fixed bg-white z-50">
-      <div className="alinhamento justify-between pt-4 mx-4 md:mx-20">
+    <header className="h-24 md:h-auto w-full pt-4 lg:pt-0 relative md:fixed bg-white z-50">
+      <div className="alinhamento justify-between pt-1 md:pt-4 mx-4 md:mx-20">
         <h1 className="text-4xl font-Playfair-Display text-[#595959] font-semibold">
           TechSoft
         </h1>
@@ -35,20 +35,22 @@ export function Header() {
           </button>
         </div>
 
-        <div className="w-[90%] md:w-auto flex text-center justify-between md:justify-center gap-16 absolute top-[11%] md:relative">
+        <div className="w-[90%] md:w-auto flex text-center justify-between md:justify-center gap-16 bottom-2 absolute md:relative">
           <div className="flex items-center justify-between gap-2">
             <ShoppingCart size={24} weight="bold" />
             <span>R$ {priceCart()}</span>
           </div>
 
-          { Object.keys(user).length == 0 ? (
-            <Link to="/login" className="">
-              <SignIn size={32} />
-            </Link>
-          ) : (
-            <User size={32} />
-            
-          ) }
+          <div className="hidden md:block">
+            { Object.keys(user).length == 0 ? (
+              <Link to="/login" className="">
+                <SignIn size={32} />
+              </Link>
+            ) : (
+              <User size={32} />
+              
+            ) }
+          </div>
         </div>
 
         <List
@@ -62,7 +64,7 @@ export function Header() {
       <nav
         className={`md:block fixed h-screen md:h-20 lg:h-14 left-0 z-20 top-0 w-[80%] md:w-full bg-sombreamento md:bg-transparent md:relative ${menu}`}
       >
-        <div className="h-full flex flex-col md:flex-row md:items-center md:justify-between pl-4 md:pl-0 bg-white text-black md:mx-20">
+        <div className="h-full flex flex-col md:flex-row md:items-center md:justify-between py-2 md:py-0 pl-4 md:pl-0 bg-white text-black md:mx-20">
           <X
             size={30}
             weight="bold"
@@ -81,6 +83,12 @@ export function Header() {
               Contato
             </Link>
           </ul>
+            
+
+          <div className="h-full w-[90%] flex md:hidden flex-row items-end justify-between">
+            <Link className="h-8 w-24 bg-blue-600 flex items-center justify-center rounded-md text-white" to="/login">Login</Link>
+            <Link className="h-8 w-24 bg-blue-600 flex items-center justify-center rounded-md text-white" to="/register">Registro</Link>
+          </div>
         </div>
       </nav>
     </header>
