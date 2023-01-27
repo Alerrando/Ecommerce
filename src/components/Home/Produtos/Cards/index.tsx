@@ -4,10 +4,11 @@ import { CardKeys, ShopContext } from '../../../../context/shopContext'
 
 type CardsProps = {
   cardsInfo: CardKeys[];
+  pages: string;
 }
 
 export function Cards(props: CardsProps) {
-  const { cardsInfo } = props;
+  const { cardsInfo, pages } = props;
 
   return (
     <>
@@ -15,7 +16,7 @@ export function Cards(props: CardsProps) {
         {cardsInfo.map((card: CardKeys, index: number) => {
           return (
             <div className="max-w-[16.25rem] md:max-w-[16.75rem] h-[25rem] md:h-[20rem] relative mb-16 mx-auto text-center group border border-zinc-400 rounded-xl card-product" key={index}>
-              <CardsImgsInfo card={card} />
+              <CardsImgsInfo card={card} pages={pages} />
             </div>
           );
         })}

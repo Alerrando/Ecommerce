@@ -11,7 +11,7 @@ export function Produtos(){
             <Titulo name="Produtos em Destaque" />
             {Object.keys(products).length > 0 ? (
                 <section className="w-min md:w-auto md:max-w-[1200px] mx-auto mt-8 mb-14">
-                    <Cards cardsInfo={products.filter(produto => produto.destaque == 1)} />
+                    <Cards cardsInfo={products.filter(produto => produto.destaque == 1)} pages="home" />
                 </section>
             ) : (
                 <div className="w-full h-screnn flex items-center justify-center my-8" role="status">

@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 
 type CardsImgsInfo = {
     card: CardKeys;
+    pages: string;
 }
 
 export function CardsImgsInfo(props: CardsImgsInfo){
-  const { card } = props;
+  const { card, pages } = props;
   const { setModalInfo, favoritos, handleFavorites } = React.useContext(ShopContext);
   const hearth = favoritos.includes(card.subTitulo) ? "❤️" : "🖤";
 
@@ -46,7 +47,7 @@ export function CardsImgsInfo(props: CardsImgsInfo){
 
             </div>
 
-            <Link to={`produtos/${card.id}/${card.url}`} className="text-white bg-zinc-600 px-4 py-1 mt-3 top-[8%] hover:bg-blue-900 transition-colors rounded-md relative">
+            <Link to={`${pages == "home" ? `produtos/${card.id}/${card.url}` : `${card.id}/${card.url}`}`} className="text-white bg-zinc-600 px-4 py-1 mt-3 top-[8%] hover:bg-blue-900 transition-colors rounded-md relative">
                 Mais Informações
             </Link>
             
