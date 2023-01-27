@@ -18,12 +18,7 @@ export function Main() {
   console.log()
   
   return (
-    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white mt-[16%] md:mt-[4.5%]">
-      <img
-        src="Login/background.jpg"
-        alt=""
-        className="h-full w-full bg-cover -z-10 absolute"
-      />
+    <main className="w-full absolute flex items-center justify-center text-white bg-login-register bg-cover h-[-webkit-fill-available]">
       <div className="w-[380px] md:w-[46%] h-[500px] md:h-auto bg-white overflow-auto rounded-2xl border border-zinc-600 shadow-lg">
         <div className="grid gap-4 px-6 py-6">
           <header className="w-full h-auto text-black" translate="no">
@@ -168,13 +163,14 @@ export function Main() {
 
   function createUser(userCreate: object | any){
     if(searchRegistrarion(userCreate) != 0){
-        const aux: userProps | any = {
+        const aux: userProps = {
             id: Object.keys(user).length,
             name: userCreate.name,
             password: userCreate.password,
             email: userCreate.email,
             telefone: userCreate.tel,
             carrinho: [],
+            favoritos: [],
         };
 
         setUser(aux);

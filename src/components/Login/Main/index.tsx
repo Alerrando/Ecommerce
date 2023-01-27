@@ -14,12 +14,7 @@ export function Main() {
   const navigate = useNavigate();
 
   return (
-    <main className="w-full h-[91%] md:h-[90%] absolute flex items-center justify-center text-white mt-[16%] md:mt-[4.5%]">
-      <img
-        src="Login/background.jpg"
-        alt=""
-        className="h-full w-full bg-cover -z-10 absolute"
-      />
+    <main className="w-full absolute flex items-center justify-center text-white bg-login-register bg-cover h-[-webkit-fill-available]">
       <div className="w-[380px] md:w-[46%] h-[500px] md:h-auto bg-white overflow-auto rounded-2xl border border-zinc-600 shadow-lg">
         <div className="grid gap-4 px-6 py-6">
           <header className="w-full h-auto text-black" translate="no">
@@ -131,7 +126,7 @@ export function Main() {
     debugger;
     if(searchRegistrarion(login) == 0){
         const aux: userProps | any = {
-            id: user.length,
+            id: Object.keys(user).length,
             name: login.name,
             password: login.password,
             email: login.email,
