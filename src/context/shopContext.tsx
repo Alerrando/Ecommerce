@@ -27,6 +27,7 @@ export type CardKeys = {
     descricao: string;
     price: number;
     estoque: number;
+    imagemCarrossel: string;
 };
 
 type PriceProps = {

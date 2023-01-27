@@ -12,6 +12,8 @@ export function InfoProduto(props: InfoProdutoProps) {
     const [quantProduct, setQuantProduct] = useState(1);
     const { addCart, produto } = props
 
+    console.log(produto)
+
   return (
     <aside className="w-auto h-full">
       <h2 className="text-lg sm:text-xl md:text-2xl font-bold pb-4">
@@ -93,11 +95,11 @@ export function InfoProduto(props: InfoProdutoProps) {
       <div className="flex flex-col gap-4 py-3">
         <p className="flex flex-row items-center gap-4">
             <span className="font-bold text-sm">Categoria: </span>
-            <Link to="/produtos" className="opacity-50 hover:opacity-100">{produto.titulo}</Link>
+            <Link to="/produtos" className="opacity-50 hover:opacity-100">{produto.categoria}</Link>
         </p>
         <p className="flex flex-row items-center gap-4">
             <span className="font-bold text-sm">Tag: </span>
-            <Link to="/produtos" className="opacity-50 hover:opacity-100">{produto.categoria}</Link>
+            <Link to="/produtos" className="opacity-50 hover:opacity-100">{produto.subTitulo.split(' ')[0]}</Link>
         </p>
       </div>
     </aside>
