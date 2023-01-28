@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { Cards } from "./Cards";
 import { Titulo } from "../../Titulo";
 import { ShopContext } from "../../../context/shopContext";
+import { Modal } from "../../Modal";
 
 export function Produtos(){
-    const { products } = useContext(ShopContext)
+    const { products, modalInfo } = useContext(ShopContext)
 
     return (
         <section className="overflow-hidden">
@@ -22,6 +23,10 @@ export function Produtos(){
                     <span className="sr-only">Loading...</span>
                 </div>
             )}
+
+            {Object.keys(modalInfo).length > 0 ? (
+                <Modal />
+            ): null}
         </section>
     )
 }

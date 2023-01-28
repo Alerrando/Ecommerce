@@ -1,7 +1,6 @@
 import { Footer, Header, Main, Parcerias, Produtos } from './components'
 import React, { useContext, useEffect } from "react";
 import { ShopContext } from './context/shopContext';
-import { Modal } from './components/Modal';
 import { getProdutos } from './api';
 
 export function App() {
@@ -37,9 +36,6 @@ export function App() {
         <Produtos />
         <Parcerias />
         <Footer />
-        {Object.keys(modalInfo).length > 0 ? (
-          <Modal />
-        ): null}
     </>
   )
 
