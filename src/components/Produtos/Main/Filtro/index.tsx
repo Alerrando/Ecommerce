@@ -1,5 +1,5 @@
 import { Faders } from 'phosphor-react';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Autocomplete } from "@mui/material";
@@ -9,8 +9,13 @@ type OrdenarProps = {
     text: string;
 };
 
-export function Filtro() {
-    const { products } = useContext(ShopContext)
+type FiltroProps = {
+    setModalFiltro: (modalInfo: boolean) => void,
+}
+
+export function Filtro(props: FiltroProps) {
+    const { setModalFiltro } = props;
+    const { products } = useContext(ShopContext);
     const ordenar: readonly OrdenarProps[] = [
         { text: "Preço Crescente" },
         { text: "Preço Decrescente" },
@@ -25,7 +30,7 @@ export function Filtro() {
             <div className='w-full h-full flex flex-col md:flex-row md:items-center justify-between md:px-6 border-b border-zinc-400'>
                 <div className='w-full h-full flex flex-row items-center justify-between px-4 border-b border-[#e5e5e5]'>
                     <header className='flex flex-row items-center justify-start gap-6'>
-                        <Faders size={26} className="cursor-pointer" />
+                        <Faders size={26} className="cursor-pointer" onClick={() => setModalFiltro(true)} />
                     </header>
 
                     <div className="w-auto h-auto flex flex-row items-center gap-6 py-4">
@@ -68,6 +73,7 @@ export function Filtro() {
                     <h3 className='text-base md:text-lg'>Produtos</h3>
                 </div>
             </div>
+
         </section>
     );
 }

@@ -20,15 +20,16 @@ export function InfoProduto(props: InfoProdutoProps) {
         {produto.descricao}
       </h2>
 
-      <div className="flex items-center justify-start border-y border-bg-[#e5e5e5] py-4">
+      <div className="flex flex-row items-center justify-start gap-4 border-y border-bg-[#e5e5e5] py-4">
         {produto.desconto == 0 ? (
           <h2 className="text-red-600 text-xl font-semibold">{`R$${produto.price},00`}</h2>
         ) : (
           <>
             <h2 className="text-xl text-gray-600 line-through">{`R$${produto.price},00`}</h2>
             <h2 className="text-xl text-red-600 font-semibold">{`R$${
-              produto.price - (produto.desconto / 100) * produto.price
-            }`}</h2>
+                produto.price - (produto.desconto / 100) * produto.price
+              }`}
+            </h2>
           </>
         )}
       </div>

@@ -10,7 +10,7 @@ export type userProps = {
     email: string;
     password: string;
     telefone: string;
-    carrinho: [];
+    carrinho: any[];
     favoritos: any[];
 }
 
@@ -93,17 +93,23 @@ function CreateContextProvider({children}: IPropsContext){
     }
 
     function addCart(quantProduct: number, product: CardKeys){
-        const aux: any[] = user.carrinho;
-        let infoProduto = {
-            id: modalInfo.id,
-            quant: quantProduct,
-            preço: modalInfo.price,
-        }
-        aux.push(infoProduto);
+        if(Object.keys(user).length > 0){
+            const aux: any[] = user.carrinho;
+            let infoProduto = {
+                id: modalInfo.id,
+                quant: quantProduct,
+                preço: modalInfo.price,
+            }
+            aux.push(infoProduto);
+    
+            setUser(prevState => {
+                return {...prevState, carrinho: aux}
+            })
 
-        setUser(prevState => {
-            return {...prevState, carrinho: aux}
-        })
+            return ;
+        }
+
+        alert("Faça Login primeiro para adicionar produtos ao carrinho!")
     }
     
     return(

@@ -22,7 +22,7 @@ export function Modal(){
                     <div className='flex flex-col gap-6 px-6 overflow-auto'>
                         <h2 className='text-xl border-b pb-4 border-b-gray-400'>{modalInfo.descricao}</h2>
 
-                        <div className='flex items-center justify-start'>
+                        <div className='flex flex-row items-center justify-start gap-4'>
                             {modalInfo.desconto == 0 ? (
                                 <h2 className='text-red-600 text-lg font-semibold'>{`R$${modalInfo.price},00`}</h2>
                             ): (

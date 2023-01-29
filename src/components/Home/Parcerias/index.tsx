@@ -3,7 +3,7 @@ import { Titulo } from "../../Titulo";
 
 export function Parcerias() {
   return (
-    <section>
+    <section className="mb-20 md:mb-28 lg:mb-[4.5rem]">
         <Titulo name="Parcerias" />
         <div className="grid gap-8 md:flex md:items-center justify-center md:gap-18 my-4 md:my-8">
             <div className="h-[4.6875rem] w-[12.5rem] md:h-[8.75rem] md:w-[15rem] lg:h-[4.6875rem] lg:w-[12.5rem] mr-5">

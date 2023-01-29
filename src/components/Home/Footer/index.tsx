@@ -2,11 +2,11 @@ import React from "react";
 
 export function Footer() {
     return (
-      <footer className="mt-24 ml-2 md:ml-0 md:mt-32 lg:mt-28">
-        <div className="footer-grid md:grid block">
+      <footer className="ml-2 md:ml-0">
+        <div className="footer-grid md:grid block md:px-8">
           <div className="footer-info mb-4 md:mb-0">
             <div>
-              <h3 className="text-lg md:text-xl font-bold">Sobre o Site</h3>
+              <h3 className="text-lg font-bold">Sobre o Site</h3>
             </div>
   
             <div>
@@ -19,7 +19,7 @@ export function Footer() {
   
           <div className="footer-info mb-4 md:mb-0">
             <div>
-              <h3 className="text-lg md:text-xl font-bold">Serviço de Atendimento</h3>
+              <h3 className="text-lg font-bold">Serviço de Atendimento</h3>
             </div>
             <ul>
               <p className="text-base md:text-lg font-Rokkitt opacity-70 hover:opacity-100 transition-colors pt-2">
@@ -45,7 +45,7 @@ export function Footer() {
   
           <div className="footer-info mb-4 md:mb-0">
             <div>
-              <h3 className="text-lg md:text-xl font-bold">Informações</h3>
+              <h3 className="text-lg font-bold">Informações</h3>
             </div>
             <ul>
               <p className="text-base md:text-lg font-Rokkitt opacity-70 hover:opacity-100 transition-colors pt-2">
@@ -68,7 +68,7 @@ export function Footer() {
   
           <div className="footer-info mb-4 md:mb-0">
             <div>
-              <h3 className="text-lg md:text-xl font-bold">Redes Sociais</h3>
+              <h3 className="text-lg font-bold">Redes Sociais</h3>
             </div>
   
             <ul>
@@ -86,7 +86,7 @@ export function Footer() {
   
           <div className="footer-info mb-0">
             <div>
-              <h3 className="text-lg md:text-xl font-bold">Contatos</h3>
+              <h3 className="text-lg font-bold">Contatos</h3>
             </div>
             <ul>
               <p className="text-base md:text-lg font-Rokkitt opacity-70 pt-2">
