@@ -1,14 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { getProdutos } from '../../../../api';
 import { ShopContext } from '../../../../context/shopContext'
 import { Cards } from '../../../Home/Produtos/Cards'
 
-export function DisplayProdutos(props) {
-    const { products, setProducts } = useContext(ShopContext);
-
-    useEffect(() => {
-        getProduct();
-    }, [])
+export function DisplayProdutos() {
+    const { products } = useContext(ShopContext);
 
     return (
         <>
@@ -27,10 +22,4 @@ export function DisplayProdutos(props) {
             )}
         </>
     );
-
-    async function getProduct(){
-        const api = await getProdutos();
-      
-        setProducts(api);
-    }
 }
