@@ -39,8 +39,8 @@ export function CardsImgsInfo(props: CardsImgsInfo){
                 {card.subTitulo}
               </h4>
               <div className="flex items-center justify-start text-orange-600 gap-4 mt-4 md:mt-6">
-                <h2 className="font-bold text-xs md:text-sm">Preço:</h2>
-                <h2 className="font-semibold text-xs md:text-sm" translate="no">
+                <h2 className="font-bold text-base md:text-lg">Preço:</h2>
+                <h2 className="font-semibold text-base md:text-lg" translate="no">
                   {`R$${card.price}`}
                 </h2>
               </div>

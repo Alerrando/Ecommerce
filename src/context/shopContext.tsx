@@ -95,10 +95,12 @@ function CreateContextProvider({children}: IPropsContext){
     function addCart(quantProduct: number, product: CardKeys){
         if(Object.keys(user).length > 0){
             const aux: any[] = user.carrinho;
+            const preçoProduto = product.desconto == 0 ? modalInfo.price : modalInfo.price - ((modalInfo.desconto / 100) * modalInfo.price)
+
             let infoProduto = {
                 id: modalInfo.id,
                 quant: quantProduct,
-                preço: modalInfo.price,
+                preço: preçoProduto,
             }
             aux.push(infoProduto);
     

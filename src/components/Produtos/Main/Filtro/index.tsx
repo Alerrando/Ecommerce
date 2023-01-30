@@ -38,7 +38,7 @@ export function Filtro(props: FiltroProps) {
                         <Autocomplete
                             id="country-select-demo"
                             size='small'
-                            className="w-[100px!important] md:w-[200px!important]"
+                            className="w-[100px!important] md:w-[220px!important]"
                             options={ordenar}
                             autoHighlight
                             getOptionLabel={(option) => option.text}
