@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { Faders, X } from 'phosphor-react';
 import React from 'react';
@@ -33,7 +33,7 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                         <span className='font-semibold opacity-70 cursor-pointer'>Limpar Filtros</span>
                     </header>
 
-                    <form className='w-full h-auto'>
+                    <form className='w-full h-auto flex flex-col gap-6'>
                         <Accordion>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
@@ -45,16 +45,36 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                             <AccordionDetails className='flex flex-col gap-4'>
                                 <div>
                                     <input type="radio" value="ofertaProduto" className="w-[25px]" {...register("tipoProduto")} />
-                                    <label htmlFor="">Oferta</label>
+                                    <label translate='no'>Oferta</label>
                                 </div>
                                 <div>
                                     <input type="radio" value="liquidaçãoProduto" className="w-[25px]" {...register("tipoProduto")} />
-                                    <label htmlFor="">Liquidação</label>
+                                    <label translate='no'>Liquidação</label>
                                 </div>
                                 <div>
                                     <input type="radio" value="freteGratisProduto" className="w-[25px]" {...register("tipoProduto")} />
-                                    <label htmlFor="">Frete Gratis</label>
+                                    <label translate='no'>Frete Gratis</label>
                                 </div>
+                            </AccordionDetails>
+                        </Accordion>
+
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography>Preço</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails className='flex flex-col gap-6'>
+                                <label>Intervalo de Preço</label>
+                                <Slider
+                                    size="small"
+                                    aria-label="Small"
+                                    valueLabelDisplay="auto"
+                                    min={0}
+                                    max={9999}
+                                />
                             </AccordionDetails>
                         </Accordion>
                     </form>
