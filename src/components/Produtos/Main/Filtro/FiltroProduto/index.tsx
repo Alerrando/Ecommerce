@@ -1,9 +1,9 @@
 import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { Faders, X } from 'phosphor-react';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { ShopContext } from '../../../../../context/shopContext';
+import { CardKeys, ShopContext } from '../../../../../context/shopContext';
 
 type FiltroProdutoProps = {
     setModalFiltro: (modalFiltro: boolean) => void,
@@ -18,8 +18,7 @@ export function FiltroProduto(props: FiltroProdutoProps) {
     const { setModalFiltro } = props;
     const { register, handleSubmit,formState: { isValid }} = useForm<FormFiltroInputs>();
     const { products } = useContext(ShopContext);
-
-    console.log(products)
+    const marcas: CardKeys[] = filterTags()
 
     return (
         <div className="w-full h-screen fixed top-0 left-0 bg-sombreamento z-50">
@@ -92,10 +91,10 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                                 <Typography>Marcas</Typography>
                             </AccordionSummary>
                             <AccordionDetails className='flex flex-col gap-6 border-t border-[#e5e5e5]'>
-                                {products.map(product => (
+                                {marcas.map((marca: CardKeys) => (
                                     <div className='flex flex-row items-center justify-start gap-4'>
-                                        <input type="radio" value={product.categoria} className="w-[25px]" {...register("marcas")} />
-                                        <label translate='no'>{product.categoria}</label>
+                                        <input type="radio" value={marca.categoria} className="w-[25px]" {...register("marcas")} />
+                                        <label className='first-letter:uppercase' translate='no'>{marca.categoria}</label>
                                     </div>
                                 ))}
                             </AccordionDetails>
@@ -105,4 +104,24 @@ export function FiltroProduto(props: FiltroProdutoProps) {
             </div>
         </div>
     );
+    
+    function filterTags(){
+        const auxCategoria: string[] = [];
+        const aux: CardKeys[] = [];
+
+
+        products.map((product: CardKeys) => {
+            if(auxCategoria.length == 0){
+                auxCategoria.push(product.categoria)
+                return ;
+            }
+
+            if(auxCategoria.indexOf(product.categoria) == -1){
+                auxCategoria.push(product.categoria)
+                aux.push(product)
+            }
+        })
+
+        return aux;
+    }
 }
