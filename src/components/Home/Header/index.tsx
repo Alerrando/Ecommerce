@@ -11,7 +11,7 @@ export function Header() {
     menu == "block" ? setMenu("hidden") : setMenu("block");
   }
 
-  useEffect(() => { 
+  useEffect(() => {
     priceCart()
   }, [user.carrinho])
 
@@ -35,10 +35,13 @@ export function Header() {
           </button>
         </div>
 
-        <div className="w-[90%] md:w-auto flex text-center justify-between md:justify-center gap-16 bottom-2 absolute md:relative">
+        <div className="w-auto flex text-center justify-between md:justify-center gap-16 relative">
           <Link className="flex items-center justify-between gap-2" to="/carrinho">
             <ShoppingCart size={24} weight="bold" />
-            <span>R$ {priceCart()}</span>
+
+            <div className="w-4 h-4 rounded-full absolute flex items-center justify-center top-[-3px] left-4 bg-[#ff0000] text-white">
+              <span className="text-sm">{Object.keys(user).length != 0 ? user.carrinho.length : 0}</span>
+            </div>
           </Link>
 
           <div className="hidden md:block">
@@ -62,15 +65,17 @@ export function Header() {
       </div>
 
       <nav
-        className={`md:block fixed h-screen md:h-20 lg:h-14 left-0 z-20 top-0 w-[80%] md:w-full bg-sombreamento md:bg-transparent md:relative ${menu}`}
+        className={`md:block fixed h-screen md:h-20 lg:h-14 left-0 z-20 top-0 w-full md:w-full bg-sombreamento md:bg-transparent md:relative ${menu}`}
       >
-        <div className="h-full flex flex-col md:flex-row md:items-center md:justify-between py-2 md:py-0 pl-4 md:pl-0 bg-white text-black md:mx-20">
-          <X
-            size={30}
-            weight="bold"
-            className="block my-2 cursor-pointer md:hidden"
-            onClick={() => handleMenu()}
-          />
+        <div className="h-full w-[80%] flex flex-col md:flex-row md:items-center md:justify-between py-2 md:py-0 pl-4 md:pl-0 bg-white text-black md:mx-20">
+          <header className="h-auto w-full my-2 flex items-center jsutify-start md:hidden">
+            <X
+              size={26}
+              weight="bold"
+              className="cursor-pointer"
+              onClick={() => handleMenu()}
+            />
+          </header>
 
           <ul className="flex flex-col md:flex-row justify-center h-auto items-start md:items-center gap-8 md:gap-6 mt-16 md:mt-0 font-Rokkitt text-base md:text-lg">
             <Link to="/" className="w-[80%] opacity-40 hover:opacity-80 border-b border-[#e5e5e5] md:border-none font-medium transition-all" >
@@ -93,4 +98,5 @@ export function Header() {
       </nav>
     </header>
   );
+
 }
