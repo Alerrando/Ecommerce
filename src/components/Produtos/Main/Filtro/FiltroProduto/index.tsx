@@ -18,7 +18,7 @@ export function FiltroProduto(props: FiltroProdutoProps) {
     const { setModalFiltro } = props;
     const { register, handleSubmit,formState: { isValid }} = useForm<FormFiltroInputs>();
     const { products } = useContext(ShopContext);
-    const marcas: CardKeys[] = filterTags()
+    const categorias: CardKeys[] = filterCategory()
 
     return (
         <div className="w-full h-screen fixed top-0 left-0 bg-sombreamento z-50">
@@ -91,21 +91,23 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                                 <Typography>Marcas</Typography>
                             </AccordionSummary>
                             <AccordionDetails className='flex flex-col gap-6 border-t border-[#e5e5e5]'>
-                                {marcas.map((marca: CardKeys) => (
+                                {categorias.map((category: CardKeys) => (
                                     <div className='flex flex-row items-center justify-start gap-4'>
-                                        <input type="radio" value={marca.categoria} className="w-[25px]" {...register("marcas")} />
-                                        <label className='first-letter:uppercase' translate='no'>{marca.categoria}</label>
+                                        <input type="radio" value={category.categoria} className="w-[25px]" {...register("marcas")} />
+                                        <label className='first-letter:uppercase' translate='no'>{category.categoria}</label>
                                     </div>
                                 ))}
                             </AccordionDetails>
                         </Accordion>
+                        
+                        <button className='w-full py-2 bg-blue-600 text-white'>Aplicar Filtro</button>
                     </form>
                 </section>
             </div>
         </div>
     );
     
-    function filterTags(){
+    function filterCategory(){
         const auxCategoria: string[] = [];
         const aux: CardKeys[] = [];
 
