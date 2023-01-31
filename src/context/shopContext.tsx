@@ -98,10 +98,21 @@ function CreateContextProvider({children}: IPropsContext){
             const preçoProduto = product.desconto == 0 ? modalInfo.price : modalInfo.price - ((modalInfo.desconto / 100) * modalInfo.price)
 
             let infoProduto = {
-                id: modalInfo.id,
-                quant: quantProduct,
-                preço: preçoProduto,
+                id: product.id,
+                url: product.url,
+                image: product.image,
+                titulo: product.titulo,
+                subTitulo: product.subTitulo,
+                desconto: product.desconto,
+                categoria: product.categoria,
+                destaque: product.destaque,
+                imageDestaque: product.imageDestaque,
+                descricao: product.descricao,
+                price: preçoProduto,
+                estoque: product.estoque,
+                imagemCarrossel: product.imagemCarrossel,
             }
+            
             aux.push(infoProduto);
     
             setUser(prevState => {
