@@ -1,4 +1,4 @@
-import { EnvelopeSimple, GithubLogo, LinkedinLogo, List, ShoppingCart, X, User, SignIn } from "phosphor-react";
+import { List, ShoppingCart, X, User, SignIn } from "phosphor-react";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from '../../../context/shopContext';
@@ -36,10 +36,10 @@ export function Header() {
         </div>
 
         <div className="w-[90%] md:w-auto flex text-center justify-between md:justify-center gap-16 bottom-2 absolute md:relative">
-          <div className="flex items-center justify-between gap-2">
+          <Link className="flex items-center justify-between gap-2" to="/carrinho">
             <ShoppingCart size={24} weight="bold" />
             <span>R$ {priceCart()}</span>
-          </div>
+          </Link>
 
           <div className="hidden md:block">
             { Object.keys(user).length == 0 ? (

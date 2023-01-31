@@ -11,6 +11,7 @@ type FiltroProdutoProps = {
 
 type FormFiltroInputs = {
     tipoProduto: string;
+    preço: number;
     marcas: string;
 }
 
@@ -18,7 +19,7 @@ export function FiltroProduto(props: FiltroProdutoProps) {
     const { setModalFiltro } = props;
     const { register, handleSubmit,formState: { isValid }} = useForm<FormFiltroInputs>();
     const { products } = useContext(ShopContext);
-    const categorias: CardKeys[] = filterCategory()
+    const categorias: CardKeys[] = filterCategory();
 
     return (
         <div className="w-full h-screen fixed top-0 left-0 bg-sombreamento z-50">
@@ -37,7 +38,7 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                         <span className='font-semibold opacity-70 cursor-pointer'>Limpar Filtros</span>
                     </header>
 
-                    <form className='w-full h-auto flex flex-col gap-6'>
+                    <form className='w-full h-auto flex flex-col gap-6' onSubmit={handleSubmit(applyFilter)}>
                         <Accordion>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
@@ -72,13 +73,7 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                             </AccordionSummary>
                             <AccordionDetails className='flex flex-col gap-6 border-t border-[#e5e5e5]'>
                                 <label>Intervalo de Preço</label>
-                                <Slider
-                                    size="small"
-                                    aria-label="Small"
-                                    valueLabelDisplay="auto"
-                                    min={0}
-                                    max={9999}
-                                />
+                                <Slider size="small" aria-label="Small" valueLabelDisplay="auto" min={0} max={9999} {...register("preço")} />
                             </AccordionDetails>
                         </Accordion>
                         
@@ -88,7 +83,7 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                                <Typography>Marcas</Typography>
+                                <Typography>Categoria</Typography>
                             </AccordionSummary>
                             <AccordionDetails className='flex flex-col gap-6 border-t border-[#e5e5e5]'>
                                 {categorias.map((category: CardKeys) => (
@@ -100,7 +95,7 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                             </AccordionDetails>
                         </Accordion>
                         
-                        <button className='w-full py-2 bg-blue-600 text-white'>Aplicar Filtro</button>
+                        <button type="submit" className='w-full py-2 bg-blue-600 text-white'>Aplicar Filtro</button>
                     </form>
                 </section>
             </div>
@@ -125,5 +120,9 @@ export function FiltroProduto(props: FiltroProdutoProps) {
         })
 
         return aux;
+    }
+
+    function applyFilter(e){
+        console.log(e);
     }
 }
