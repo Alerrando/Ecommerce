@@ -116,3 +116,11 @@ input[type=number]{
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
+@media screen and (max-width: 767px){
+  .descricao-carrinho{
+    max-width: 40ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
