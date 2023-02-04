@@ -28,6 +28,7 @@ export type CardKeys = {
     price: number;
     estoque: number;
     imagemCarrossel: string;
+    quantProduct: number;
 };
 
 type PriceProps = {
@@ -99,8 +100,19 @@ function CreateContextProvider({children}: IPropsContext){
 
             let infoProduto = {
                 id: modalInfo.id,
-                quant: quantProduct,
-                preço: preçoProduto,
+                url: product.url,
+                image: product.image,
+                titulo: product.titulo,
+                subTitulo: product.subTitulo,
+                desconto: product.desconto,
+                categoria: product.categoria,
+                destaque: product.destaque,
+                imageDestaque: product.imageDestaque,
+                descricao: product.descricao,
+                price: preçoProduto,
+                estoque: product.estoque,
+                imagemCarrossel: product.imagemCarrossel,
+                quantProduct: quantProduct,
             }
             
             aux.push(infoProduto);

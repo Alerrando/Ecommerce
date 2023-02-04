@@ -11,7 +11,7 @@ export function App() {
       getProduct();
       const savedInfos = JSON.parse(localStorage.getItem('react-ecommerce-data') || "");
 
-      if(savedInfos.length > 0){
+      if(savedInfos.length > 0 && Object.keys(user).length > 0){
         setUser(prevState => {
           return {...prevState, carrinho: savedInfos}
         })
