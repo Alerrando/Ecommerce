@@ -14,7 +14,7 @@ export function Main() {
   const navigate = useNavigate();
 
   return (
-    <main className="w-full absolute flex items-center justify-center text-white bg-login-register bg-cover h-[-webkit-fill-available]">
+    <main className="w-full absolute flex items-center justify-center text-white bg-cover h-[-webkit-fill-available]" style={{background: 'url("Login/background.jpg")', backgroundSize: "cover"}}>
       <div className="w-[380px] md:w-[46%] h-[500px] md:h-auto bg-white overflow-auto rounded-2xl border border-zinc-600 shadow-lg">
         <div className="grid gap-4 px-6 py-6">
           <header className="w-full h-auto text-black" translate="no">

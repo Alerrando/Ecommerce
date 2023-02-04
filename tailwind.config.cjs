@@ -3,9 +3,6 @@ module.exports = {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
-      backgroundImage: {
-        "login-register": "url('Login/background.jpg')"
-      },
       colors: {
         "sombreamento": "rgba(0, 0, 0, 0.8)"
       },
