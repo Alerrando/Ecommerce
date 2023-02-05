@@ -11,11 +11,6 @@ export function Header() {
     menu == "block" ? setMenu("hidden") : setMenu("block");
   }
 
-  useEffect(() => {
-    priceCart()
-  }, [user.carrinho])
-
-
   return (
     <header className="h-24 md:h-auto w-full pt-4 lg:pt-0 relative md:fixed bg-white z-50">
       <div className="alinhamento justify-between pt-1 md:pt-4 mx-4 md:mx-20">

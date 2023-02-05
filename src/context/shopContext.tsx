@@ -31,11 +31,6 @@ export type CardKeys = {
     quantProduct: number;
 };
 
-type PriceProps = {
-    preço: number,
-    quant: number
-}
-
 type ShopContextProps = {
     user: userProps,
     setUser: (user: userProps) => void,
@@ -48,7 +43,6 @@ type ShopContextProps = {
     setProducts: (products: CardKeys[]) => void,
     favoritos: string[],
     setFavoritos: (favoritos: string[]) => void,
-    priceCart: () => number,
     handleFavorites: (subTitulo: string) => void;
     addCart: (quantProduct: number, product: CardKeys) => void,
 }
@@ -61,16 +55,6 @@ function CreateContextProvider({children}: IPropsContext){
     const [modalInfo, setModalInfo] = useState<CardKeys>({} as CardKeys);
     const [products, setProducts] = useState<CardKeys[]>([] as CardKeys[]);
     const [favoritos, setFavoritos] = useState<string[]>([])
-
-    function priceCart(){
-        const carrinhoAux = user.carrinho;
-        let price = 0;
-        carrinhoAux?.forEach((cart: PriceProps) => {
-            price += (cart.preço * cart.quant);
-        })
-    
-        return price;
-    }
 
     function searchRegistrarion(login: object | any){
         let verificar = -1;
@@ -128,7 +112,7 @@ function CreateContextProvider({children}: IPropsContext){
     }
     
     return(
-        <ShopContext.Provider value={{user, setUser, registers, setRegisters, searchRegistrarion, modalInfo, setModalInfo, products, setProducts, favoritos, setFavoritos, priceCart, handleFavorites, addCart}}>
+        <ShopContext.Provider value={{user, setUser, registers, setRegisters, searchRegistrarion, modalInfo, setModalInfo, products, setProducts, favoritos, setFavoritos, handleFavorites, addCart}}>
             {children}
         </ShopContext.Provider>
     )

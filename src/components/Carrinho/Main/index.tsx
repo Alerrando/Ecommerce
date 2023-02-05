@@ -34,7 +34,7 @@ export function Main() {
                 </section>
             </section>
 
-            <aside className='w-full md:w-[30%] h-auto md:mx-20 py-4 bg-white'>
+            <aside className='w-full md:w-[35%] h-auto md:mx-20 py-4 bg-white'>
                 <ResumoCompra />
             </aside>
         </main>
