@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { ShoppingBag, ShoppingCart, Trash } from 'phosphor-react'
 import { ShopContext } from '../../../context/shopContext';
 import { ProdutosCarrinho } from './ProdutosCarrinho';
+import { ResumoCompra } from './ResumoCompra';
 
 export function Main() {
     const { user ,setUser } = useContext(ShopContext)
@@ -33,8 +34,8 @@ export function Main() {
                 </section>
             </section>
 
-            <aside className='w-[30%] h-auto md:mx-20 py-4 px-8 bg-white'>
-
+            <aside className='w-full md:w-[30%] h-auto md:mx-20 py-4 bg-white'>
+                <ResumoCompra />
             </aside>
         </main>
     );

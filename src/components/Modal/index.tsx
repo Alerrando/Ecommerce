@@ -10,8 +10,8 @@ export function Modal(){
  
     return (
         <div className='w-full h-screen fixed flex items-center justify-center top-0 left-0 bg-sombreamento z-50'>
-            <div className='w-2/3 h-3/4 px-0 sm:pl-6 bg-white overflow-auto sm:overflow-hidden'>
-                <header className='w-[97%] py-2 flex items-center justify-between'>
+            <div className='w-3/4 md:w-2/3 h-3/4 px-0 sm:pl-6 bg-white overflow-auto sm:overflow-hidden'>
+                <header className='w-full md:w-[97%] py-2 px-1 md:px-0 flex items-center justify-between'>
                     <X size={26} className="cursor-pointer" onClick={() => setModalInfo({} as CardKeys)} />
                     <span className='cursor-pointer' onClick={() => handleFavorites(modalInfo.subTitulo)}>{hearth}</span>
                 </header>
