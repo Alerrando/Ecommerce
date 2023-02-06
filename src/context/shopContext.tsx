@@ -78,12 +78,13 @@ function CreateContextProvider({children}: IPropsContext){
     }
 
     function addCart(quantProduct: number, product: CardKeys){
+        debugger;
         if(Object.keys(user).length > 0){
             const aux: any[] = user.carrinho;
-            const preçoProduto = product.desconto == 0 ? modalInfo.price : modalInfo.price - ((modalInfo.desconto / 100) * modalInfo.price)
+            const preçoProduto = product.desconto == 0 ? product.price : product.price - ((product.desconto / 100) * product.price)
 
             let infoProduto = {
-                id: modalInfo.id,
+                id: product.id,
                 url: product.url,
                 image: product.image,
                 titulo: product.titulo,

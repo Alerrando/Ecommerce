@@ -6,6 +6,7 @@ import { Produtos } from './components/Produtos';
 import { Login } from './components/Login'
 import { Register } from './components/Register'
 import { Carrinho } from './components/Carrinho';
+import { Favoritos } from './components/Favoritos';
 
 
 export function Router(){
@@ -18,6 +19,7 @@ export function Router(){
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/carrinho" element={<Carrinho />} />
+                <Route path="/favoritos" element={<Favoritos />} />
             </Routes>
         </BrowserRouter>
     )

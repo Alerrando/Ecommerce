@@ -5,6 +5,9 @@ import { CardKeys, ShopContext } from '../../../../context/shopContext';
 export function ProdutosCarrinho() {
     const { user, setUser } = useContext(ShopContext);
 
+    console.log(user.carrinho)
+
+
     return (
         <>
             {user.carrinho.map((carrinho: CardKeys, index: Key) => (
@@ -95,6 +98,7 @@ export function ProdutosCarrinho() {
     }
 
     function calcProduct(price: number, quant:number){
+        console.log(price, quant)
         return price * quant;
     }
 }

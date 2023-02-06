@@ -10,7 +10,7 @@ type PriceProps = {
 
 export function ResumoCompra() {
     const { user } = useContext(ShopContext);
-    const frete = Math.floor(Math.random() * (1000 - 100) + 100) / 100
+    const frete = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
 
     return (
         <div className='w-full h-ful py-2 px-4'>
