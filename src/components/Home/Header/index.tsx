@@ -14,7 +14,7 @@ export function Header() {
 
   return (
     <header className="h-24 md:h-auto w-full pt-4 lg:pt-0 relative md:fixed bg-white z-50">
-      <div className="alinhamento justify-between pt-1 md:pt-4 mx-4 md:mx-20">
+      <div className="max-w-[60.9375rem] alinhamento justify-between pt-1 md:pt-4 mx-4 md:mx-20">
         <h1 className="text-4xl font-Playfair-Display text-[#595959] font-semibold">
           TechSoft
         </h1>

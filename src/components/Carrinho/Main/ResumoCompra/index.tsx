@@ -10,7 +10,7 @@ type PriceProps = {
 
 export function ResumoCompra() {
     const { user } = useContext(ShopContext);
-    const frete = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
+    const freight = calcFreight();
 
     return (
         <div className='w-full h-ful py-2 px-4'>
@@ -27,13 +27,13 @@ export function ResumoCompra() {
 
                 <div className='flex items-center justify-between py-3 border-b border-[#e5e5e5]'>
                     <h2 className='opacity-60 text-sm'>Frete: </h2>
-                    <span className='font-semibold'>{`R$${frete}`}</span>
+                    <span className='font-semibold'>{`R$${freight}`}</span>
                 </div>
 
                 <div className='flex flex-col items-start py-3'>
                     <div className='w-full flex items-center justify-between'>
                         <h2 className='text-base'>Total: </h2>
-                        <span className='font-semibold text-lg'>{`R$${priceCart() + frete}`}</span>
+                        <span className='font-semibold text-lg'>{`R$${priceCart() + freight}`}</span>
                     </div>
 
                     <div className='w-full flex flex-col items-start pt-6 pb-2 border-b border-[#b9b9b9]'>
@@ -73,14 +73,20 @@ export function ResumoCompra() {
     }
 
     function calcDiscountTicket(){
-        return Math.floor(priceCart() + frete - (0.15 * (priceCart() + frete)));
+        return Math.floor(priceCart() + freight - (0.15 * (priceCart() + freight)));
     }
 
     function confirmPurchase(){
         Object.keys(user).length == 0 ? alert("Você precisa estar logado para realizar a compra") : 
         Object.keys(user.carrinho).length > 0 ? alert("Compra Realizada com sucesso")
         : alert("Adicione algum produto no carinho");
+    }
 
-
+    function calcFreight(){
+        if(priceCart() > 150)
+            return 0.0;
+        else{
+            return 100 * priceCart() / (1000);
+        }
     }
 }

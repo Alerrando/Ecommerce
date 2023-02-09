@@ -41,10 +41,12 @@ export function Main() {
     );
 
     function handleDeleteAllProducts(){
-        const deleteAllProducts = [];
-
-        setUser(prevState => {
-            return { ...prevState, carrinho: deleteAllProducts }
-        })
+        if(confirm("Tem certeza que deseja remover todos os produtos?")){
+            const deleteAllProducts = [];
+    
+            setUser(prevState => {
+                return { ...prevState, carrinho: deleteAllProducts }
+            })
+        }
     }
 }
