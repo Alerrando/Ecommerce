@@ -1,20 +1,23 @@
-import { List, ShoppingCart, X, User, SignIn } from "phosphor-react";
-import React, { useContext, useEffect, useState } from "react";
+import { List, ShoppingCart, X, User, SignIn, HeartStraight, Gear, SignOut } from "phosphor-react";
+import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography } from '@mui/material';
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ShopContext } from '../../../context/shopContext';
 import { MenuDropDown } from './MenuDropDown'
 
 export function Header() {
   const [menu, setMenu] = useState("hidden");
   const { user } = useContext(ShopContext);
+  const [dropDown, setDropDown] = useState<boolean>(false);
 
   function handleMenu() {
     menu == "block" ? setMenu("hidden") : setMenu("block");
   }
 
   return (
-    <header className="h-24 md:h-auto w-full pt-4 lg:pt-0 relative md:fixed bg-white z-50">
-      <div className="max-w-[60.9375rem] alinhamento justify-between pt-1 md:pt-4 mx-4 md:mx-20">
+    <header className="h-auto w-full pt-4 lg:pt-0 relative md:fixed bg-white z-50">
+      <div className="w-full md:max-w-[85%] alinhamento justify-between pt-1 md:pt-4 md:mx-20">
         <h1 className="text-4xl font-Playfair-Display text-[#595959] font-semibold">
           TechSoft
         </h1>
@@ -46,7 +49,7 @@ export function Header() {
                 <SignIn size={32} />
               </Link>
             ) : (
-              <MenuDropDown />
+              <MenuDropDown dropDown={dropDown} setDropDown={setDropDown} />
             ) }
           </div>
         </div>
@@ -86,8 +89,38 @@ export function Header() {
             
 
           <div className="h-full w-[90%] flex md:hidden flex-row items-end justify-between">
-            <Link className="h-8 w-24 bg-blue-600 flex items-center justify-center rounded-md text-white" to="/login">Login</Link>
-            <Link className="h-8 w-24 bg-blue-600 flex items-center justify-center rounded-md text-white" to="/register">Registro</Link>
+            {Object.keys(user).length > 0 ? (
+              <>
+                <Accordion>
+                  <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                  >
+                      <Typography>Menu Usuário</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails className='flex flex-col gap-4 border-t border-[#e5e5e5]'>
+                      <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all">
+                          <HeartStraight size={32} />
+                          <span translate='no'>Oferta</span>
+                      </div>
+                      <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all">
+                          <Gear size={32} />
+                          <span translate='no'>Configurações</span>
+                      </div>
+                      <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all">
+                          <SignOut size={32} />
+                          <span translate='no'>Sair</span>
+                      </div>
+                  </AccordionDetails>
+                </Accordion>
+              </>
+            ) : (
+              <>
+                <Link className="h-8 w-24 bg-blue-600 flex items-center justify-center rounded-md text-white" to="/login">Login</Link>
+                <Link className="h-8 w-24 bg-blue-600 flex items-center justify-center rounded-md text-white" to="/register">Registro</Link>
+              </>
+            )}
           </div>
         </div>
       </nav>

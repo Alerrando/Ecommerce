@@ -1,95 +1,25 @@
-import * as React from 'react';
-import { PersonAdd, Settings, Logout } from '@mui/icons-material'
-import { Avatar, Box ,Menu, MenuItem, ListItemIcon, Divider, IconButton, Typography, Tooltip } from '@mui/material'
+import { User } from 'phosphor-react';
+import React, { useState } from 'react';
 
+type MenuDropDownProps = {
+  dropDown: boolean,
+  setDropDown: (dropDown: boolean) => void,
+}
 
-export function MenuDropDown(){
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-    function handleClick(event: React.MouseEvent<HTMLElement>){
-      setAnchorEl(event.currentTarget);
-    };
-
-    function handleClose(){
-      setAnchorEl(null);
-    };
+export function MenuDropDown(props: MenuDropDownProps){
+  const { dropDown, setDropDown} = props;
+    
+    
     return (
-      <React.Fragment>
-        <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-          <Tooltip title="Account settings">
-            <IconButton
-              onClick={e => handleClick(e)}
-              size="small"
-              sx={{ ml: 2 }}
-              aria-controls={open ? 'account-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-            >
-              <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
-            </IconButton>
-          </Tooltip>
-        </Box>
-        <Menu
-          anchorEl={anchorEl}
-          id="account-menu"
-          open={open}
-          onClose={() => handleClose()}
-          onClick={() => handleClose()}
-          PaperProps={{
-            elevation: 0,
-            sx: {
-              overflow: 'visible',
-              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-              mt: 1.5,
-              '& .MuiAvatar-root': {
-                width: 32,
-                height: 32,
-                ml: -0.5,
-                mr: 1,
-              },
-              '&:before': {
-                content: '""',
-                display: 'block',
-                position: 'absolute',
-                top: 0,
-                right: 14,
-                width: 10,
-                height: 10,
-                bgcolor: 'background.paper',
-                transform: 'translateY(-50%) rotate(45deg)',
-                zIndex: 0,
-              },
-            },
-          }}
-          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-        >
-          <MenuItem onClick={handleClose}>
-            <Avatar /> Profile
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Avatar /> My account
-          </MenuItem>
-          <Divider />
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <PersonAdd fontSize="small" />
-            </ListItemIcon>
-            Add another account
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
-            Settings
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <Logout fontSize="small" />
-            </ListItemIcon>
-            Logout
-          </MenuItem>
-        </Menu>
-      </React.Fragment>
+      <div className='w-10 h-10 hidden md:flex flex-row items-center justify-center' onClick={() => setDropDown(!dropDown)}>
+        <User size={32} className="cursor-pointer" />
+
+        {dropDown ? (
+          <div className='w-32 h-32 bg-[#222] absolute top-[3.25rem] z-50 arrow-menu'>
+            
+          </div>
+        ) : null}
+
+      </div>
     );
 };
