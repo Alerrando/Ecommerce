@@ -65,7 +65,7 @@ export function Main() {
               <p>Ou conecte com outra conta</p>
 
               <div className="grid gap-2">
-                <div className="w-full h-10 border border-zinc-400 cursor-pointer hover:bg-sombreamento">
+                <div className="w-full h-10 border border-zinc-400 cursor-pointer hover:bg-[#aaa]">
                   <div className="w-full h-full flex items-center gap-6 ml-2">
                     <img
                       src="Login/google-svgrepo-com.svg"
@@ -78,7 +78,7 @@ export function Main() {
                   </div>
                 </div>
 
-                <div className="w-full h-10 border border-zinc-400 cursor-pointer hover:bg-sombreamento">
+                <div className="w-full h-10 border border-zinc-400 cursor-pointer hover:bg-[#aaa]">
                   <div className="w-full h-full flex items-center gap-6 ml-2">
                     <img
                       src="Login/facebook-svgrepo-com.svg"
@@ -90,7 +90,7 @@ export function Main() {
                   </div>
                 </div>
 
-                <div className="w-full h-10 border border-zinc-400 cursor-pointer hover:bg-sombreamento">
+                <div className="w-full h-10 border border-zinc-400 cursor-pointer hover:bg-[#aaa]">
                   <div className="w-full h-full flex items-center gap-6 ml-2">
                     <img
                       src="Login/apple-svgrepo-com.svg"

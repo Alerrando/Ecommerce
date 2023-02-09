@@ -1,5 +1,6 @@
-import { User } from 'phosphor-react';
+import { Gear, HeartStraight, SignOut, User } from 'phosphor-react';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type MenuDropDownProps = {
   dropDown: boolean,
@@ -15,8 +16,21 @@ export function MenuDropDown(props: MenuDropDownProps){
         <User size={32} className="cursor-pointer" />
 
         {dropDown ? (
-          <div className='w-32 h-32 bg-[#222] absolute top-[3.25rem] z-50 arrow-menu'>
-            
+          <div className='w-auto h-auto bg-[#fff] flex flex-col items-center justify-start gap-3 py-2 absolute top-[3.25rem] border rounded-md z-50 arrow-menu text-black'>
+            <Link to="/favoritos" className="w-full h-9 flex flex-row items-center gap-6 cursor-pointer px-4 hover:bg-[#ddd] transition-all">
+                <HeartStraight size={26} />
+                <span translate='no'>Favoritos</span>
+            </Link>
+
+            <div className="w-full h-9 flex flex-row items-center gap-6 cursor-pointer px-4 hover:bg-[#ddd] transition-all">
+                <Gear size={26} />
+                <span translate='no'>Configurações</span>
+            </div>
+
+            <div className="w-full h-9 flex flex-row items-center gap-6 cursor-pointer px-4 hover:bg-[#ddd] transition-all">
+                <SignOut size={26} />
+                <span translate='no'>Sair</span>
+            </div>
           </div>
         ) : null}
 

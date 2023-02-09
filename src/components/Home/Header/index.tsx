@@ -102,7 +102,7 @@ export function Header() {
                   <AccordionDetails className='flex flex-col gap-4 border-t border-[#e5e5e5]'>
                       <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all">
                           <HeartStraight size={32} />
-                          <span translate='no'>Oferta</span>
+                          <span translate='no'>Favoritos</span>
                       </div>
                       <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all">
                           <Gear size={32} />
