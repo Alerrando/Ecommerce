@@ -22,7 +22,7 @@ export function Main() {
       <Filtro setModalFiltro={setModalFiltro} />
       <DisplayProdutos />
       {Object.keys(modalInfo).length > 0 ? (
-          <Modal />
+          <Modal id={modalInfo.id} />
       ): null}
 
     {modalFiltro ? ( <FiltroProduto setModalFiltro={setModalFiltro} /> ) : null}

@@ -5,7 +5,7 @@ import { ShopContext } from '../../../context/shopContext';
 
 export function Header() {
   const [menu, setMenu] = useState("hidden");
-  const { user, priceCart } = useContext(ShopContext);
+  const { user } = useContext(ShopContext);
 
   function handleMenu() {
     menu == "block" ? setMenu("hidden") : setMenu("block");

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { CardKeys, ShopContext } from '../../../context/shopContext';
 import { ImageDisplay } from './ImageDisplay';
 import { InfoProduto } from './InfoProduto';
+import { useQuery } from 'react-query'
+import { filterProduct } from '../../../api';
 
 type MainProps = {
     produto: CardKeys

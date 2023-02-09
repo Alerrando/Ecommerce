@@ -10,9 +10,7 @@ type InfoProdutoProps = {
 
 export function InfoProduto(props: InfoProdutoProps) {
     const [quantProduct, setQuantProduct] = useState(1);
-    const { addCart, produto } = props
-
-    console.log(produto)
+    const { addCart, produto } = props;
 
   return (
     <aside className="w-auto h-full">
@@ -100,7 +98,7 @@ export function InfoProduto(props: InfoProdutoProps) {
         </p>
         <p className="flex flex-row items-center gap-4">
             <span className="font-bold text-sm">Tag: </span>
-            <Link to="/produtos" className="opacity-50 hover:opacity-100">{produto.subTitulo.split(' ')[0]}</Link>
+            <Link to="/produtos" className="opacity-50 hover:opacity-100">{produto.subTitulo}</Link>
         </p>
       </div>
     </aside>

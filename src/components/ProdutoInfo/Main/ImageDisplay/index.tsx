@@ -12,7 +12,7 @@ export function ImageDisplay(props: ImageDisplayProps) {
     return (
         <div>
             <div className='flex flex-col gap-6'>
-                <div className='w-[100%] md:w-[32.1875rem] h-full sm:h-auto sm:max-h-[70%] sm:mx-0 border border-[#e5e5e5]'>
+                <div className='w-[100%] md:w-[31.1875rem] h-full sm:h-auto sm:max-h-[70%] sm:mx-0 border border-[#e5e5e5]'>
                     <img src={selectImage == 0 ? produto.image : produto.imageDestaque} alt={produto.url} className="w-full sm:w-[55%] md:w-[70%] h-full bg-cover mx-auto" />
 
                 </div>

@@ -1,11 +1,19 @@
 import { Minus, Plus, X } from 'phosphor-react'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useQuery } from 'react-query';
+import { filterProduct } from '../../api';
 import { CardKeys, ShopContext } from '../../context/shopContext'
 
-export function Modal(){
+type ModalProps = {
+    id: number;
+}
+
+export function Modal(props: ModalProps){
     const [quantProduct, setQuantProduct] = useState<number>(1);
+    const { id } = props;
     const { modalInfo, setModalInfo, favoritos, handleFavorites, addCart } = React.useContext(ShopContext);
-    
+    const { data } = useQuery(["product", id], () => filterProduct(id));
+
     const hearth = favoritos.includes(modalInfo.subTitulo) ? "❤️" : "🖤";
  
     return (
@@ -17,18 +25,18 @@ export function Modal(){
                 </header>
 
                 <section className='w-full h-[85%] block sm:flex'>
-                    <img src={modalInfo.image} alt={modalInfo.url} className="w-full md:w-[55%] h-[60%] sm:h-[80%] md:h-full object-cover" />
+                    <img src={data == undefined ? modalInfo.image : data.image} alt={data == undefined ? modalInfo.url :data.url} className="w-full md:w-[55%] h-[60%] sm:h-[80%] md:h-full object-cover" />
 
                     <div className='flex flex-col gap-6 px-6 overflow-auto'>
-                        <h2 className='text-xl border-b pb-4 border-b-gray-400'>{modalInfo.descricao}</h2>
+                        <h2 className='text-xl border-b pb-4 border-b-gray-400'>{data == undefined ? modalInfo.descricao :data.descricao}</h2>
 
                         <div className='flex flex-row items-center justify-start gap-4'>
-                            {modalInfo.desconto == 0 ? (
-                                <h2 className='text-red-600 text-lg font-semibold'>{`R$${modalInfo.price},00`}</h2>
+                            {data == undefined ? modalInfo.desconto :data.desconto == 0 ? (
+                                <h2 className='text-red-600 text-lg font-semibold'>{`R$${data == undefined ? modalInfo.price :data.price},00`}</h2>
                             ): (
                                 <>
-                                    <h2 className='text-lg text-gray-600 line-through'>{`R$${modalInfo.price},00`}</h2>
-                                    <h2 className='text-lg text-red-600'>{`R$${modalInfo.price - ((modalInfo.desconto / 100) * modalInfo.price)}`}</h2>
+                                    <h2 className='text-lg text-gray-600 line-through'>{`R$${data.price},00`}</h2>
+                                    <h2 className='text-lg text-red-600'>{`R$${data.price - ((data.desconto / 100) * data.price)}`}</h2>
                                 </>
                             )}
                         </div>
@@ -45,7 +53,7 @@ export function Modal(){
                         </div>
 
                         <div className='border-y-2 border-gray-400'>
-                            <p className='text-green-600 py-3'>{`${modalInfo.estoque} em estoque`}</p>
+                            <p className='text-green-600 py-3'>{`${data == undefined ? modalInfo.estoque : data.estoque} em estoque`}</p>
                         </div>
 
                         <div className='flex flex-col'>
@@ -71,5 +79,4 @@ export function Modal(){
             </div>
         </div>
     )
-
 }

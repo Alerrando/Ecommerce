@@ -25,7 +25,7 @@ export function Produtos(){
             )}
 
             {Object.keys(modalInfo).length > 0 ? (
-                <Modal />
+                <Modal id={modalInfo.id} />
             ): null}
         </section>
     )
