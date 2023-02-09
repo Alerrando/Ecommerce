@@ -1,6 +1,7 @@
-import { ArrowLeft, Minus, Plus, Trash } from 'phosphor-react';
-import React, { Key, useContext, useState } from 'react';
+import { Minus, Plus, Trash } from 'phosphor-react';
+import React, { Key, useContext } from 'react';
 import { CardKeys, ShopContext } from '../../../../context/shopContext';
+import { Link } from 'react-router-dom';
 
 export function ProdutosCarrinho() {
     const { user, setUser } = useContext(ShopContext);
@@ -19,7 +20,9 @@ export function ProdutosCarrinho() {
 
                         <div className='w-full h-full flex flex-col justify-between p-2 gap-8 md:gap-16'>
                             <div className='flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-0'>
-                                <h2 className='md:w-[60%] w-full text-sm md:text-base descricao-carrinho '>{carrinho.descricao}</h2>
+                                <Link to={`/produtos/${carrinho.id}/${carrinho.url}`}>
+                                    <h2 className='md:w-[60%] w-full text-sm md:text-base descricao-carrinho hover:underline'>{carrinho.descricao}</h2>
+                                </Link>
 
                                 <div className='flex items-center flex-row justify gap-3 sm:gap-4'>
                                     <div className='border border-zinc-400 py-1 sm:py-2 w-7 sm:w-9 text-sm sm:text-lg flex items-center justify-center rounded cursor-pointer' onClick={() => carrinho.quantProduct > 1 ? handleAddOrRemoveQuantProduct(carrinho, index, false) : null}>

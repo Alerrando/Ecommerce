@@ -16,8 +16,8 @@ export function Header() {
   }
 
   return (
-    <header className="h-auto w-full pt-4 lg:pt-0 relative md:fixed bg-white z-50">
-      <div className="w-full md:max-w-[85%] alinhamento justify-between pt-1 md:pt-4 md:mx-20">
+    <header className="h-auto w-full pt-4 lg:pt-0 relative md:fixed bg-white z-50 md:px-20">
+      <div className="w-full md:max-w-full alinhamento justify-between pt-1 md:pt-4 ">
         <h1 className="text-4xl font-Playfair-Display text-[#595959] font-semibold">
           TechSoft
         </h1>
@@ -38,7 +38,7 @@ export function Header() {
           <Link className="flex items-center justify-between gap-2" to="/carrinho">
             <ShoppingCart size={24} weight="bold" />
 
-            <div className="w-4 h-4 rounded-full absolute flex items-center justify-center top-[-3px] left-4 bg-[#ff0000] text-white">
+            <div className="w-4 h-4 rounded-full absolute flex items-center justify-center top-[-1px] left-4 bg-[#ff0000] text-white">
               <span className="text-sm">{Object.keys(user).length != 0 ? user.carrinho.length : 0}</span>
             </div>
           </Link>
@@ -63,9 +63,9 @@ export function Header() {
       </div>
 
       <nav
-        className={`md:block fixed h-screen md:h-20 lg:h-14 left-0 z-20 top-0 w-full md:w-full bg-sombreamento md:bg-transparent md:relative ${menu}`}
+        className={`w-full md:w-full h-screen md:h-20 md:block fixed  lg:h-14 left-0 z-20 top-0  bg-sombreamento md:bg-transparent md:relative ${menu}`}
       >
-        <div className="h-full w-[80%] flex flex-col md:flex-row md:items-center md:justify-between py-2 md:py-0 pl-4 md:pl-0 bg-white text-black md:mx-20">
+        <div className="h-full w-[80%] flex flex-col md:flex-row md:items-center md:justify-between py-2 md:py-0 pl-4 md:pl-0 bg-white text-black">
           <header className="h-auto w-full my-2 flex items-center jsutify-start md:hidden">
             <X
               size={26}
