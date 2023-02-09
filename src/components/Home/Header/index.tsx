@@ -2,6 +2,7 @@ import { List, ShoppingCart, X, User, SignIn } from "phosphor-react";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from '../../../context/shopContext';
+import { MenuDropDown } from './MenuDropDown'
 
 export function Header() {
   const [menu, setMenu] = useState("hidden");
@@ -45,8 +46,7 @@ export function Header() {
                 <SignIn size={32} />
               </Link>
             ) : (
-              <User size={32} />
-              
+              <MenuDropDown />
             ) }
           </div>
         </div>
