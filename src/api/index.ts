@@ -1,17 +1,16 @@
 import axios from "axios";
 import { CardKeys } from "../context/shopContext"
+const url = "https://api-loja-production.up.railway.app/"
 
 export function getProdutos(){
-    return axios.get("https://api-loja-production.up.railway.app/").then(response => response.data)
+    return axios.get(`${url}`).then(response => response.data)
 }
 
-export async function filterProduct(id: number){
-        let aux: CardKeys[] = []
-        await fetch("https://api-loja-production.up.railway.app/")
-        .then(response => response.json())
-        .then(data => aux = data)
+export function filterProduct(id: number){
+    let aux: CardKeys[] = []
+    axios.get(`${url}`).then(response => aux.push(response.data))
 
-        const productFilter  = aux.filter(product => product.id == id);
+    const productFilter  = aux.filter(product => product.id == id);
 
-        return productFilter[0];
+    return productFilter[0];
 }
