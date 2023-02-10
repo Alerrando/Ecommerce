@@ -6,10 +6,10 @@ export function getProdutos(){
     return axios.get(`${url}`).then(response => response.data)
 }
 
-export function filterProduct(id: number){
+export async function filterProduct(id: number){
+    debugger;
     let aux: CardKeys[] = []
-    axios.get(`${url}`).then(response => aux.push(response.data))
-
+    aux = await axios.get(`${url}`).then(response => response.data)
     const productFilter  = aux.filter(product => product.id == id);
 
     return productFilter[0];

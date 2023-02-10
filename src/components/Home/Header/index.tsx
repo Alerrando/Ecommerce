@@ -38,7 +38,7 @@ export function Header() {
           <Link className="flex items-center justify-between gap-2" to="/carrinho">
             <ShoppingCart size={24} weight="bold" />
 
-            <div className="w-5 h-5 rounded-full absolute flex items-center justify-center top-[-1px] left-4 text-xs font-bold bg-[#E35214] text-white">
+            <div className="w-4 h-4 rounded-full absolute flex items-center justify-center top-[-1px] left-4 bg-[#ff0000] text-white">
               <span className="text-sm">{user != undefined && Object.keys(user).length != 0 ? user.carrinho.length : 0}</span>
             </div>
           </Link>
@@ -100,10 +100,10 @@ export function Header() {
                       <Typography>Menu Usuário</Typography>
                   </AccordionSummary>
                   <AccordionDetails className='flex flex-col gap-4 border-t border-[#e5e5e5]'>
-                      <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all">
+                      <Link to="/favoritos" className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all">
                           <HeartStraight size={32} />
                           <span translate='no'>Favoritos</span>
-                      </div>
+                      </Link>
                       <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all">
                           <Gear size={32} />
                           <span translate='no'>Configurações</span>

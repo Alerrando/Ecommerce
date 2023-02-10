@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { CardKeys, ShopContext } from '../../../context/shopContext';
 import { ImageDisplay } from './ImageDisplay';
 import { InfoProduto } from './InfoProduto';
-import { useQuery } from 'react-query'
-import { filterProduct } from '../../../api';
 
 type MainProps = {
     produto: CardKeys
@@ -13,30 +11,28 @@ type MainProps = {
 
 export function Main(props: MainProps) {
     const { produto } = props;
-    const { favoritos, handleFavorites, addCart, user, setUser} = useContext(ShopContext)
+    const { registers, setRegisters, favoritos, handleFavorites, addCart, user} = useContext(ShopContext);
     const hearth = favoritos.includes(produto.subTitulo) ? "❤️" : "🖤";
-
+  
+  
     useEffect(() => {
-        try {
-          const savedInfos = JSON.parse(localStorage.getItem('react-ecommerce-data') || "");
-    
-          if(savedInfos.length > 0){
-            setUser(prevState => {
-              return {...prevState, carrinho: savedInfos}
-            })
-          }
-        } catch (error) {
-          console.log(error);
-        }
+      try {
+        const savedInfos = JSON.parse(localStorage.getItem('react-ecommerce-data') || "");
         
+        if(savedInfos.length > 0){
+          setRegisters(savedInfos);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }, [])
     
     useEffect(() => {
-        localStorage.setItem(
-            'react-ecommerce-data',
-            JSON.stringify(user.carrinho)
-        );
-    }, [user.carrinho]);
+      localStorage.setItem(
+        'react-ecommerce-data',
+        JSON.stringify(registers)
+      );
+    }, [user.carrinho != undefined]);
 
 
     return (

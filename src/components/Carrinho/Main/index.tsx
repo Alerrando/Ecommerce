@@ -8,14 +8,14 @@ export function Main() {
     const { user ,setUser } = useContext(ShopContext)
 
     return (
-        <main className='w-full h-screen pt-[3%] md:pt-[11%] pb-6 bg-[#e5e5e5] flex flex-col gap-8 md:gap-0 md:flex-row md:justify-center'>
-             <section className='w-full md:w-[90%] h-auto md:ml-16 py-4 px-4 md:px-8 bg-white overflow-auto'>
+        <main className='w-full h-screen pt-[3%] md:pt-[11%] pb-6 px-2 md:px-0 bg-[#e5e5e5] flex flex-col gap-8 md:gap-0 md:flex-row md:justify-center'>
+             <section className='w-full md:w-[90%] h-auto md:ml-16 md:py-4 px-4 md:px-8 bg-white overflow-auto'>
                 <header className='w-full h-auto py-2 flex items-center justify-start gap-4'>
                     <ShoppingCart size={30} className="text-[#ff0000]" />
                     <h2 className='text-xl font-bold'>Meu Carrinho</h2>
                 </header>
 
-                <section className='w-full h-auto mt-[2%]'>
+                <section className='w-full h-auto md:mt-[2%]'>
                     <div className='w-full h-auto py-2 border-b border-[#929292] flex items-center justify-between'>
                         <div className='flex flex-row-reverse items-center gap-6'>
                             <h2 className='font-bold text-xl'>Produtos</h2>
