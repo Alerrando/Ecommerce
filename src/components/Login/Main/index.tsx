@@ -123,7 +123,6 @@ export function Main() {
   }
 
   function checkRegisters(login: object | any) {
-    debugger;
     if(searchRegistrarion(login) == 0){
         const aux: userProps | any = {
             id: Object.keys(user).length,

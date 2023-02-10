@@ -19,8 +19,6 @@ export function ProdutoInfo() {
     }) ()
   }, [])
 
-  console.log(produto, data)
-
   return (
     <> 
           <Header />

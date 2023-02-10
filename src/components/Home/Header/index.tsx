@@ -39,12 +39,12 @@ export function Header() {
             <ShoppingCart size={24} weight="bold" />
 
             <div className="w-4 h-4 rounded-full absolute flex items-center justify-center top-[-1px] left-4 bg-[#ff0000] text-white">
-              <span className="text-sm">{Object.keys(user).length != 0 ? user.carrinho.length : 0}</span>
+              <span className="text-sm">{user != undefined && Object.keys(user).length != 0 ? user.carrinho.length : 0}</span>
             </div>
           </Link>
 
           <div className="hidden md:block">
-            { Object.keys(user).length == 0 ? (
+            { user != undefined && Object.keys(user).length == 0 ? (
               <Link to="/login" className="">
                 <SignIn size={32} />
               </Link>
@@ -89,7 +89,7 @@ export function Header() {
             
 
           <div className="h-full w-[90%] flex md:hidden flex-row items-end justify-between">
-            {Object.keys(user).length > 0 ? (
+            {user != undefined && Object.keys(user).length > 0 ? (
               <>
                 <Accordion>
                   <AccordionSummary

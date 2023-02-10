@@ -4,31 +4,29 @@ import { ShopContext } from './context/shopContext';
 import { getProdutos } from './api';
 
 export function App() {
-  const { modalInfo, setProducts, user, setUser} = useContext(ShopContext);
-
+  const { registers, setRegisters, setProducts, user, setUser} = useContext(ShopContext);
+  
+  
   useEffect(() => {
     try {
       getProduct();
       const savedInfos = JSON.parse(localStorage.getItem('react-ecommerce-data') || "");
-
-      if(savedInfos.length > 0 && Object.keys(user).length > 0){
-        setUser(prevState => {
-          return {...prevState, carrinho: savedInfos}
-        })
+      
+      if(savedInfos.length > 0){
+        setRegisters(savedInfos);
       }
     } catch (error) {
       console.log(error);
     }
-    
   }, [])
-
+  
   useEffect(() => {
-		localStorage.setItem(
-			'react-ecommerce-data',
-			JSON.stringify(user.carrinho)
-		);
-	}, [user.carrinho]);
-
+    localStorage.setItem(
+      'react-ecommerce-data',
+      JSON.stringify(registers)
+    );
+  }, [user.carrinho != undefined]);
+  
   return (
     <>
         <Header />

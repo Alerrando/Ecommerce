@@ -65,6 +65,8 @@ function CreateContextProvider({children}: IPropsContext){
             }
         })
 
+        console.log(verificar)
+
         return registers.length == 0 ? 1 : verificar == -1 ? verificar : 0
     }
 
