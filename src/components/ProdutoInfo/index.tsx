@@ -26,8 +26,8 @@ export function ProdutoInfo() {
     </>
   );
 
-  async function handleFilterProduct(){
-    const aux = await filterProduct(parseInt(id as string));
+  function handleFilterProduct(){
+    const aux = filterProduct(parseInt(id as string));
     return aux;
   }
 }
