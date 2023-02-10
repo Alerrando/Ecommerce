@@ -38,7 +38,7 @@ export function Header() {
           <Link className="flex items-center justify-between gap-2" to="/carrinho">
             <ShoppingCart size={24} weight="bold" />
 
-            <div className="w-4 h-4 rounded-full absolute flex items-center justify-center top-[-1px] left-4 bg-[#ff0000] text-white">
+            <div className="w-5 h-5 rounded-full absolute flex items-center justify-center top-[-1px] left-4 text-xs font-bold bg-[#E35214] text-white">
               <span className="text-sm">{user != undefined && Object.keys(user).length != 0 ? user.carrinho.length : 0}</span>
             </div>
           </Link>
