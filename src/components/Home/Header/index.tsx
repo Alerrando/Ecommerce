@@ -16,7 +16,7 @@ export function Header() {
   }
 
   return (
-    <header className="h-auto w-full py-2 md:pt-4 px-3 lg:pt-0 relative md:fixed bg-white border-b md:border-b-0 z-50 md:px-20">
+    <header className="h-auto w-full py-2 md:pt-4 px-3 lg:pt-0 relative md:fixed bg-white border-b z-50 md:px-20">
       <div className="w-full md:max-w-full alinhamento justify-between pt-1 md:pt-4 ">
         <Link to="/" className="text-4xl font-Playfair-Display text-[#595959] font-semibold">
           TechSoft

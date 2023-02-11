@@ -9,7 +9,7 @@ type PriceProps = {
 }
 
 export function ResumoCompra() {
-    const { user } = useContext(ShopContext);
+    const { user, setUser } = useContext(ShopContext);
     const freight = calcFreight();
 
     return (
@@ -77,9 +77,17 @@ export function ResumoCompra() {
     }
 
     function confirmPurchase(){
-        Object.keys(user).length == 0 ? alert("Você precisa estar logado para realizar a compra") : 
-        Object.keys(user.carrinho).length > 0 ? alert("Compra Realizada com sucesso")
-        : alert("Adicione algum produto no carinho");
+        if(Object.keys(user).length == 0)
+            alert("Você precisa estar logado para realizar a compra")
+        
+        else if(Object.keys(user.carrinho).length > 0){
+            alert("Compra Realizada com sucesso")
+            setUser(prevState => {
+                return { ...prevState, carrinho: [] }
+            })
+        }
+        else
+            alert("Adicione algum produto no carinho");
     }
 
     function calcFreight(){

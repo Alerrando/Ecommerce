@@ -19,7 +19,7 @@ export function Main() {
       <div className="w-full md:w-[40%] h-full md:h-[90%] px-6 bg-white overflow-auto md:rounded-2xl border border-black shadow-lg">
         <div className="h-full grid gap-4 md:px-6 py-6">
           <header className="w-full h-auto text-center pb-4  text-black" translate="no">
-            <h2 className="font-serif text-base md:text-2xl font-bold">
+            <h2 className="font-serif text-2xl font-bold">
               LOGIN
             </h2>
           </header>

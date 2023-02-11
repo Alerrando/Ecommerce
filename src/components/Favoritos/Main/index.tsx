@@ -2,6 +2,7 @@ import React, { Key, useContext, useEffect, useState } from 'react';
 import { HeartStraight, ShoppingCart } from 'phosphor-react'
 import { CardKeys, ShopContext } from '../../../context/shopContext';
 import { getProdutos } from '../../../api/index'
+import { Link } from 'react-router-dom';
 
 export function Main() {
     const [favoritesProducts, setFavoritesProducts] = useState<CardKeys[]>([] as CardKeys[]);
@@ -22,16 +23,16 @@ export function Main() {
                 <div className='w-full h-auto md:h-full flex flex-col items-center justify-start gap-4 md:mb-8'>
                     {favoritesProducts.map((product: CardKeys, index: Key) => (
                         <div className='w-full h-auto md:h-44 flex flex-col md:flex-row items-center justify-between px-2 py-1 border shadow-favoriteProduct' key={index}>
-                            <div className='w-full md:w-3/5 h-full flex items-start justify-start'>
+                            <Link to={`/produtos/${product.id}/${product.url}`} className='w-full md:w-3/5 h-full flex items-start justify-start group'>
                                 <div className='max-w-[8.4375rem] md:min-w-min md:max-w-[30%] h-full pr-4 md:pr-0'>
                                     <img src={product.image} alt={product.descricao} className="md:h-full w-full object-cover" />
                                 </div>
 
                                 <div className='w-[80%] h-full flex flex-col items-start ml-4'>
                                     <span className='text-sm font-normal text-[#7F858D]'>{product.titulo}</span>
-                                    <h2 className='text-sm font-bold md:text-xl'>{product.descricao}</h2>
+                                    <h2 className='text-sm font-bold md:text-xl group-hover:underline'>{product.descricao}</h2>
                                 </div>
-                            </div>
+                            </Link>
 
                             <div className='w-full md:w-2/5 h-full flex flex-row justify-between border-t md:border-t-0 pt-6 gap-6'>
                                 <div className='w-auto h-[80%] flex flex-col items-start justify-center gap-3 md:border-x md:px-12'>
