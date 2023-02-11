@@ -1,11 +1,10 @@
 import { Footer, Header, Main, Parcerias, Produtos } from './components'
 import React, { useContext, useEffect } from "react";
-import { ShopContext } from './context/shopContext';
+import { CardKeys, ShopContext } from './context/shopContext';
 import { getProdutos } from './api';
 
 export function App() {
-  const { registers, setRegisters, setProducts, user, setUser} = useContext(ShopContext);
-  
+  const { registers, setRegisters, setProducts, user,setUser} = useContext(ShopContext);
   
   useEffect(() => {
     try {
@@ -15,6 +14,9 @@ export function App() {
       if(savedInfos.length > 0){
         setRegisters(savedInfos);
       }
+
+      if(user == undefined)
+        setUser({} as CardKeys)
     } catch (error) {
       console.log(error);
     }
