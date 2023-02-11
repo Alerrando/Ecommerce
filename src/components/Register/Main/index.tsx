@@ -156,9 +156,10 @@ export function Main() {
   );
 
   function submit(event) {
-
     createUser(event);
-    navigate("/");
+
+    if(searchRegistrarion(event) != 0)
+      navigate("/");
   }
 
   function createUser(userCreate: object | any){

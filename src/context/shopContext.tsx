@@ -65,8 +65,6 @@ function CreateContextProvider({children}: IPropsContext){
             }
         })
 
-        console.log(verificar)
-
         return registers.length == 0 ? 1 : verificar == -1 ? verificar : 0
     }
 
@@ -80,28 +78,15 @@ function CreateContextProvider({children}: IPropsContext){
     }
 
     function addCart(quantProduct: number, product: CardKeys){
-        debugger;
         if(Object.keys(user).length > 0){
             const aux: any[] = user.carrinho;
             const preçoProduto = product.desconto == 0 ? product.price : product.price - ((product.desconto / 100) * product.price)
 
-            let infoProduto = {
-                id: product.id,
-                url: product.url,
-                image: product.image,
-                titulo: product.titulo,
-                subTitulo: product.subTitulo,
-                desconto: product.desconto,
-                categoria: product.categoria,
-                destaque: product.destaque,
-                imageDestaque: product.imageDestaque,
-                descricao: product.descricao,
-                price: preçoProduto,
-                estoque: product.estoque,
-                imagemCarrossel: product.imagemCarrossel,
-                quantProduct: quantProduct,
-            }
-            
+            let infoProduto:CardKeys = product;
+
+            infoProduto.quantProduct = quantProduct;
+            infoProduto.price = preçoProduto
+
             aux.push(infoProduto);
     
             setUser(prevState => {

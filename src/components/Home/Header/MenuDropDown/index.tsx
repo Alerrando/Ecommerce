@@ -1,6 +1,7 @@
 import { Gear, HeartStraight, SignOut, User } from 'phosphor-react';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ShopContext, userProps } from '../../../../context/shopContext';
 
 type MenuDropDownProps = {
   dropDown: boolean,
@@ -9,6 +10,7 @@ type MenuDropDownProps = {
 
 export function MenuDropDown(props: MenuDropDownProps){
   const { dropDown, setDropDown} = props;
+  const { setUser } = useContext(ShopContext)
     
     
     return (
@@ -27,7 +29,7 @@ export function MenuDropDown(props: MenuDropDownProps){
                 <span translate='no'>Configurações</span>
             </div>
 
-            <div className="w-full h-9 flex flex-row items-center gap-6 cursor-pointer px-4 hover:bg-[#ddd] transition-all">
+            <div className="w-full h-9 flex flex-row items-center gap-6 cursor-pointer px-4 hover:bg-[#ddd] transition-all" onClick={() => setUser({} as userProps)}>
                 <SignOut size={26} />
                 <span translate='no'>Sair</span>
             </div>

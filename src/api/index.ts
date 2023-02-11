@@ -7,7 +7,6 @@ export function getProdutos(){
 }
 
 export async function filterProduct(id: number){
-    debugger;
     let aux: CardKeys[] = []
     aux = await axios.get(`${url}`).then(response => response.data)
     const productFilter  = aux.filter(product => product.id == id);

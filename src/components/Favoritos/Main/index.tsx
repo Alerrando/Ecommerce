@@ -2,12 +2,10 @@ import React, { Key, useContext, useEffect, useState } from 'react';
 import { HeartStraight, ShoppingCart } from 'phosphor-react'
 import { CardKeys, ShopContext } from '../../../context/shopContext';
 import { getProdutos } from '../../../api/index'
-import { Link }from 'react-router-dom'
 
 export function Main() {
     const [favoritesProducts, setFavoritesProducts] = useState<CardKeys[]>([] as CardKeys[]);
     const { favoritos , addCart, handleFavorites } = useContext(ShopContext);
-
 
     useEffect(() => {
         filterFavoritesProducts();

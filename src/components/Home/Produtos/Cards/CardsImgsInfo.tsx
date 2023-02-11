@@ -1,6 +1,6 @@
 import React from "react";
 import { CardKeys, ShopContext } from "../../../../context/shopContext";
-import { Eye, EyeClosed } from 'phosphor-react'
+import { Eye } from 'phosphor-react'
 import { Link } from "react-router-dom";
 
 type CardsImgsInfo = {

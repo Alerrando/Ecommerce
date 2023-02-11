@@ -3,12 +3,12 @@ import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography } fro
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { ShopContext } from '../../../context/shopContext';
+import { ShopContext, userProps } from '../../../context/shopContext';
 import { MenuDropDown } from './MenuDropDown'
 
 export function Header() {
   const [menu, setMenu] = useState("hidden");
-  const { user } = useContext(ShopContext);
+  const { user, setUser } = useContext(ShopContext);
   const [dropDown, setDropDown] = useState<boolean>(false);
 
   function handleMenu() {
@@ -108,7 +108,7 @@ export function Header() {
                           <Gear size={32} />
                           <span translate='no'>Configurações</span>
                       </div>
-                      <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all">
+                      <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all" onClick={() => setUser({} as userProps)}>
                           <SignOut size={32} />
                           <span translate='no'>Sair</span>
                       </div>

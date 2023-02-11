@@ -9,7 +9,7 @@ import { Main } from "./Main";
 export function ProdutoInfo() {
   const { id } = useParams();
   const [produto, setProduto] = useState<CardKeys>({} as CardKeys)
-  const { data, isError } = useQuery(["product", parseInt(id as string)], () => filterProduct(parseInt(id as string)))
+  const { data } = useQuery(["product", parseInt(id as string)], () => filterProduct(parseInt(id as string)))
 
   useEffect(() => {
     (async () => {

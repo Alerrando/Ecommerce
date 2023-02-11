@@ -6,9 +6,6 @@ import { Link } from 'react-router-dom';
 export function ProdutosCarrinho() {
     const { user, setUser } = useContext(ShopContext);
 
-    console.log(user.carrinho)
-
-
     return (
         <>
             {user.carrinho.map((carrinho: CardKeys, index: Key) => (
@@ -58,22 +55,8 @@ export function ProdutosCarrinho() {
     );
 
     function handleAddOrRemoveQuantProduct(product: CardKeys, index: Key, addOrRemove: boolean){
-        let infoProduto = {
-            id: product.id,
-            url: product.url,
-            image: product.image,
-            titulo: product.titulo,
-            subTitulo: product.subTitulo,
-            desconto: product.desconto,
-            categoria: product.categoria,
-            destaque: product.destaque,
-            imageDestaque: product.imageDestaque,
-            descricao: product.descricao,
-            price: product.price,
-            estoque: product.estoque,
-            imagemCarrossel: product.imagemCarrossel,
-            quantProduct: addOrRemove ?  product.quantProduct + 1 : product.quantProduct - 1,
-        }
+        let infoProduto:CardKeys = product;
+        infoProduto.quantProduct = addOrRemove ?  product.quantProduct + 1 : product.quantProduct - 1;
 
         const auxCarrinho = user.carrinho.map((carrinho: CardKeys, indexCarrinho) => {
             if(indexCarrinho === index){
@@ -82,8 +65,6 @@ export function ProdutosCarrinho() {
 
             return carrinho
         })
-
-        console.log(auxCarrinho, infoProduto)
 
         setUser(prevState => {
             return { ...prevState, carrinho: auxCarrinho }
@@ -101,7 +82,6 @@ export function ProdutosCarrinho() {
     }
 
     function calcProduct(price: number, quant:number){
-        console.log(price, quant)
         return price * quant;
     }
 }

@@ -25,7 +25,7 @@ export function App() {
       'react-ecommerce-data',
       JSON.stringify(registers)
     );
-  }, [user.carrinho != undefined]);
+  }, [user.carrinho != undefined, user.favoritos != undefined]);
   
   return (
     <>

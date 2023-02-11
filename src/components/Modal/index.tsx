@@ -1,5 +1,5 @@
 import { Minus, Plus, X } from 'phosphor-react'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useQuery } from 'react-query';
 import { filterProduct } from '../../api';
 import { CardKeys, ShopContext } from '../../context/shopContext'
