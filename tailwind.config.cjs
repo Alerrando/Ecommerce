@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
+      boxShadow: {
+        "favoriteProduct": "rgba(0, 0, 0, 0.35) 0px 5px 15px;",
+      },
       colors: {
         "sombreamento": "rgba(0, 0, 0, 0.8)"
       },

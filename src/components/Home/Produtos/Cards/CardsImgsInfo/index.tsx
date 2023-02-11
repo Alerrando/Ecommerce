@@ -1,5 +1,5 @@
 import React from "react";
-import { CardKeys, ShopContext } from "../../../../context/shopContext";
+import { CardKeys, ShopContext } from "../../../../../context/shopContext";
 import { Eye } from 'phosphor-react'
 import { Link } from "react-router-dom";
 

@@ -12,19 +12,19 @@ export function Main() {
     }, [])
 
     return (
-        <main className='w-full h-screen pt-[5%] md:pt-[12%] px-2 bg-[#e5e5e5] flex flex-row justify-center'>
-            <section className='w-full md:w-[90%] h-[95%] flex flex-col py-2 md:py-1 px-2 md:px-8 gap-2 bg-white overflow-auto'>
-                <header className='w-full h-auto md:py-4 flex flex-row items-center justify-start px-3 gap-6 '>
+        <main className='w-full h-auto pt-[12%] md:pt-[13%] px-2 flex flex-row justify-center'>
+            <section className='w-full md:w-[90%] h-[90%] md:h-[95%] flex flex-col py-2 md:py-1 px-2 md:px-8 gap-2 bg-white'>
+                <header className='w-full h-auto pt-4 pb-2 mb-4 flex flex-row items-center justify-start px-3 gap-6 border-b'>
                     <HeartStraight size={32} className="hearth-favorites text-[#dc2626]" />
                     <h2 className='text-2xl font-bold'>Favoritos</h2>
                 </header>
 
                 <div className='w-full h-auto md:h-full flex flex-col items-center justify-start gap-4 md:mb-8'>
                     {favoritesProducts.map((product: CardKeys, index: Key) => (
-                        <div className='w-full h-auto md:h-44 flex flex-col md:flex-row items-center justify-between px-2 py-1 border' key={index}>
+                        <div className='w-full h-auto md:h-44 flex flex-col md:flex-row items-center justify-between px-2 py-1 border shadow-favoriteProduct' key={index}>
                             <div className='w-full md:w-3/5 h-full flex items-start justify-start'>
                                 <div className='max-w-[8.4375rem] md:min-w-min md:max-w-[30%] h-full pr-4 md:pr-0'>
-                                    <img src={product.image} alt={product.descricao} className="h-full w-full object-cover" />
+                                    <img src={product.image} alt={product.descricao} className="md:h-full w-full object-cover" />
                                 </div>
 
                                 <div className='w-[80%] h-full flex flex-col items-start ml-4'>

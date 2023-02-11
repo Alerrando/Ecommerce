@@ -1,6 +1,6 @@
 import { Footer, Header, Main, Parcerias, Produtos } from './components'
 import React, { useContext, useEffect } from "react";
-import { CardKeys, ShopContext } from './context/shopContext';
+import { CardKeys, ShopContext, userProps } from './context/shopContext';
 import { getProdutos } from './api';
 
 export function App() {
@@ -16,7 +16,7 @@ export function App() {
       }
 
       if(user == undefined)
-        setUser({} as CardKeys)
+        setUser({} as userProps)
     } catch (error) {
       console.log(error);
     }

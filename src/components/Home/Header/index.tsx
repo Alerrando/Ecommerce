@@ -16,11 +16,11 @@ export function Header() {
   }
 
   return (
-    <header className="h-auto w-full pt-4 lg:pt-0 relative md:fixed bg-white z-50 md:px-20">
+    <header className="h-auto w-full py-2 md:pt-4 px-3 lg:pt-0 relative md:fixed bg-white border-b md:border-b-0 z-50 md:px-20">
       <div className="w-full md:max-w-full alinhamento justify-between pt-1 md:pt-4 ">
-        <h1 className="text-4xl font-Playfair-Display text-[#595959] font-semibold">
+        <Link to="/" className="text-4xl font-Playfair-Display text-[#595959] font-semibold">
           TechSoft
-        </h1>
+        </Link>
 
         <div className="md:flex md:items-center gap-4 hidden">
           <input
@@ -63,7 +63,7 @@ export function Header() {
       </div>
 
       <nav
-        className={`w-full md:w-full h-screen md:h-20 md:block fixed  lg:h-14 left-0 z-20 top-0  bg-sombreamento md:bg-transparent md:relative ${menu}`}
+        className={`w-full md:w-full h-full md:h-20 md:block fixed lg:h-14 left-0 z-20 top-0  bg-sombreamento md:bg-transparent md:relative ${menu}`}
       >
         <div className="h-full w-[80%] flex flex-col md:flex-row md:items-center md:justify-between py-2 md:py-0 pl-4 md:pl-0 bg-white text-black">
           <header className="h-auto w-full my-2 flex items-center jsutify-start md:hidden">
@@ -81,9 +81,6 @@ export function Header() {
             </Link>
             <Link to="/produtos" className="w-[80%] opacity-40 hover:opacity-80  border-b border-[#e5e5e5] md:border-none font-medium transition-all" >
               Produtos
-            </Link>
-            <Link to="/contato" className="w-[80%] opacity-40 hover:opacity-80  border-b border-[#e5e5e5] md:border-none font-medium transition-all" >
-              Contato
             </Link>
           </ul>
             
