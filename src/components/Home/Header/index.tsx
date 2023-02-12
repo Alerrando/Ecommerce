@@ -15,6 +15,8 @@ export function Header() {
     menu == "block" ? setMenu("hidden") : setMenu("block");
   }
 
+  console.log(user)
+
   return (
     <header className="h-auto w-full py-2 md:pt-4 px-3 lg:pt-0 relative md:fixed bg-white border-b z-50 md:px-20">
       <div className="w-full md:max-w-full alinhamento justify-between pt-1 md:pt-4 ">

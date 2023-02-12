@@ -13,6 +13,9 @@ export function App() {
       
       if(savedInfos.length > 0){
         setRegisters(savedInfos);
+        setUser(prevState => {
+          return { ...prevState, favoritos: [] }
+        })
       }
 
       if(user == undefined)
@@ -27,7 +30,7 @@ export function App() {
       'react-ecommerce-data',
       JSON.stringify(registers)
     );
-  }, [user.carrinho != undefined, user.favoritos != undefined]);
+  }, [user != undefined]);
   
   return (
     <>

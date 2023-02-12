@@ -15,8 +15,6 @@ export function Main() {
   const { registers, searchRegistrarion, setUser, setRegisters, user } = useContext(ShopContext);
   const { register, handleSubmit,formState: { isValid }} = useForm<FormRegisterInputs>();
   const navigate = useNavigate();
-
-  console.log()
   
   return (
     <main className="w-full absolute flex items-center justify-center text-white bg-cover h-[-webkit-fill-available]" style={{background: 'url("Login/background.jpg")', backgroundSize: "cover"}}>

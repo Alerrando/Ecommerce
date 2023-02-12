@@ -11,7 +11,7 @@ export type FormLoginInputs = {
 
 export function Main() {
   const { register, handleSubmit, formState: { isValid }} = useForm<FormLoginInputs>();
-  const { searchRegistrarion, setUser, user } = useContext(ShopContext);
+  const { searchRegistrarion, setUser, user, registers } = useContext(ShopContext);
   const navigate = useNavigate();
 
   return (

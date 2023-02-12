@@ -9,9 +9,23 @@
 
 ## 💡 Tecnologias Usasdas
 <ul>
-<li>TypeScript
-<li>Tailwind CSS
-<li>Post CSS
+<li><a href="https://www.typescriptlang.org/">TypeScript</a>
+
+<li><a href="https://tailwindcss.com/">Tailwind CSS</a>
+
+<li><a href="https://postcss.org/">PostCSS</a>
+
+<li><a href="https://axios-http.com/docs/intro">Axios</a>
+
+<li><a href="https://mui.com/core/">MUI Core</a>
+
+<li><a href="https://phosphoricons.com/">Phospor Icon</a>
+
+<li><a href="https://react-hook-form.com/">React Hook Form</a>
+
+<li><a href="https://reactrouter.com/en/main">React Route</a>
+
+<li><a href="https://react-query-v3.tanstack.com/">React Query</a>
 </ul>
 </br>
 <h3>Instalação Tailwind CSS</h3>

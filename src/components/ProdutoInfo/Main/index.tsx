@@ -1,7 +1,7 @@
 import { HouseSimple, Minus, Plus } from 'phosphor-react';
 import React, { useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
-import { CardKeys, ShopContext } from '../../../context/shopContext';
+import { CardKeys, ShopContext, userProps } from '../../../context/shopContext';
 import { ImageDisplay } from './ImageDisplay';
 import { InfoProduto } from './InfoProduto';
 
@@ -11,7 +11,7 @@ type MainProps = {
 
 export function Main(props: MainProps) {
     const { produto } = props;
-    const { registers, setRegisters, favoritos, handleFavorites, addCart, user} = useContext(ShopContext);
+    const { registers, setRegisters, favoritos, handleFavorites, addCart, user, setUser} = useContext(ShopContext);
     const hearth = favoritos.includes(produto.subTitulo) ? "❤️" : "🖤";
   
   
@@ -22,6 +22,9 @@ export function Main(props: MainProps) {
         if(savedInfos.length > 0){
           setRegisters(savedInfos);
         }
+  
+        if(user == undefined)
+          setUser({} as userProps);
       } catch (error) {
         console.log(error);
       }
@@ -32,7 +35,7 @@ export function Main(props: MainProps) {
         'react-ecommerce-data',
         JSON.stringify(registers)
       );
-    }, [user.carrinho != undefined]);
+    }, [user != undefined]);
 
 
     return (
