@@ -28,24 +28,41 @@
 <li><a href="https://react-query-v3.tanstack.com/">React Query</a>
 </ul>
 </br>
-<h3>Instalação Tailwind CSS</h3>
+<h3>Instalações</h3>
+´´´
 
-```
-npm install -D tailwindcss
-npx tailwindcss init
-```
+    Instalação TailwindCSS
+        npm install -D tailwindcss
+        npx tailwindcss init
 
-<h3>Instalação Post CSS</h3>
-```
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
+    Instalação Post CSS
+        npm install -D tailwindcss postcss autoprefixer
+        npx tailwindcss init -p
+
+    Instalação MUI Core
+        npm install @mui/material @emotion/react @emotion/styled
+
+    Instalação Phospor Icon
+        npm install --save phosphor-react
+
+    Instalação React Hook Form
+        npm install react-hook-form
+
+    Instalação React Route
+        npm i react-router-dom
+
+    Instalação React Query
+        npm i react-query
+
+´´´
 
 </br>
 
 <div align="center">
     <h2>🚧 Em Construção</h2>
-    <img src="./github/LojaPrincipal.gif" alt="Demo do site">
+    <img src="./github/GifRotaPrincipal.gif" alt="Gif da rota principal do site">
+    <img src="./github/GifRotaLoginCadastro.gif" alt="Gif da rota login e cadastro do site">
+    <img src="./github/GifRotaCarrinhoFavoritos.gif" alt="Gif da rota carrinho e favoritos">
 </div>
 
 <hr />
