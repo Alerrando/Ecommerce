@@ -56,10 +56,16 @@
 </br>
 
 <div align="center">
-    <h2>🚧</h2>
+    <h1>🖥️ Demos</h1>
+    <h2 align="start">Demos PC</h2>
+    </br>
     <img src="./github/GifRotaPrincipal.gif" alt="Gif da rota principal do site">
     <img src="./github/GitRotaLoginCadastro.gif" alt="Gif da rota principal do site">
     <img src="./github/GifRotaCarrinhoFavoritos.gif" alt="Gif da rota carrinho e favoritos">
+    </br>
+    </br>
+    <h2 align="start">Demos Mobile</h2>
+    </br>
     <div align="center" style="display: flex;">
         <img src="./github/GifRotaPrincipalMobile.gif" alt="Gif da rota principal do site em Mobile">
         <img src="./github/GifRotaLoginCadastroMobile.gif" alt="Gif da rota principal do site em Mobile">
@@ -68,4 +74,4 @@
 </div>
 
 <hr />
-<p>Alerrando © 2022 Obrigado por acessar</p>
+<p>Alerrando © 2023 Obrigado por acessar</p>
