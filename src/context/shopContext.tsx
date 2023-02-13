@@ -6,10 +6,8 @@ type IPropsContext = {
 
 export type userProps = {
     id: number;
-    name: string;
     email: string;
     password: string;
-    telefone: string;
     carrinho: any[];
     favoritos: any[];
 }
@@ -60,7 +58,7 @@ function CreateContextProvider({children}: IPropsContext){
         let verificar = -1;
 
         registers.forEach(user => {
-            if (user.email === login.email || user.telefone === login.telefone){
+            if (user.email === login.email){
                 verificar = 0
             }
         })
@@ -81,16 +79,41 @@ function CreateContextProvider({children}: IPropsContext){
         if(Object.keys(user).length > 0){
             const aux: any[] = user.carrinho;
             const preçoProduto = product.desconto == 0 ? product.price : product.price - ((product.desconto / 100) * product.price)
+            let auxCarrinho: CardKeys[] = []
 
             let infoProduto:CardKeys = product;
-
             infoProduto.quantProduct = quantProduct;
-            infoProduto.price = preçoProduto
+            infoProduto.price = preçoProduto;
+            
+            if(aux.length > 0){
+                let index = -1;
 
-            aux.push(infoProduto);
+                for (let i = 0; i < aux.length; i++) {
+                    debugger;
+                    const element: CardKeys = aux[i];
+
+                    if(element.subTitulo != product.subTitulo){
+                        index = 0;
+                    }
+                    else{
+                        index = -1
+                    }
+                }
+
+                if(index != -1){
+                    auxCarrinho = aux;
+                    auxCarrinho.push(infoProduto)
+                }
+                else
+                    auxCarrinho = aux;
+            }
+            else{
+                    auxCarrinho = aux;
+                    auxCarrinho.push(infoProduto)
+            }
     
             setUser(prevState => {
-                return {...prevState, carrinho: aux}
+                return {...prevState, carrinho: auxCarrinho}
             })
 
             return ;

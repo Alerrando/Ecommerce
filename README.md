@@ -61,8 +61,12 @@
 <div align="center">
     <h2>🚧 Em Construção</h2>
     <img src="./github/GifRotaPrincipal.gif" alt="Gif da rota principal do site">
-    <img src="./github/GifRotaLoginCadastro.gif" alt="Gif da rota login e cadastro do site">
+    <img src="./github/GifRotaLoginCadastroMobile.gif" alt="Gif da rota login e cadastro do site">
     <img src="./github/GifRotaCarrinhoFavoritos.gif" alt="Gif da rota carrinho e favoritos">
+    <div align="center" style="display: flex;">
+        <img src="./github/GifRotaPrincipalMobile.gif" alt="Gif da rota principal do site em Mobile">
+        <img src="./github/GifRotaLoginCadastroMobile.gif" alt="Gif da rota principal do site em Mobile">
+    </div>
 </div>
 
 <hr />

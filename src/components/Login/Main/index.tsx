@@ -105,13 +105,12 @@ export function Main() {
   }
 
   function checkRegisters(login: object | any) {
+    console.log(login)
     if(searchRegistrarion(login) == 0){
         const aux: userProps | any = {
             id: Object.keys(user).length,
-            name: login.name,
             password: login.password,
             email: login.email,
-            telefone: login.telefone,
             carrinho: [],
         };
 

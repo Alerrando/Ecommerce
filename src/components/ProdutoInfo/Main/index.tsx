@@ -39,15 +39,15 @@ export function Main(props: MainProps) {
 
 
     return (
-        <main className='w-full h-full pt-[10%]'>
+        <main className='w-full h-full md:pt-[10%]'>
             <div className='py-4 sm:px-[3.625rem] mx-6 flex flex-col gap-6 overflow-auto'>
                 <div className='w-full flex items-center justify-between'>
-                    <div className='w-auto flex items-center gap-6'>
+                    <div className='w-auto flex items-center gap-3 md:gap-6'>
                         <Link to="/">
                             <HouseSimple size={22} />                    
                         </Link>
                         <span>{">"}</span>
-                        <p className='text-lg font-medium cursor-pointer hover:underline'>{`${produto.titulo} ${produto.subTitulo}`}</p>
+                        <p className='text-base md:text-lg font-medium cursor-pointer hover:underline'>{`${produto.titulo} ${produto.subTitulo}`}</p>
                     </div>
                     <span className='cursor-pointer' onClick={() => handleFavorites(produto.subTitulo)}>{hearth}</span>
                 </div>

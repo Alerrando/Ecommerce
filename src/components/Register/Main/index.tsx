@@ -6,8 +6,6 @@ import { ShopContext, userProps } from "../../../context/shopContext";
 import { FormLoginInputs } from "../../Login/Main";
 
 type FormRegisterInputs = {
-  name: string;
-  tel: string;
   termos: string;
 } & FormLoginInputs 
 
@@ -32,16 +30,6 @@ export function Main() {
               onSubmit={handleSubmit(submit)}
             >
               <div className="flex flex-row items-center gap-2 border-b border-zinc-400">
-                <IdentificationCard size={22} />
-                <input
-                  className="w-full outline-none px-2"
-                  type="text"
-                  placeholder="Digite seu nome completo"
-                  id="name"
-                  {...register("name", {required: true})}
-                />
-              </div>
-              <div className="flex flex-row items-center gap-2 border-b border-zinc-400">
                 <EnvelopeSimple size={22} />
                 <input
                   className="w-full outline-none px-2"
@@ -60,17 +48,6 @@ export function Main() {
                   required
                   id="password"
                   {...register("password", {required: true, minLength: 6})}
-                />
-              </div>
-              <div className="flex flex-row items-center gap-2 border-b border-zinc-400">
-                <Phone size={22} />
-                <input
-                  className="w-full outline-none px-2"
-                  type="tel"
-                  placeholder="(##)#####-####"
-                  required
-                  id="tel"
-                  {...register("tel", {required: true, minLength: 14})}
                 />
               </div>
 
@@ -123,6 +100,7 @@ export function Main() {
 
   function submit(event) {
     createUser(event);
+    console.log(event)
 
     if(searchRegistrarion(event) != 0)
       navigate("/");
@@ -132,10 +110,8 @@ export function Main() {
     if(searchRegistrarion(userCreate) != 0){
         const aux: userProps = {
             id: Object.keys(user).length,
-            name: userCreate.name,
             password: userCreate.password,
             email: userCreate.email,
-            telefone: userCreate.tel,
             carrinho: [],
             favoritos: [],
         };

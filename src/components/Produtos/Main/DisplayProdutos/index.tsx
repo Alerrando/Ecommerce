@@ -7,7 +7,7 @@ export function DisplayProdutos() {
 
     return (
         <>
-            {Object.keys(products).length > 0 ? (
+            {products != undefined ? (
                     <section className="w-min md:w-auto md:max-w-full mx-auto mt-8 mb-14">
                         <Cards cardsInfo={products} pages={"produtos"} />
                     </section>

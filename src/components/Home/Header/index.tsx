@@ -16,9 +16,11 @@ export function Header() {
   }
 
   useEffect(() => {
-    debugger;
-    if(user == undefined)
-      setUser({} as userProps)
+    if(user == undefined){
+      const userAux: userProps = {} as userProps;
+      console.log(userAux);
+      setUser(userAux);
+    }
   })
 
   return (
@@ -50,7 +52,7 @@ export function Header() {
           </Link>
 
           <div className="hidden md:block">
-            { user != undefined && Object.keys(user).length == 0 ? (
+            { user != undefined && user.email == undefined ? (
               <Link to="/login" className="">
                 <SignIn size={32} />
               </Link>
@@ -130,4 +132,7 @@ export function Header() {
     </header>
   );
 
+  function refreshPage() {
+    
+  }
 }
