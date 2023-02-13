@@ -29,11 +29,10 @@
 </ul>
 </br>
 <h3>Instalações</h3>
-´´´
-
+.
     Instalação TailwindCSS
         npm install -D tailwindcss
-        npx tailwindcss init
+           npx tailwindcss init
 
     Instalação Post CSS
         npm install -D tailwindcss postcss autoprefixer
@@ -54,18 +53,17 @@
     Instalação React Query
         npm i react-query
 
-´´´
-
 </br>
 
 <div align="center">
-    <h2>🚧 Em Construção</h2>
+    <h2>🚧</h2>
     <img src="./github/GifRotaPrincipal.gif" alt="Gif da rota principal do site">
-    <img src="./github/GifRotaLoginCadastroMobile.gif" alt="Gif da rota login e cadastro do site">
+    <img src="./github/GitRotaLoginCadastro.gif" alt="Gif da rota principal do site">
     <img src="./github/GifRotaCarrinhoFavoritos.gif" alt="Gif da rota carrinho e favoritos">
     <div align="center" style="display: flex;">
         <img src="./github/GifRotaPrincipalMobile.gif" alt="Gif da rota principal do site em Mobile">
         <img src="./github/GifRotaLoginCadastroMobile.gif" alt="Gif da rota principal do site em Mobile">
+        <img src="./github/GitRotaCarrinhoFavoritosMobile.gif" alt="Gif da rota principal do site em Mobile">
     </div>
 </div>
 

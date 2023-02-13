@@ -9,7 +9,7 @@ export function Main(){
     const { products } = useContext(ShopContext)
 
     return (
-        <main className="md:pt-[10%]">
+        <main className="md:pt-[9%]">
             <Titulo name="Promoções" />
             {Object.keys(products).length > 0 ? (
                 <Carrossel />

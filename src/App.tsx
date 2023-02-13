@@ -13,7 +13,9 @@ export function App() {
       
       if(savedInfos.length > 0){
         setRegisters(savedInfos);
-        setUser({} as userProps)
+
+        if(Object.keys(user).length == 0)
+          setUser({} as userProps)
       }
 
       if(user == undefined)
@@ -29,8 +31,6 @@ export function App() {
       JSON.stringify(registers)
     );
   }, [user != undefined]);
-
-  console.log(user)
   
   return (
     <>

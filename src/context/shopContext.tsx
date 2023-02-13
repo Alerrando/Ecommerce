@@ -89,15 +89,14 @@ function CreateContextProvider({children}: IPropsContext){
                 let index = -1;
 
                 for (let i = 0; i < aux.length; i++) {
-                    debugger;
                     const element: CardKeys = aux[i];
 
-                    if(element.subTitulo != product.subTitulo){
+                    if(element.subTitulo != product.subTitulo)
                         index = 0;
-                    }
-                    else{
+                    
+                    else
                         index = -1
-                    }
+                    
                 }
 
                 if(index != -1){
