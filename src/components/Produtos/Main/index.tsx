@@ -17,7 +17,7 @@ export function Main() {
 
 
   return (
-    <main className="w-full h-full md:pt-[10%] md:px-20 bg-[#F1F3F8]">
+    <main className="w-full h-full md:pt-[10%] md:px-20 bg-[#F1F3F8]" id="main-produtos">
       <Titulo name="Produtos" />
       <Filtro setModalFiltro={setModalFiltro} />
       <DisplayProdutos />
