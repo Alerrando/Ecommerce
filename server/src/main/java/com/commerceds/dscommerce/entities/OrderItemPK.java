@@ -4,11 +4,11 @@ import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-@SuppressWarnings("serial")
-public class OrderItemPK {
+public class OrderItemPK implements Serializable {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;

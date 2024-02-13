@@ -19,7 +19,7 @@ public class User {
     private String phone;
     private LocalDate birthDate;
     private String password;
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private List<Order> orders = new ArrayList<>();
 
     public User(){
