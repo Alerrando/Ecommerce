@@ -13,9 +13,6 @@ public class ProductDTO {
     private Double price;
     private String imgUrl;
 
-    public ProductDTO(){
-    }
-
     public ProductDTO(Product product) {
         this.id = product.getId();
         this.name = product.getName();
