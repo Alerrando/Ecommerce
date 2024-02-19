@@ -3,12 +3,40 @@ import { ShopContext } from "../../../../context/shopContext";
 
 export function Carrossel() {
   const { products } = useContext(ShopContext);
-  const carrosselImagens = products.filter(product => product.desconto !== 0);
+  const imagensCarouselStatic = [
+    {
+      imagemCarrossel: "/Carrossel/produto1.webp",
+      titulo: "Nintendo Switch",
+      subTitulo: "Console Nintendo Switch",
+      desconto: "25%",
+    },
+
+    {
+      imagemCarrossel: "/Carrossel/produto2.webp",
+      titulo: "Ipad",
+      subTitulo: "Apple Ipad Pro",
+      desconto: "8%",
+    },
+
+    {
+      imagemCarrossel: "/Carrossel/produto3.webp",
+      titulo: "Tv 25'",
+      subTitulo: "Console Nintendo Switch",
+      desconto: "25%",
+    },
+
+    {
+      imagemCarrossel: "/Carrossel/produto4.webp",
+      titulo: "Playstation 5",
+      subTitulo: "Microsoft Playstation 5",
+      desconto: "12%",
+    }
+  ]
 
   return (
     <section>
       <div className="w-full h-[22rem] md:h-[30rem] flex relative overflow-x-hidden">
-        {carrosselImagens.map((imagem, index) => {
+        {handleImagesCarousel().map((imagem, index) => {
           return (
             <div className="w-full relative promoção" key={index}>
               <div className="w-[27rem] md:w-[77rem] xl:w-[85rem] flex h-full animação">
@@ -34,4 +62,8 @@ export function Carrossel() {
       </div>
     </section>
   );
+
+  function handleImagesCarousel(){
+    return products.length > 0 ? products.filter(product => product.desconto !== 0) : imagensCarouselStatic;
+  }
 }

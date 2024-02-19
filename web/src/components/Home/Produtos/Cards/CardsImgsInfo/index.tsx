@@ -50,7 +50,6 @@ export function CardsImgsInfo(props: CardsImgsInfo){
             <Link to={`${pages == "home" ? `produtos/${card.id}/${card.url}` : `${card.id}/${card.url}`}`} className="text-white bg-zinc-600 px-4 py-1 mt-3 top-[8%] hover:bg-blue-900 transition-colors rounded-md relative">
                 Mais Informações
             </Link>
-            
         </>
     )
 }

@@ -1,19 +1,25 @@
 import React, { useContext } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Carrossel } from "./Carrossel";
 import { Titulo } from '../../Titulo';
 import { ShopContext } from "../../../context/shopContext";
 
 
 export function Main(){
-    const { products } = useContext(ShopContext)
+    const [loading, setLoading] = useState(true);
+    const { products } = useContext(ShopContext);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 3000)
+    }, []);
 
     return (
         <main className="md:pt-[9%]">
             <Titulo name="Promoções" />
-            {Object.keys(products).length > 0 ? (
+            {!loading ? (
                 <Carrossel />
-
             ) : (
                 <div className="w-full h-screnn flex items-center justify-center my-8" role="status">
                     <svg aria-hidden="true" className="w-12 h-12 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
