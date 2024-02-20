@@ -3,8 +3,8 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { App } from "./App";
 import { ProdutoInfo } from './components/ProdutoInfo';
 import { Produtos } from './components/Produtos';
-import { Login } from './components/Login'
-import { Register } from './components/Register'
+import { Login } from './pages/access/Login'
+import { Register } from './pages/access/Register'
 import { Carrinho } from './components/Carrinho';
 import { Favoritos } from './components/Favoritos';
 

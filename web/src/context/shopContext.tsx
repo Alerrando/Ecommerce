@@ -4,7 +4,7 @@ type IPropsContext = {
     children : React.ReactNode;
 }
 
-export type userProps = {
+export type UserProps = {
     id: number;
     email: string;
     password: string;
@@ -30,10 +30,10 @@ export type CardKeys = {
 };
 
 type ShopContextProps = {
-    user: userProps,
-    setUser: (user: userProps) => void,
-    registers: userProps[],
-    setRegisters: (user: []) => void,
+    user: UserProps,
+    setUser: (user: UserProps) => void,
+    registers: UserProps[],
+    setRegisters: (user: UserProps[]) => void,
     searchRegistrarion: (login: object | any) => number,
     modalInfo: CardKeys,
     setModalInfo: (modalInfo: CardKeys) => void,
@@ -48,8 +48,8 @@ type ShopContextProps = {
 export const ShopContext = createContext<ShopContextProps>({} as ShopContextProps);
 
 function CreateContextProvider({children}: IPropsContext){
-    const [user, setUser] = useState<userProps>({} as userProps);
-    const [registers, setRegisters] = useState<userProps[]>([] as userProps[]);
+    const [user, setUser] = useState<UserProps>({} as UserProps);
+    const [registers, setRegisters] = useState<UserProps[]>([] as UserProps[]);
     const [modalInfo, setModalInfo] = useState<CardKeys>({} as CardKeys);
     const [products, setProducts] = useState<CardKeys[]>([] as CardKeys[]);
     const [favoritos, setFavoritos] = useState<string[]>([])

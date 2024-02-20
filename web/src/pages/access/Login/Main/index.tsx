@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { ShopContext, userProps } from "../../../context/shopContext";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { EnvelopeSimple, FacebookLogo, GoogleLogo, LockKey } from 'phosphor-react'
+import { ShopContext, UserProps } from "../../../../context/shopContext";
 
 export type FormLoginInputs = {
   email: string;
@@ -107,7 +107,7 @@ export function Main() {
   function checkRegisters(login: object | any) {
     console.log(login)
     if(searchRegistrarion(login) == 0){
-        const aux: userProps | any = {
+        const aux: UserProps | any = {
             id: Object.keys(user).length,
             password: login.password,
             email: login.email,

@@ -3,7 +3,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography } fro
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { ShopContext, userProps } from '../../../context/shopContext';
+import { ShopContext, UserProps } from '../../context/shopContext';
 import { MenuDropDown } from './MenuDropDown'
 
 export function Header() {
@@ -22,7 +22,7 @@ export function Header() {
     }
     
     if(user == undefined){
-      const userAux: userProps = {} as userProps;
+      const userAux: UserProps = {} as UserProps;
       setUser(userAux);
     }
   })
@@ -118,7 +118,7 @@ export function Header() {
                           <Gear size={32} />
                           <span translate='no'>Configurações</span>
                       </div>
-                      <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all" onClick={() => setUser({} as userProps)}>
+                      <div className="h-9 flex flex-row items-center gap-6 cursor-pointer hover:border-b hover:border-[#949494] transition-all" onClick={() => setUser({} as UserProps)}>
                           <SignOut size={32} />
                           <span translate='no'>Sair</span>
                       </div>

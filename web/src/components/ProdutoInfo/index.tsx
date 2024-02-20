@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { filterProduct } from "../../api";
 import { CardKeys } from "../../context/shopContext";
-import { Header } from "../Home/Header";
+import { Header } from "../../components/Header";
 import { Main } from "./Main";
 
 export function ProdutoInfo() {

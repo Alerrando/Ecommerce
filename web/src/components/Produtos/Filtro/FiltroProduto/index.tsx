@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Faders, X } from 'phosphor-react';
 import React, { useContext, useEffect } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { CardKeys, ShopContext } from '../../../../../context/shopContext';
+import { CardKeys, ShopContext } from '../../../../context/shopContext';
 
 type FiltroProdutoProps = {
     setModalFiltro: (modalFiltro: boolean) => void,

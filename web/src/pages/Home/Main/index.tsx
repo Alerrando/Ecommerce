@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { Carrossel } from "./Carrossel";
-import { Titulo } from '../../Titulo';
+import { Titulo } from '../../../components/Titulo';
 import { ShopContext } from "../../../context/shopContext";
 
 

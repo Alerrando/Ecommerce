@@ -2,7 +2,7 @@ import { EnvelopeSimple, FacebookLogo, GoogleLogo, IdentificationCard, LockKey, 
 import React, { useContext} from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
-import { ShopContext, userProps } from "../../../context/shopContext";
+import { ShopContext, UserProps } from "../../../../context/shopContext";
 import { FormLoginInputs } from "../../Login/Main";
 
 type FormRegisterInputs = {
@@ -108,7 +108,7 @@ export function Main() {
 
   function createUser(userCreate: object | any){
     if(searchRegistrarion(userCreate) != 0){
-        const aux: userProps = {
+        const aux: UserProps = {
             id: Object.keys(user).length,
             password: userCreate.password,
             email: userCreate.email,
@@ -117,7 +117,7 @@ export function Main() {
         };
 
         setUser(aux);
-        setRegisters([...registers, aux]);
+        setRegisters([aux, ...registers]);
     }else{ alert("Usuário já existe") }
 
   }

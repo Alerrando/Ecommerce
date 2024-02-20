@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Cards } from "./Cards";
-import { Titulo } from "../../Titulo";
+import { Titulo } from "../../../components/Titulo";
 import { CardKeys, ShopContext } from "../../../context/shopContext";
-import { Modal } from "../../Modal";
+import { Modal } from "../../../components/Modal";
 
 export function Produtos(){
     const [loading, setLoading] = useState(true);
     const { products, modalInfo } = useContext(ShopContext);
-    const productsStatic: CardKeys = [
+    const productsStatic: CardKeys[] = [
         {
             id: 0,
             url: "/xiaomi-mi-10",
@@ -45,7 +45,7 @@ export function Produtos(){
             url: "/nilkon-d750",
             image: "/Produtos/produto3.webp",
             titulo: "Nikon Kit D750",
-            subTitulo: " Nikon Kit D750 + lente 24-120mm VR DSLR cor  preto Nikon Kit D750 + lente 24-120mm VR DSLR cor  preto",
+            subTitulo: " Nikon Kit D750 + lente 24-120mm VR DSLR cor",
             desconto: 0,
             categoria: "Eletrônicos",
             destaque: 0,
@@ -93,7 +93,7 @@ export function Produtos(){
             url: "/rtx-2080-ti",
             image: "/Produtos/produto6.webp",
             titulo: "Geforce RTX 2080 TI",
-            subTitulo: "Placa de vídeo Nvidia MSI Gaming X Trio GeForce RTX 20 Series RTX 2080 Ti GEFORCE RTX 2080 TI GAMING X TRIO 11GBPlaca de vídeo Nvidia MSI  Gaming X Trio GeForce RTX 20 Series RTX 2080 Ti GEFORCE RTX 2080 TI GAMING X TRIO 11GB",
+            subTitulo: "Placa de vídeo Nvidia MSI Gaming X Trio GeForce RTX 20 Series RTX 2080 Ti",
             desconto: 0,
             categoria: "Smartphone",
             destaque: 0,

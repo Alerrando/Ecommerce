@@ -24,7 +24,7 @@ export function CardsImgsInfo(props: CardsImgsInfo){
             </div>
 
             <div className="w-full absolute md:invisible flex justify-between top-0 p-8 text-start md:group-hover:visible md:group-hover:pb-12 transition-all">
-                <Eye size={28} className="cursor-pointer" onClick={() => setModalInfo(card)} />
+                <Eye size={28} className="cursor-pointer text-zinc-400" onClick={() => setModalInfo(card)} />
 
               <span className="h-auto w-auto text-xl cursor-pointer" onClick={() => handleFavorites(card.subTitulo)}>
                 {hearth}
@@ -35,7 +35,7 @@ export function CardsImgsInfo(props: CardsImgsInfo){
               <h3 className="text-red-500 font-Rokkitt font-medium text-2xl md:text-3xl" translate="no">
                 {card.titulo}
               </h3>
-              <h4 className="text-white font-Rokkitt font-medium text-xl md:text-2xl" translate="no">
+              <h4 className="text-white font-Rokkitt font-medium text-xl" translate="no">
                 {card.subTitulo}
               </h4>
               <div className="flex items-center justify-start text-orange-600 gap-4 mt-4 md:mt-6">
