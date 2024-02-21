@@ -18,7 +18,7 @@ module.exports = {
       },
 
       gridTemplateColumns: {
-        "projetos": "repeat(auto-fit, minmax(290px, 1fr));",
+        "projetos": "repeat(auto-fit, minmax(33%, 1fr));",
       },
     },
   },

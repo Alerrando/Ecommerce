@@ -1,14 +1,15 @@
-import { Footer, Header, Main, Parcerias, Produtos } from './components'
+import { Footer, Header } from './components'
 import React, { useContext, useEffect } from "react";
 import { ShopContext, UserProps } from './context/shopContext';
-import { getProdutos } from './api';
+import { Products } from "./pages/Home/Products";
+import { Partnership } from "./pages/Home/Partnership";
+import { Main } from "./pages/Home/Main";
 
 export function App() {
   const { registers, setRegisters, setProducts, user,setUser} = useContext(ShopContext);
   
   useEffect(() => {
     try {
-      getProduct();
       const savedInfos = JSON.parse(localStorage.getItem('react-ecommerce-data') || "");
       
       if(savedInfos.length > 0){
@@ -36,15 +37,9 @@ export function App() {
     <>
         <Header />
         <Main />
-        <Produtos />
-        <Parcerias />
+        <Products />
+        <Partnership />
         <Footer />
     </>
   )
-
-  async function getProduct(){
-    const api = await getProdutos();
-  
-    setProducts(api);
-  }
 }

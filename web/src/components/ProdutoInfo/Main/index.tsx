@@ -1,7 +1,7 @@
 import { HouseSimple, Minus, Plus } from 'phosphor-react';
 import React, { useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
-import { CardKeys, ShopContext, userProps } from '../../../context/shopContext';
+import { CardKeys, ShopContext, UserProps } from '../../../context/shopContext';
 import { ImageDisplay } from './ImageDisplay';
 import { InfoProduto } from './InfoProduto';
 
@@ -24,7 +24,7 @@ export function Main(props: MainProps) {
         }
   
         if(user == undefined)
-          setUser({} as userProps);
+          setUser({} as UserProps);
       } catch (error) {
         console.log(error);
       }
