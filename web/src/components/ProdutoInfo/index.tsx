@@ -5,29 +5,16 @@ import { filterProduct } from "../../api";
 import { CardKeys } from "../../context/shopContext";
 import { Header } from "../../components/Header";
 import { Main } from "./Main";
+import { productsStatic } from "../../utils";
 
 export function ProdutoInfo() {
   const { id } = useParams();
-  const [produto, setProduto] = useState<CardKeys>({} as CardKeys)
-  const { data } = useQuery(["product", parseInt(id as string)], () => filterProduct(parseInt(id as string)))
-
-  useEffect(() => {
-    (async () => {
-      const aux = await handleFilterProduct();
-
-      setProduto(aux);
-    }) ()
-  }, [])
+  const data = productsStatic.filter((product) => product.id === id as string);
 
   return (
     <> 
           <Header />
-          <Main produto={data == undefined ? produto : data} />
+          <Main produto={data[0] == undefined ? {} as CardKeys : data[0]} />
     </>
   );
-
-  function handleFilterProduct(){
-    const aux = filterProduct(parseInt(id as string));
-    return aux;
-  }
 }

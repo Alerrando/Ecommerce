@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Autocomplete } from "@mui/material";
 import { ShopContext } from '../../../context/shopContext';
+import { productsStatic } from '../../../utils';
 
 type OrdenarProps = {
     text: string;
@@ -69,7 +70,7 @@ export function Filtro(props: FiltroProps) {
                 </div>
 
                 <div className='w-auto md:w-1/2 flex flex-row items-center md:justify-end px-4 md:px-0 py-4 md:py-0 gap-4'>
-                    <span className='text-sm md:text-base font-medium'>{`${products.length}`}</span>
+                    <span className='text-sm md:text-base font-medium'>{`${productsStatic.length}`}</span>
                     <h3 className='text-base md:text-lg'>Produtos</h3>
                 </div>
             </div>

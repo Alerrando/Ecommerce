@@ -13,7 +13,7 @@ export type UserProps = {
 }
 
 export type CardKeys = {
-    id: number;
+    id: string;
     url: string;
     image: string;
     titulo: string;
