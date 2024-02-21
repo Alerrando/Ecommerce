@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { useState, useEffect } from "react";
-import { Carousel } from "./Carousel";
-import { Titulo } from '../../../components/Titulo';
+import React, { useContext, useEffect, useState } from "react";
+import { Titulo } from "../../../components/Titulo";
 import { ShopContext } from "../../../context/shopContext";
+import { Modal } from "../../../components/Modal";
+import { Cards } from "../../../components";
+import { productsStatic } from "../../../utils";
 
-
-export function Main(){
+export function Products(){
     const [loading, setLoading] = useState(true);
-    const { products } = useContext(ShopContext);
+    const { products, modalInfo } = useContext(ShopContext);
 
     useEffect(() => {
         setTimeout(() => {
@@ -16,10 +16,12 @@ export function Main(){
     }, []);
 
     return (
-        <main className="md:pt-[9%]">
-            <Titulo name="Promoções" />
+        <section className="overflow-hidden">
+            <Titulo name="Produtos em Destaque" />
             {!loading ? (
-                <Carousel />
+                <section className="w-min md:w-auto md:max-w-[1200px] mx-auto mt-8 mb-14">
+                    <Cards cardsInfo={products.length > 0 ? products.filter(produto => produto.destaque == 1) : productsStatic.filter((product) => product.destaque === 2)} pages="home" />
+                </section>
             ) : (
                 <div className="w-full h-screnn flex items-center justify-center my-8" role="status">
                     <svg aria-hidden="true" className="w-12 h-12 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,6 +31,10 @@ export function Main(){
                     <span className="sr-only">Loading...</span>
                 </div>
             )}
-        </main>
+
+            {Object.keys(modalInfo).length > 0 ? (
+                <Modal id={modalInfo.id} />
+            ): null}
+        </section>
     )
 }

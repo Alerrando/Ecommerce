@@ -1,5 +1,6 @@
-export { Footer } from "../pages/Home/Footer";
+export { Footer } from "./Footer";
 export { Header } from "./Header";
-export { Main } from "../pages/Home/Main";
-export { Parcerias } from "../pages/Home/Parcerias";
-export { Produtos } from "../pages/Home/Produtos";
+export { Cards } from "./Cards";
+export { Modal } from "./Modal";
+export { Carrinho } from "./Carrinho";
+export { Favoritos } from "./Favoritos";

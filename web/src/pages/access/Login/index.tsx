@@ -6,7 +6,7 @@ export function Login(){
     return(
         <>
             <Header />
-            <Main />        
+            <Main />
         </>
     )
 }
