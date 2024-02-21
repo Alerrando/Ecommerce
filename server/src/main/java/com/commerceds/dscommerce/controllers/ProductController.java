@@ -22,7 +22,7 @@ public class ProductController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(productService.findById(id));
+        return productService.findById(id);
     }
 
     @GetMapping
