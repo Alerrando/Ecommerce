@@ -4,7 +4,7 @@
     TechSoft
 </h1>
 
-<p>Projeto de uma loja feito na matéria de AP2 refatorada com ReactJS, <a href="https://www.typescriptlang.org/">Typescript</a> e <a href="https://tailwindcss.com/docs/installation">Tailwind CSS</a></p>
+<p>Projeto de uma Ecommerce refatorada com ReactJS, <a href="https://www.typescriptlang.org/">Typescript</a> e <a href="https://tailwindcss.com/docs/installation">Tailwind CSS</a></p>
 
 
 ## 💡 Tecnologias Usasdas
