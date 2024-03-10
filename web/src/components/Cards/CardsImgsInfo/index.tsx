@@ -33,11 +33,11 @@ export function CardsImgsInfo(props: CardsImgsInfo){
               </span>
             </div>
 
-            <div className="absolute md:invisible bottom-6 p-8 text-start md:group-hover:visible md:group-hover:pb-8 transition-all">
-              <h3 className="text-red-500 font-Rokkitt font-medium text-2xl" translate="no">
+            <div className="absolute md:invisible bottom-16 md:bottom-6 p-6 md:p-8 text-start md:group-hover:visible md:group-hover:pb-8 transition-all">
+              <h3 className="text-red-500 font-Rokkitt font-medium text-xl tmd:ext-2xl" translate="no">
                 {card.titulo}
               </h3>
-              <h4 className="text-white font-Rokkitt font-medium text-xl" translate="no">
+              <h4 className="text-white font-Rokkitt font-medium text-lg md:text-xl" translate="no">
                 {card.subTitulo}
               </h4>
               <div className="flex items-center justify-start text-orange-600 gap-4 mt-4 md:mt-6">
