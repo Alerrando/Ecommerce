@@ -16,7 +16,7 @@ export function Products() {
   return (
     <>
       <Header />
-      <main className="w-full h-full md:pt-[10%] md:px-20 bg-[#F1F3F8] border-b mb-4" id="main-produtos">
+      <main className="w-full h-auto md:pt-[10%] px-8 md:px-0 bg-[#F1F3F8] border-b mb-4" id="main-produtos">
         <Titulo name="Produtos" />
         <Filtro setModalFiltro={setModalFiltro} />
         <DisplayProdutos />
@@ -24,7 +24,7 @@ export function Products() {
             <Modal id={modalInfo.id} />
         ): null}
 
-      {modalFiltro ? ( <FiltroProduto setModalFiltro={setModalFiltro} /> ) : null}
+        {modalFiltro ? ( <FiltroProduto setModalFiltro={setModalFiltro} /> ) : null}
       </main>
       <Footer/>
     </>

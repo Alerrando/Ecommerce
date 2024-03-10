@@ -4,8 +4,13 @@ import { productsStatic } from '../../../utils';
 
 export function DisplayProdutos() {
     return (
-        <section className="w-min md:w-auto md:max-w-full mx-auto mt-8 mb-14">
-            <Cards cardsInfo={productsStatic} pages={"produtos"} />
+        <section className="w-full my-8 px-8">
+            <Cards 
+                cardsInfo={productsStatic} 
+                pages={"produtos"} 
+                className='flex flex-wrap gap-y-4'
+                classNameCards='md:w-5/12' 
+            />
         </section>
     );
 }

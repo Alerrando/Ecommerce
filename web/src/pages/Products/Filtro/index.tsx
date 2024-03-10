@@ -27,7 +27,7 @@ export function Filtro(props: FiltroProps) {
     ];
 
     return (
-        <section className='relative w-auto h-full bg-white'>
+        <section className='relative w-auto h-auto bg-white'>
             <div className='w-full h-full flex flex-col md:flex-row md:items-center justify-between md:px-6 border-b border-zinc-400'>
                 <div className='w-full h-full flex flex-row items-center justify-between px-4 border-b border-[#e5e5e5]'>
                     <header className='flex flex-row items-center justify-start gap-6'>

@@ -19,8 +19,13 @@ export function Products(){
         <section className="overflow-hidden">
             <Titulo name="Produtos em Destaque" />
             {!loading ? (
-                <section className="w-min md:w-auto md:max-w-[1200px] mx-auto mt-8 mb-14">
-                    <Cards cardsInfo={products.length > 0 ? products.filter(produto => produto.destaque == 1) : productsStatic.filter((product) => product.destaque === 2)} pages="home" />
+                <section className="w-min md:w-11/12 mx-auto my-8">
+                    <Cards 
+                        cardsInfo={products.length > 0 ? products.filter(produto => produto.destaque == 1) : productsStatic.filter((product) => product.destaque === 2)} 
+                        pages="home" 
+                        className="flex flex-wrap gap-4"
+                        classNameCards="md:w-[25%]"
+                    />
                 </section>
             ) : (
                 <div className="w-full h-screnn flex items-center justify-center my-8" role="status">

@@ -1,20 +1,22 @@
 import React, { useContext } from "react";
 import { CardsImgsInfo } from "./CardsImgsInfo";
 import { CardKeys } from '../../context/shopContext'
+import { twMerge } from "tailwind-merge";
 
 type CardsProps = {
   cardsInfo: CardKeys[];
   pages: string;
+  className: string;
+  classNameCards?: string;
 }
 
-export function Cards(props: CardsProps) {
-  const { cardsInfo, pages } = props;
+export function Cards({ cardsInfo, pages, className, classNameCards }: CardsProps) {
 
   return (
-    <div className="grid md:grid-cols-projetos justify-between gap-y-20">
+    <div className={className}>
       {cardsInfo.map((card: CardKeys, index: number) => {
         return (
-          <div className="w-full md:w-[75%] h-auto md:h-full md:max-h-[65vh] relative mx-auto text-center group border border-zinc-400 rounded-xl md:card-product" key={index}>
+          <div className={twMerge("w-full h-auto md:flex md:flex-col md:gap-1 relative mx-auto text-center group rounded-xl md:card-product", classNameCards)} key={index}>
             <CardsImgsInfo card={card} pages={pages} />
           </div>
         );

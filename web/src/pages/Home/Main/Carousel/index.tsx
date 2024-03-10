@@ -6,20 +6,19 @@ export function Carousel() {
   const { products } = useContext(ShopContext);
 
   return (
-    <section>
-      <div className="w-full h-[22rem] md:h-[30rem] flex relative overflow-x-hidden">
+    <section className="w-full h-[22rem] md:h-[30rem] flex relative overflow-x-hidden">
         {handleImagesCarousel().map((imagem, index) => {
           return (
-            <div className="w-full relative promoção" key={index}>
-              <div className="w-[27rem] md:w-[77rem] xl:w-[85rem] flex h-full animação">
+            <div className="w-full relative promoção group" key={index}>
+              <div className="w-screen flex h-full animação">
                 <img
-                  src={imagem.imagemCarrossel}
+                  src={imagem.image[0]}
                   alt={imagem.subTitulo}
                   className="w-full h-full bg-cover"
                 />
               </div>
 
-              <div className="z-10 absolute bottom-0 top-[15%] pl-8 md:pl-16 invisible transition-all duration-300 animação card-info">
+              <div className="z-10 absolute bottom-0 top-[15%] pl-8 md:pl-16 transition-all duration-300 animação card-info invisible group-hover:visible">
                 <h3 className="text-red-600 text-2xl md:text-3xl font-medium">
                   {imagem.titulo}
                 </h3>
@@ -31,7 +30,6 @@ export function Carousel() {
             </div>
           );
         })}
-      </div>
     </section>
   );
 
