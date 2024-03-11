@@ -1,17 +1,17 @@
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
-import { Slider } from "../../../../@/components/ui/slider";
+import { Accordion, AccordionDetails, AccordionSummary, Slider, Typography } from '@mui/material';
 import { useForm } from "react-hook-form";
 import { Faders, X } from 'phosphor-react';
-import React, { useContext, useEffect } from 'react';
+import React, { Key, useContext, useEffect, useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ShopContext } from '../../../../context/shopContext';
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+
 const schemaTypeValue = z.object({
-    typeProduct: z.array(z.string()),
+    typeProduct: z.string(),
     price: z.string(),
-    categories: z.array(z.string()),
+    categories:  z.string(),
 })
 
 type SchemaType = z.infer<typeof schemaTypeValue>
@@ -20,22 +20,19 @@ type FiltroProdutoProps = {
     setModalFiltro: (modalFiltro: boolean) => void,
 }
 
-type FormFiltroInputs = {
-    tipoProduto: string;
-    preço: number;
-    marcas: string;
-}
-
-export function FiltroProduto(props: FiltroProdutoProps) {
-    const { setModalFiltro } = props;
-    const { register, handleSubmit,formState: { isValid }} = useForm<SchemaType>({
+export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
+    const [valuePrice, setValuePrice] = useState("");
+    const { register, handleSubmit } = useForm<SchemaType>({
         resolver: zodResolver(schemaTypeValue),
+        defaultValues: {
+            categories: [],
+            price: "",
+            typeProduct: [],
+        }
     });
     const { products } = useContext(ShopContext);
-    const categorias: string[] = [
-        "Eletrônicos",
-        "Video Game"
-    ];
+    const typeProduct: string[] = ["Oferta", "Liquidação", "Frete Gratis"];
+    const categorias: string[] = ["Eletrônicos", "Video Game"];
 
     return (
         <div className="w-full h-screen fixed top-0 left-0 bg-sombreamento z-50">
@@ -64,18 +61,12 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                                 <Typography>Tipo de Produto</Typography>
                             </AccordionSummary>
                             <AccordionDetails className='flex flex-col gap-4 border-t border-[#e5e5e5]'>
-                                <div>
-                                    <input type="radio" value="ofertaProduto" className="w-[25px]" {...register("typeProduct")} />
-                                    <label translate='no'>Oferta</label>
-                                </div>
-                                <div>
-                                    <input type="radio" value="liquidaçãoProduto" className="w-[25px]" {...register("typeProduct")} />
-                                    <label translate='no'>Liquidação</label>
-                                </div>
-                                <div>
-                                    <input type="radio" value="freteGratisProduto" className="w-[25px]" {...register("typeProduct")} />
-                                    <label translate='no'>Frete Gratis</label>
-                                </div>
+                                {typeProduct.map((item: string, index: Key) => (
+                                    <div className='flex items-center gap-1' key={index}>
+                                        <input type="radio" value="ofertaProduto" className="w-[25px]" {...register("typeProduct")} />
+                                        <label translate='no'>{item}</label>
+                                    </div>
+                                ))}
                             </AccordionDetails>
                         </Accordion>
 
@@ -89,10 +80,11 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                             </AccordionSummary>
                             <AccordionDetails className='flex flex-col gap-6 border-t border-[#e5e5e5]'>
                                 <label>Intervalo de Preço</label>
-                                <Slider
-                                    max={100}
-                                    min={0}
-                                    {...register("price")}
+                                <Slider 
+                                    defaultValue={0} 
+                                    aria-label="Default" 
+                                    valueLabelDisplay="auto"
+                                    { ...register("price") }
                                 />
                             </AccordionDetails>
                         </Accordion>
@@ -106,8 +98,8 @@ export function FiltroProduto(props: FiltroProdutoProps) {
                                 <Typography>Categoria</Typography>
                             </AccordionSummary>
                             <AccordionDetails className='flex flex-col gap-6 border-t border-[#e5e5e5]'>
-                                {categorias.map((category: string) => (
-                                    <div className='flex flex-row items-center justify-start gap-4'>
+                                {categorias.map((category: string, index: Key) => (
+                                    <div className='flex flex-row items-center justify-start gap-4' key={index}>
                                         <input type="radio" value={category} className="w-[25px]" {...register("categories")} />
                                         <label className='first-letter:uppercase' translate='no'>{category}</label>
                                     </div>
@@ -122,7 +114,7 @@ export function FiltroProduto(props: FiltroProdutoProps) {
         </div>
     );
 
-    function applyFilter(e: SchemaType){
-        console.log(e);
+    function applyFilter(formData: SchemaType){
+        console.log(formData);
     }
 }

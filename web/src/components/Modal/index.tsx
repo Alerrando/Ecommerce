@@ -29,7 +29,7 @@ export function Modal(props: ModalProps){
                     <img src={data[0] == undefined ? modalInfo.image : data[0].image} alt={data[0] == undefined ? modalInfo.url :data[0].url} className="w-full md:w-[55%] h-[60%] sm:h-[80%] md:h-full object-cover" />
 
                     <div className='flex flex-col gap-6 px-6 overflow-auto'>
-                        <h2 className='text-xl border-b pb-4 border-b-gray-400'>{data[0] == undefined ? modalInfo.descricao :data[0].descricao}</h2>
+                        <h2 className='text-xl border-b pb-4 border-b-gray-400'>{data[0] == undefined ? modalInfo.descricao :data[0].descricao.substring(0, 120)}</h2>
 
                         <div className='flex flex-row items-center justify-start gap-4'>
                             {data[0] == undefined ? modalInfo.desconto :data[0].desconto == 0 ? (
