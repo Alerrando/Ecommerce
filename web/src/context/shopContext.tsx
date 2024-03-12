@@ -1,4 +1,6 @@
 import React, { createContext, useState } from "react";
+import { productsStatic } from "../utils";
+import { SchemaTypeFilter } from "../pages/Products/Filtro/FiltroProduto";
 
 type IPropsContext = {
     children : React.ReactNode;
@@ -40,6 +42,7 @@ type ShopContextProps = {
     favoritos: string[],
     setFavoritos: (favoritos: string[]) => void,
     handleFavorites: (subTitulo: string) => void;
+    applyFilter: (data: SchemaTypeFilter) => CardKeys[];
     addCart: (quantProduct: number, product: CardKeys) => void,
 }
 
@@ -71,6 +74,16 @@ function CreateContextProvider({children}: IPropsContext){
         favoritesIndex > -1 ? favoritesAux.splice(favoritesIndex, 1) : favoritesAux.push(subTitulo);
   
         setFavoritos(favoritesAux);
+    }
+
+    function applyFilter(data: SchemaTypeFilter){
+        debugger;
+        let auxProducts = productsStatic;
+        if(data.price){
+            auxProducts = productsStatic.filter((product) => product.price <= parseInt(data.price));
+        }
+
+        return auxProducts;
     }
 
     function addCart(quantProduct: number, product: CardKeys){
@@ -120,7 +133,7 @@ function CreateContextProvider({children}: IPropsContext){
     }
     
     return(
-        <ShopContext.Provider value={{user, setUser, registers, setRegisters, searchRegistrarion, modalInfo, setModalInfo, products, setProducts, favoritos, setFavoritos, handleFavorites, addCart}}>
+        <ShopContext.Provider value={{user, setUser, registers, setRegisters, searchRegistrarion, modalInfo, setModalInfo, products, setProducts, favoritos, setFavoritos, handleFavorites, applyFilter, addCart}}>
             {children}
         </ShopContext.Provider>
     )

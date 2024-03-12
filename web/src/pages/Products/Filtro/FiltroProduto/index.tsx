@@ -6,6 +6,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ShopContext } from '../../../../context/shopContext';
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useSearchParams } from "react-router-dom";
+import { productsStatic } from '../../../../utils';
 
 
 const schemaTypeValue = z.object({
@@ -14,15 +16,16 @@ const schemaTypeValue = z.object({
     categories:  z.string(),
 })
 
-type SchemaType = z.infer<typeof schemaTypeValue>
+export type SchemaTypeFilter = z.infer<typeof schemaTypeValue>
 
 type FiltroProdutoProps = {
     setModalFiltro: (modalFiltro: boolean) => void,
 }
 
 export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [valuePrice, setValuePrice] = useState("");
-    const { register, handleSubmit } = useForm<SchemaType>({
+    const { register, handleSubmit } = useForm<SchemaTypeFilter>({
         resolver: zodResolver(schemaTypeValue),
         defaultValues: {
             categories: [],
@@ -31,8 +34,8 @@ export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
         }
     });
     const { products } = useContext(ShopContext);
-    const typeProduct: string[] = ["Oferta", "Liquidação", "Frete Gratis"];
-    const categorias: string[] = ["Eletrônicos", "Video Game"];
+    const typeProduct: string[] = ["Oferta", "Liquidação", "Frete_Gratis"];
+    const categorias: string[] = ["Eletrônicos", "Video_Game"];
 
     return (
         <div className="w-full h-screen fixed top-0 left-0 bg-sombreamento z-50">
@@ -63,8 +66,8 @@ export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
                             <AccordionDetails className='flex flex-col gap-4 border-t border-[#e5e5e5]'>
                                 {typeProduct.map((item: string, index: Key) => (
                                     <div className='flex items-center gap-1' key={index}>
-                                        <input type="radio" value="ofertaProduto" className="w-[25px]" {...register("typeProduct")} />
-                                        <label translate='no'>{item}</label>
+                                        <input type="radio" value="OfertaProduto" className="w-[25px]" {...register("typeProduct")} />
+                                        <label translate='no'>{item.replace("_", " ")}</label>
                                     </div>
                                 ))}
                             </AccordionDetails>
@@ -81,7 +84,8 @@ export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
                             <AccordionDetails className='flex flex-col gap-6 border-t border-[#e5e5e5]'>
                                 <label>Intervalo de Preço</label>
                                 <Slider 
-                                    defaultValue={0} 
+                                    defaultValue={0}
+                                    max={Math.max(...productsStatic.map(product => product.price))}
                                     aria-label="Default" 
                                     valueLabelDisplay="auto"
                                     { ...register("price") }
@@ -101,7 +105,7 @@ export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
                                 {categorias.map((category: string, index: Key) => (
                                     <div className='flex flex-row items-center justify-start gap-4' key={index}>
                                         <input type="radio" value={category} className="w-[25px]" {...register("categories")} />
-                                        <label className='first-letter:uppercase' translate='no'>{category}</label>
+                                        <label className='first-letter:uppercase' translate='no'>{category.replace("_", " ")}</label>
                                     </div>
                                 ))}
                             </AccordionDetails>
@@ -114,7 +118,16 @@ export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
         </div>
     );
 
-    function applyFilter(formData: SchemaType){
-        console.log(formData);
+    function applyFilter(formData: SchemaTypeFilter){
+        Object.entries(formData).map((item, __) => {
+            setSearchParams(state => {
+                if(item){
+                    state.set(`${item[0]}`, `${item[1]}`);
+                } else {
+                    state.delete(`${item[0]}`)
+                }
+                return state;
+            })
+        })
     }
 }
