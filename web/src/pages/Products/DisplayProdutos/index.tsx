@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Cards } from '../../../components';
-import { productsStatic } from '../../../utils';
 import { useSearchParams } from 'react-router-dom';
 import { ShopContext } from '../../../context/shopContext';
 

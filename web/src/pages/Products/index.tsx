@@ -16,7 +16,7 @@ export function Products() {
   return (
     <>
       <Header />
-      <main className="w-full h-auto md:pt-[10%] px-8 md:px-0 bg-[#F1F3F8] border-b mb-4" id="main-produtos">
+      <main className="w-full h-auto md:pt-[10%] px-8 md:px-0 bg-[#F1F3F8] mb-4" id="main-produtos">
         <Titulo name="Produtos" />
         <Filtro setModalFiltro={setModalFiltro} />
         <DisplayProdutos />

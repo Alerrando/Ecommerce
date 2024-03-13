@@ -11,9 +11,9 @@ import { productsStatic } from '../../../../utils';
 
 
 const schemaTypeValue = z.object({
-    typeProduct: z.string(),
-    price: z.string(),
-    categories:  z.string(),
+    typeProduct: z.string().nullable(),
+    price: z.string().nullable(),
+    categories:  z.string().nullable(),
 })
 
 export type SchemaTypeFilter = z.infer<typeof schemaTypeValue>
@@ -24,18 +24,12 @@ type FiltroProdutoProps = {
 
 export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
     const [searchParams, setSearchParams] = useSearchParams();
-    const [valuePrice, setValuePrice] = useState("");
+    const price = searchParams.get('price');
     const { register, handleSubmit } = useForm<SchemaTypeFilter>({
-        resolver: zodResolver(schemaTypeValue),
-        defaultValues: {
-            categories: [],
-            price: "",
-            typeProduct: [],
-        }
+        resolver: zodResolver(schemaTypeValue)
     });
-    const { products } = useContext(ShopContext);
     const typeProduct: string[] = ["Oferta", "Liquidação", "Frete_Gratis"];
-    const categorias: string[] = ["Eletrônicos", "Video_Game"];
+    const categorias: string[] = ["Eletrônicos", "Tecnologia_Games", "Smartphone"];
 
     return (
         <div className="w-full h-screen fixed top-0 left-0 bg-sombreamento z-50">
@@ -64,9 +58,13 @@ export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
                                 <Typography>Tipo de Produto</Typography>
                             </AccordionSummary>
                             <AccordionDetails className='flex flex-col gap-4 border-t border-[#e5e5e5]'>
+                                <div className='flex items-center gap-1'>
+                                    <input type="radio" value={undefined} className="w-[25px]" {...register("typeProduct")} />
+                                    <label translate='no'>Nenhuma das opções!</label>
+                                </div>
                                 {typeProduct.map((item: string, index: Key) => (
                                     <div className='flex items-center gap-1' key={index}>
-                                        <input type="radio" value="OfertaProduto" className="w-[25px]" {...register("typeProduct")} />
+                                        <input type="radio" value={item} className="w-[25px]" {...register("typeProduct")} />
                                         <label translate='no'>{item.replace("_", " ")}</label>
                                     </div>
                                 ))}
@@ -84,9 +82,10 @@ export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
                             <AccordionDetails className='flex flex-col gap-6 border-t border-[#e5e5e5]'>
                                 <label>Intervalo de Preço</label>
                                 <Slider 
-                                    defaultValue={0}
+                                    defaultValue={price ? price : 0}
                                     max={Math.max(...productsStatic.map(product => product.price))}
-                                    aria-label="Default" 
+                                    min={Math.min(...productsStatic.map(product => product.price))}
+                                    aria-label="Default"
                                     valueLabelDisplay="auto"
                                     { ...register("price") }
                                 />
@@ -102,6 +101,10 @@ export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
                                 <Typography>Categoria</Typography>
                             </AccordionSummary>
                             <AccordionDetails className='flex flex-col gap-6 border-t border-[#e5e5e5]'>
+                                <div className='flex flex-row items-center justify-start gap-4'>
+                                    <input type="radio" value={undefined} className="w-[25px]" {...register("categories")} />
+                                    <label className='first-letter:uppercase' translate='no'>Nenhuma das opções!</label>
+                                </div>
                                 {categorias.map((category: string, index: Key) => (
                                     <div className='flex flex-row items-center justify-start gap-4' key={index}>
                                         <input type="radio" value={category} className="w-[25px]" {...register("categories")} />
@@ -121,7 +124,7 @@ export function FiltroProduto({ setModalFiltro }: FiltroProdutoProps) {
     function applyFilter(formData: SchemaTypeFilter){
         Object.entries(formData).map((item, __) => {
             setSearchParams(state => {
-                if(item){
+                if(item[1]){
                     state.set(`${item[0]}`, `${item[1]}`);
                 } else {
                     state.delete(`${item[0]}`)

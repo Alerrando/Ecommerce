@@ -16,15 +16,14 @@ export type UserProps = {
 
 export type CardKeys = {
     id: string;
-    url: string;
     image: string[];
     titulo: string;
     subTitulo: string;
     desconto: number;
-    categoria: string;
+    categoria?: string;
     destaque: number;
     descricao: string;
-    price: number;
+    price?: number;
     estoque: number;
     quantProduct: number;
 };
@@ -77,19 +76,38 @@ function CreateContextProvider({children}: IPropsContext){
     }
 
     function applyFilter(data: SchemaTypeFilter){
-        debugger;
-        let auxProducts = productsStatic;
-        if(data.price){
-            auxProducts = productsStatic.filter((product) => product.price <= parseInt(data.price));
-        }
+        const quantEmpty = isEmpty(data);
+        let auxProducts:CardKeys[] = productsStatic.filter((product) => {
+            if(quantEmpty >= 2){
+                if((product.price ?? 0) <= parseInt(data.price as string) || product.categoria == data.categories){
+                    return product;
+                }
+            } else{
+                if((product.price ?? 0) <= parseInt(data.price as string) && product.categoria == data.categories){
+                    return product;
+                }
+            }
 
-        return auxProducts;
+            
+        });
+        return auxProducts.length > 0 ? auxProducts : productsStatic;
+    }
+
+    function isEmpty(obj) {
+        let quantEmpty = 0;
+        Object.entries(obj).forEach((item) => {
+            if(!item[1]){
+                quantEmpty++;
+            }
+        })
+        
+        return quantEmpty;
     }
 
     function addCart(quantProduct: number, product: CardKeys){
         if(Object.keys(user).length > 0){
             const aux: any[] = user.carrinho;
-            const preçoProduto = product.desconto == 0 ? product.price : product.price - ((product.desconto / 100) * product.price)
+            const preçoProduto = product.desconto == 0 ? product.price : (product.price ?? 0)- ((product.desconto / 100) * (product.price ?? 0))
             let auxCarrinho: CardKeys[] = []
 
             let infoProduto:CardKeys = product;
