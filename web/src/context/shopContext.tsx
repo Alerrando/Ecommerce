@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
-import { productsStatic } from "../utils";
 import { SchemaTypeFilter } from "../pages/Products/Filtro/FiltroProduto";
+import { productsStatic } from "../utils";
 
 type IPropsContext = {
     children : React.ReactNode;
@@ -33,7 +33,7 @@ type ShopContextProps = {
     setUser: (user: UserProps) => void,
     registers: UserProps[],
     setRegisters: (user: UserProps[]) => void,
-    searchRegistrarion: (login: object | any) => number,
+    searchRegistrarion: (login: { email: string }) => number,
     modalInfo: CardKeys,
     setModalInfo: (modalInfo: CardKeys) => void,
     products: CardKeys[],
@@ -48,113 +48,113 @@ type ShopContextProps = {
 export const ShopContext = createContext<ShopContextProps>({} as ShopContextProps);
 
 function CreateContextProvider({children}: IPropsContext){
-    const [user, setUser] = useState<UserProps>({} as UserProps);
-    const [registers, setRegisters] = useState<UserProps[]>([] as UserProps[]);
-    const [modalInfo, setModalInfo] = useState<CardKeys>({} as CardKeys);
-    const [products, setProducts] = useState<CardKeys[]>([] as CardKeys[]);
-    const [favoritos, setFavoritos] = useState<string[]>([])
+	const [user, setUser] = useState<UserProps>({} as UserProps);
+	const [registers, setRegisters] = useState<UserProps[]>([] as UserProps[]);
+	const [modalInfo, setModalInfo] = useState<CardKeys>({} as CardKeys);
+	const [products, setProducts] = useState<CardKeys[]>([] as CardKeys[]);
+	const [favoritos, setFavoritos] = useState<string[]>([]);
 
-    function searchRegistrarion(login: object | any){
-        let verificar = -1;
+	function searchRegistrarion(login: { email: string }){
+		let verificar = -1;
 
-        registers.forEach(user => {
-            if (user.email === login.email){
-                verificar = 0
-            }
-        })
+		registers.forEach(user => {
+			if (user.email === login.email){
+				verificar = 0;
+			}
+		});
 
-        return registers.length == 0 ? 1 : verificar == -1 ? verificar : 0
-    }
+		return registers.length == 0 ? 1 : verificar == -1 ? verificar : 0;
+	}
 
-    function handleFavorites(subTitulo: string){
-        const favoritesAux = [...favoritos];
-        const favoritesIndex = favoritos.indexOf(subTitulo)
+	function handleFavorites(subTitulo: string){
+		const favoritesAux = [...favoritos];
+		const favoritesIndex = favoritos.indexOf(subTitulo);
   
-        favoritesIndex > -1 ? favoritesAux.splice(favoritesIndex, 1) : favoritesAux.push(subTitulo);
+		favoritesIndex > -1 ? favoritesAux.splice(favoritesIndex, 1) : favoritesAux.push(subTitulo);
   
-        setFavoritos(favoritesAux);
-    }
+		setFavoritos(favoritesAux);
+	}
 
-    function applyFilter(data: SchemaTypeFilter){
-        const quantEmpty = isEmpty(data);
-        let auxProducts:CardKeys[] = productsStatic.filter((product) => {
-            if(quantEmpty >= 2){
-                if((product.price ?? 0) <= parseInt(data.price as string) || product.categoria == data.categories){
-                    return product;
-                }
-            } else{
-                if((product.price ?? 0) <= parseInt(data.price as string) && product.categoria == data.categories){
-                    return product;
-                }
-            }
+	function applyFilter(data: SchemaTypeFilter){
+		const quantEmpty = isEmpty(data);
+		const auxProducts:CardKeys[] = productsStatic.filter((product) => {
+			if(quantEmpty >= 2){
+				if((product.price ?? 0) <= parseInt(data.price as string) || product.categoria == data.categories){
+					return product;
+				}
+			} else{
+				if((product.price ?? 0) <= parseInt(data.price as string) && product.categoria == data.categories){
+					return product;
+				}
+			}
 
             
-        });
-        return auxProducts.length > 0 ? auxProducts : productsStatic;
-    }
+		});
+		return auxProducts;
+	}
 
-    function isEmpty(obj) {
-        let quantEmpty = 0;
-        Object.entries(obj).forEach((item) => {
-            if(!item[1]){
-                quantEmpty++;
-            }
-        })
+	function isEmpty(obj) {
+		let quantEmpty = 0;
+		Object.entries(obj).forEach((item) => {
+			if(!item[1]){
+				quantEmpty++;
+			}
+		});
         
-        return quantEmpty;
-    }
+		return quantEmpty;
+	}
 
-    function addCart(quantProduct: number, product: CardKeys){
-        if(Object.keys(user).length > 0){
-            const aux: any[] = user.carrinho;
-            const preçoProduto = product.desconto == 0 ? product.price : (product.price ?? 0)- ((product.desconto / 100) * (product.price ?? 0))
-            let auxCarrinho: CardKeys[] = []
+	function addCart(quantProduct: number, product: CardKeys){
+		if(Object.keys(user).length > 0){
+			const aux: any[] = user.carrinho;
+			const preçoProduto = product.desconto == 0 ? product.price : (product.price ?? 0)- ((product.desconto / 100) * (product.price ?? 0));
+			let auxCarrinho: CardKeys[] = [];
 
-            let infoProduto:CardKeys = product;
-            infoProduto.quantProduct = quantProduct;
-            infoProduto.price = preçoProduto;
+			const infoProduto:CardKeys = product;
+			infoProduto.quantProduct = quantProduct;
+			infoProduto.price = preçoProduto;
             
-            if(aux.length > 0){
-                let index = -1;
+			if(aux.length > 0){
+				let index = -1;
 
-                for (let i = 0; i < aux.length; i++) {
-                    const element: CardKeys = aux[i];
+				for (let i = 0; i < aux.length; i++) {
+					const element: CardKeys = aux[i];
 
-                    if(element.subTitulo != product.subTitulo)
-                        index = 0;
+					if(element.subTitulo != product.subTitulo)
+						index = 0;
                     
-                    else
-                        index = -1
+					else
+						index = -1;
                     
-                }
+				}
 
-                if(index != -1){
-                    auxCarrinho = aux;
-                    auxCarrinho.push(infoProduto)
-                }
-                else
-                    auxCarrinho = aux;
-            }
-            else{
-                    auxCarrinho = aux;
-                    auxCarrinho.push(infoProduto)
-            }
+				if(index != -1){
+					auxCarrinho = aux;
+					auxCarrinho.push(infoProduto);
+				}
+				else
+					auxCarrinho = aux;
+			}
+			else{
+				auxCarrinho = aux;
+				auxCarrinho.push(infoProduto);
+			}
     
-            setUser(prevState => {
-                return {...prevState, carrinho: auxCarrinho}
-            })
+			setUser(prevState => {
+				return {...prevState, carrinho: auxCarrinho};
+			});
 
-            return ;
-        }
+			return ;
+		}
 
-        alert("Faça Login primeiro para adicionar produtos ao carrinho!")
-    }
+		alert("Faça Login primeiro para adicionar produtos ao carrinho!");
+	}
     
-    return(
-        <ShopContext.Provider value={{user, setUser, registers, setRegisters, searchRegistrarion, modalInfo, setModalInfo, products, setProducts, favoritos, setFavoritos, handleFavorites, applyFilter, addCart}}>
-            {children}
-        </ShopContext.Provider>
-    )
+	return(
+		<ShopContext.Provider value={{user, setUser, registers, setRegisters, searchRegistrarion, modalInfo, setModalInfo, products, setProducts, favoritos, setFavoritos, handleFavorites, applyFilter, addCart}}>
+			{children}
+		</ShopContext.Provider>
+	);
 }
 
 export default CreateContextProvider;
