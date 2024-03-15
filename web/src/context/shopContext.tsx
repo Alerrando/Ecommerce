@@ -90,7 +90,7 @@ function CreateContextProvider({children}: IPropsContext){
 
             
 		});
-		return auxProducts;
+		return auxProducts.length > 0 ? auxProducts : productsStatic;
 	}
 
 	function isEmpty(obj) {

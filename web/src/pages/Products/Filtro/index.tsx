@@ -11,10 +11,10 @@ type OrdenarProps = {
 
 type FiltroProps = {
     setModalFiltro: (modalInfo: boolean) => void,
+	quantProduct: number,
 }
 
-export function Filtro(props: FiltroProps) {
-	const { setModalFiltro } = props;
+export function Filtro({ quantProduct, setModalFiltro}: FiltroProps) {
 	const ordenar: readonly OrdenarProps[] = [
 		{ text: "Preço Crescente" },
 		{ text: "Preço Decrescente" },
@@ -68,7 +68,7 @@ export function Filtro(props: FiltroProps) {
 				</div>
 
 				<div className='w-auto md:w-1/2 flex flex-row items-center md:justify-end px-4 md:px-0 py-4 md:py-0 gap-4'>
-					<span className='text-sm md:text-base font-medium'>{`${productsStatic.length}`}</span>
+					<span className='text-sm md:text-base font-medium'>{`${quantProduct}`}</span>
 					<h3 className='text-base md:text-lg'>Produtos</h3>
 				</div>
 			</div>

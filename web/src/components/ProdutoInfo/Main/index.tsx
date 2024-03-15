@@ -52,7 +52,7 @@ export function Main(props: MainProps) {
                     <span className='cursor-pointer' onClick={() => handleFavorites(produto.subTitulo)}>{hearth}</span>
                 </div>
 
-                <div className='flex text-start flex-col md:flex-row gap-8'>
+                <div className='h-auto flex text-start flex-col md:flex-row gap-8'>
                     <ImageDisplay produto={produto}  />
                     <InfoProduto produto={produto} addCart={addCart}  />
                 </div>

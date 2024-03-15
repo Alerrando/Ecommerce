@@ -15,7 +15,7 @@ export function Router(){
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/produtos" element={<Products />} />
-                <Route path="/produtos/:id/:url" element={<ProdutoInfo />} />
+                <Route path="/produtos/:id" element={<ProdutoInfo />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/carrinho" element={<Carrinho />} />
